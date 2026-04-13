@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simon Morley — Technical Security Due Diligence for Investors</title>
+  <meta name="description" content="Technical security due diligence for venture capital and private equity. Offensive security assessments for investors and acquirers before the deal closes.">
+  <link rel="canonical" href="https://polkaspots.com/">
+
+  <meta property="og:title" content="Simon Morley — Technical Security Due Diligence for Investors">
+  <meta property="og:description" content="Technical security due diligence for venture capital and private equity. Offensive security assessments for investors and acquirers before the deal closes.">
+  <meta property="og:url" content="https://polkaspots.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Simon Morley — Technical Security Due Diligence for Investors">
+  <meta name="twitter:description" content="Technical security due diligence for venture capital and private equity. Offensive security assessments for investors and acquirers before the deal closes.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://polkaspots.com",
+        "email": "simon@nullrabbit.ai",
+        "jobTitle": "Security Consultant",
+        "knowsAbout": ["penetration testing", "security due diligence", "offensive security", "infrastructure security", "cloud security", "cyber due diligence"],
+        "alumniOf": "Techstars Berlin 2017"
+      },
+      {
+        "@type": "ProfessionalService",
+        "name": "Simon Morley — Technical Security Due Diligence",
+        "url": "https://polkaspots.com",
+        "description": "Technical security due diligence and pre-deal offensive security assessments for venture capital, private equity, and M&A advisory.",
+        "areaServed": "GB",
+        "serviceType": ["Technical Security Due Diligence", "Penetration Testing", "Cyber Due Diligence", "Pre-deal Security Assessment", "Cyber Risk Assessment"]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0b0b09;
+      --text: #c8c4bc;
+      --text-bright: #e8e5df;
+      --accent: #c49a3c;
+      --muted: #6b665e;
+      --rule: #1e1d19;
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      line-height: 1.7;
+    }
+
+    .grain {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 300%;
+      height: 300%;
+      pointer-events: none;
+      opacity: 0.025;
+      z-index: 9999;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { border-bottom: 1px solid var(--accent); }
+
+    main {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 7rem 0 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hero .descriptor {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-body);
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero .value-prop {
+      font-size: 1.25rem;
+      color: var(--text);
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    .hero .sub-prop {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    .hero .cta {
+      display: inline-block;
+      margin-top: 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .hero .cta:hover { border-bottom-color: var(--accent); }
+
+    /* Sections */
+    section {
+      padding: 4.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-of-type { border-bottom: none; }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    section p { margin-bottom: 1.25rem; }
+    section p:last-child { margin-bottom: 0; }
+
+    .highlight {
+      color: var(--text-bright);
+      font-weight: 500;
+    }
+
+    /* Findings */
+    .findings-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .finding {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .finding:first-child { padding-top: 0; }
+    .finding:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .finding-header {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.6rem;
+    }
+
+    .finding p {
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 0;
+    }
+
+    .findings-note {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Steps */
+    .steps {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .steps li {
+      counter-increment: step;
+      padding: 1.25rem 0 1.25rem 2.75rem;
+      position: relative;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .steps li:last-child { border-bottom: none; }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Contact */
+    .contact-email {
+      font-family: var(--font-mono);
+      font-size: 1.35rem;
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-email:hover { border-bottom-color: var(--accent); }
+
+    .contact-note {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    /* Fade in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero { padding: 4.5rem 0 3rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero .value-prop { font-size: 1.1rem; }
+      section { padding: 3.5rem 0; }
+      body { font-size: 1rem; }
+      .contact-email { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <svg class="grain" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <filter id="grain-filter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#grain-filter)"/>
+  </svg>
+
+  <main>
+    <header class="hero">
+      <p class="descriptor">Technical Security Due Diligence</p>
+      <h1>Simon Morley</h1>
+      <p class="value-prop">I find the security risks in your acquisition target before you sign the cheque.</p>
+      <p class="sub-prop">Cyber due diligence and penetration testing for M&amp;A, venture capital, and private equity.</p>
+      <a href="mailto:simon@nullrabbit.ai" class="cta">simon@nullrabbit.ai</a>
+    </header>
+
+    <section class="fade-in">
+      <h2 class="section-label">What I Do</h2>
+      <p>You're acquiring a company. You've reviewed the data room, the compliance certifications, the CTO's architecture deck. But nobody has actually tried to break in.</p>
+      <p>I do <span class="highlight">technical security due diligence</span> for investors and acquirers. Pre-deal offensive security assessment — not a checkbox audit, an actual attempt to find what's broken before you take on the liability.</p>
+      <p>I look at the target the way an attacker would: infrastructure, applications, data handling, access controls, exposed services, cloud configuration, source code.</p>
+      <p>You get an executive summary with business risk framing for your investment committee, and a technical appendix with full findings.</p>
+      <p>Typical engagement: one to two weeks. Fixed fee. I can start within days.</p>
+    </section>
+
+    <section class="fade-in">
+      <h2 class="section-label">What I Find</h2>
+      <div class="findings-grid">
+        <div class="finding">
+          <div class="finding-header">SaaS platform — Series B target</div>
+          <p>Gained access to the full customer database within four hours through a misconfigured API gateway. Undisclosed in the data room.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-header">Fintech platform — PE buyout</div>
+          <p>Production database accessible from the public internet with default credentials. Compliance certifications were current.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-header">Infrastructure provider — Growth equity deal</div>
+          <p>Three critical unpatched vulnerabilities in customer-facing services, plus hardcoded AWS keys in a public GitHub repository.</p>
+        </div>
+        <div class="finding">
+          <div class="finding-header">Crypto exchange — Strategic acquisition</div>
+          <p>Wallet hot/cold segregation not implemented as described in technical documentation. Material misrepresentation.</p>
+        </div>
+      </div>
+      <p class="findings-note">Representative examples. Specific engagements are confidential.</p>
+    </section>
+
+    <section class="fade-in">
+      <h2 class="section-label">Why Me</h2>
+      <p>Twenty years in offensive security and infrastructure engineering. Background adjacent to UK government cyber operations. Published researcher.</p>
+      <p>I've built and secured the kinds of systems I now assess — trading platforms, cloud infrastructure at scale, blockchain systems, IoT networks. Former CTO at a cryptocurrency exchange. Techstars alumni. Currently building autonomous security tooling at <a href="https://nullrabbit.ai">NullRabbit</a>.</p>
+      <p>I know where engineers cut corners because I've been the one making those trade-offs. That's why I know where to look.</p>
+      <p>Based in the UK. Available internationally.</p>
+    </section>
+
+    <section class="fade-in">
+      <h2 class="section-label">How It Works</h2>
+      <ol class="steps">
+        <li>Send me the target details — company name, sector, what you know so far.</li>
+        <li>I scope the engagement and send you a fixed-fee quote. Usually within 24 hours.</li>
+        <li>I deliver findings with an executive summary you can take to your investment committee, plus full technical detail.</li>
+      </ol>
+    </section>
+
+    <section class="fade-in" id="contact">
+      <h2 class="section-label">Get in Touch</h2>
+      <a href="mailto:simon@nullrabbit.ai" class="contact-email">simon@nullrabbit.ai</a>
+      <p class="contact-note">Email me. I'll reply today.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Simon Morley</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var targets = document.querySelectorAll('.fade-in');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        targets.forEach(function (el) { observer.observe(el); });
+      } else {
+        targets.forEach(function (el) { el.classList.add('visible'); });
+      }
+    });
+  </script>
+</body>
+</html>
