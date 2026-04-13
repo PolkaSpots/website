@@ -106,12 +106,20 @@
 
     .hero .mark {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 32px;
       font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
       color: var(--accent);
       margin-bottom: 1.75rem;
+    }
+
+    .hero .mark::after {
+      content: '_';
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     .hero h1 {
@@ -161,7 +169,7 @@
 
     .label {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
+      font-size: 0.85rem;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.15em;
@@ -314,7 +322,7 @@
 
   <main>
     <header class="hero">
-      <p class="mark">PolkaSpots</p>
+      <p class="mark">POLKASPOTS</p>
       <h1>You break it, you buy it.<br><em>So let us break it first.</em></h1>
       <p class="lede">You're about to buy a company. We break into it first and tell you what we find. Then we work with their team to sort it out.</p>
       <a href="mailto:security@polkaspots.com" class="cta">security@polkaspots.com</a>
@@ -401,7 +409,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 PolkaSpots</p>
+    <p>&copy; 2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 5508105.</p>
     <div class="footer-links">
       <a href="https://simonmorley.co.uk">simonmorley.co.uk</a>
       <a href="https://nullrabbit.ai">nullrabbit.ai</a>
