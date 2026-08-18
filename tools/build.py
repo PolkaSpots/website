@@ -632,7 +632,7 @@ emit(SUPPLIERS,
               <button type="submit" class="act act--ink act--lg plausible-event-name=form_submit" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
             </form>
             <!-- CALENDAR-SWAP: secondary CTA. Replace with the 20-minute booking link. -->
-            <p class="form-note"><a class="plausible-event-name={BOOK_GOAL}" href="{BOOK_20}">Or book a 20-minute call →</a></p>
+            <p class="form-note"><a class="plausible-event-name={BOOK_GOAL}" href="{BOOK_20}">Or book a {CALL_MINS}-minute call →</a></p>
             <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="{MAKERS}">This is your page →</a></p>
           </div>
         </div>

@@ -49,8 +49,12 @@ PLAUSIBLE_SRC = "https://plausible.io/js/script.tagged-events.outbound-links.js"
 # Booking links. Set these to the Cal.com event URLs and every CTA across the
 # site switches from the mailto fallback to the calendar in one edit.
 # Spec §8 requires the calendar embedded and tested end-to-end before spend.
-CAL_30 = ""   # e.g. "https://cal.com/simonmorley/forgecra-pilot"   (manufacturers)
-CAL_20 = ""   # e.g. "https://cal.com/simonmorley/forgecra-supplier" (suppliers)
+# One 30-minute event serves both sides for now. If the supplier conversation
+# turns out to want its own shorter slot, create a second Cal.com event type
+# and point CAL_20 at it — the supplier CTA copy is driven by CALL_MINS below.
+CAL_30 = "https://cal.com/simon-morley-np2it0/30min"
+CAL_20 = "https://cal.com/simon-morley-np2it0/30min"
+CALL_MINS = "30"
 
 MAILTO_30 = ("mailto:security@polkaspots.com?subject=ForgeCRA%20pilot%20call%20%E2%80%94%20manufacturer"
              "&amp;body=Company%3A%20%0ARole%3A%20%0AApprox%20number%20of%20upstream%20suppliers%3A%20"
@@ -59,7 +63,7 @@ MAILTO_30 = ("mailto:security@polkaspots.com?subject=ForgeCRA%20pilot%20call%20%
 MAILTO_20 = ("mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20call"
              "&amp;body=Company%3A%20%0ARole%3A%20%0ANumber%20of%20manufacturer%20customers%3A%20"
              "%0ACurrent%20SBOM%20format%3A%20%0A%0AA%20couple%20of%20times%20that%20suit%20for%20a"
-             "%2020-minute%20call%3A%20%0A")
+             "%2030-minute%20call%3A%20%0A")
 
 BOOK_30 = CAL_30 or MAILTO_30
 BOOK_20 = CAL_20 or MAILTO_20
