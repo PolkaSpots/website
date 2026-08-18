@@ -58,9 +58,9 @@ emit("/",
               <span class="tag-meta">OFFENSIVE SECURITY</span>
             </div>
             <div><h2>Penetration Testing</h2></div>
-            <p class="card-body">Full scoped testing and deal diligence when you need depth, not a sample.</p>
+            <p class="card-body">Full scoped testing when you need depth, not a sample — before a deal, a release, or a board review.</p>
             <div class="card-actions">
-              <a class="act act--ink" href="{URLS['pen']}">FULL PENTEST &amp; DILIGENCE →</a>
+              <a class="act act--ink" href="{URLS['pen']}">FULL PENTEST →</a>
             </div>
           </article>
 
@@ -158,9 +158,9 @@ emit(URLS["pen"],
   <main>
     <section class="band band--hero">
       <div class="wrap">
-        <p class="eyebrow eyebrow--violet">Security testing &amp; due diligence</p>
+        <p class="eyebrow eyebrow--violet">Penetration testing</p>
         <h1 class="h1 h1--page">You break it, you buy it. So let us break it first.</h1>
-        <p class="lede lede--page">You're about to buy a company. We try to break into it first and tell you what we find. Then we work with their team to sort it out.</p>
+        <p class="lede lede--page">You're about to buy a company, ship a product, or answer a board. We try to break in first and tell you what we find — then work with the engineers to sort it out.</p>
       </div>
     </section>
 
@@ -206,7 +206,7 @@ emit(URLS["pen"],
         <div class="split">
           <p class="statement">If you're buying a company — or investing in one — and you want to know whether the tech is actually solid before you sign, talk to us.</p>
           <div class="split-stack">
-            <p class="body">We work with PE firms, VCs, M&amp;A lawyers, corporate finance advisors, insurance underwriters, and anyone else involved in a deal who'd rather find out now than find out later.</p>
+            <p class="body">We work with PE firms, VCs, M&amp;A lawyers, corporate finance advisors and insurance underwriters — anyone in a deal who'd rather find out now than later. We also work directly with companies who want to know where they stand before a launch, an audit, or a customer security review.</p>
             <div>
               <a class="act act--ink act--mail" href="mailto:{MAIL}">{MAIL}<span aria-hidden="true">→</span></a>
               <p class="act-note">Same-day reply with a clear scope and a fixed price.</p>

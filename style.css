@@ -1063,9 +1063,18 @@ img { max-width: 100%; }
   .lede { font-size: 18px; margin-top: 24px; }
   .statement, .statement--sm { font-size: 22px; }
   .card h2 { font-size: 28px; }
-  .act, .act--lg { display: block; width: 100%; }
-  .card-actions .act { width: 100%; }
+  /* Thumb targets: full width and comfortably past the 44px minimum. The
+     light theme runs tighter than the dark one did, so these are set
+     explicitly rather than inherited from the desktop padding. */
+  .act, .act--lg { display: block; width: 100%; padding: 17px 20px; }
+  .card-actions .act { width: 100%; padding: 17px 20px; }
   .act-row { align-items: stretch; }
+  .field input, .field select { padding: 15px 0; }
+  .field textarea { padding: 15px 14px; }
+  .fields { gap: 26px; }
+  .form-submit { margin-top: 28px; }
+  .keypoints { padding: 20px; }
+  .prose h2 { margin-top: 36px; }
 }
 
 @media (max-width: 480px) {
