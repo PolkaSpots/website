@@ -18,98 +18,98 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "name": "Contact PolkaSpots",
     "url": "https://polkaspots.com/contact.html",
-    "mainEntity": {
-      "@type": "ProfessionalService",
-      "name": "PolkaSpots",
-      "email": "security@polkaspots.com",
-      "url": "https://polkaspots.com"
-    }
+    "mainEntity": { "@type": "ProfessionalService", "name": "PolkaSpots", "email": "security@polkaspots.com", "url": "https://polkaspots.com" }
   }
   </script>
 </head>
 <body>
-  <nav id="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">POLKASPOTS</a>
-      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/services.html">Services</a></li>
-        <li><a href="/flash-review.html">Flash Review</a></li>
-        <li><a href="/contact.html" class="active">Contact</a></li>
-      </ul>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i class="v"></i><i></i></span>
+        <span class="wordmark-text">POLKASPOTS</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/flash-review.html">Flash Review</a>
+        <a href="/services.html">Pen Testing</a>
+        <a href="/forgecra/manufacturers">ForgeCRA</a>
+        <a href="/forgecra/suppliers">Suppliers</a>
+        <a href="/contact.html" aria-current="page">Contact</a>
+      </nav>
     </div>
-  </nav>
-
-  <svg class="grain" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <filter id="g">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-    </filter>
-    <rect width="100%" height="100%" filter="url(#g)"/>
-  </svg>
+  </header>
 
   <main>
-    <header class="page-header">
-      <h1>Get in touch.</h1>
-      <p class="lede">We reply the same day. Usually within the hour.</p>
-    </header>
-
-    <section class="fade-in">
-      <a href="mailto:security@polkaspots.com" class="contact-email">security@polkaspots.com</a>
-
-      <form action="https://formspree.io/f/PLACEHOLDER" method="POST" style="margin-top: 3rem;">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
+    <section class="band band--pad band--end">
+      <div class="wrap">
+        <div class="split" style="margin-top: 0; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px;">
+          <div>
+            <h1 class="h1 h1--contact">Get in touch.</h1>
+            <p class="lede lede--page" style="margin-top: 26px;">We reply the same day. Usually within the hour.</p>
+            <a class="email-link" href="mailto:security@polkaspots.com">security@polkaspots.com</a>
+          </div>
+          <div class="panel">
+            <!-- Posts via mailto + enctype="text/plain": no backend, works with JS disabled.
+                 For a hosted handler set action="https://formspree.io/f/YOUR_ID" method="POST"
+                 and delete enctype — the field names already match. -->
+            <form action="mailto:security@polkaspots.com?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain">
+              <label class="field"><span>Name</span><input type="text" name="name" required></label>
+              <label class="field" style="margin-top: 24px;"><span>Email</span><input type="email" name="email" required></label>
+              <label class="field" style="margin-top: 24px;"><span>Message</span><textarea name="message" rows="6" required></textarea></label>
+              <button type="submit" class="act">SEND</button>
+            </form>
+            <p class="panel-note">This opens your email client. Prefer to write directly? <a href="mailto:security@polkaspots.com">security@polkaspots.com</a></p>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-lg btn-block">Send</button>
-      </form>
+      </div>
     </section>
-
   </main>
 
-  <footer>
-    <div class="footer-grid">
+  <footer class="site-footer">
+    <div class="footer-cols">
       <div class="footer-col">
-        <p class="footer-heading">Services</p>
-        <a href="/flash-review.html">Flash Review</a>
-        <a href="/services.html">Penetration Testing</a>
-        <a href="/services.html">Remediation</a>
+        <h2>Security testing</h2>
+        <div class="footer-links">
+          <a href="/flash-review.html">Flash Review — £500</a>
+          <a href="/services.html">Full Pentest</a>
+          <a href="/services.html">Remediation</a>
+          <a href="/services.html">Ongoing Monitoring</a>
+        </div>
       </div>
       <div class="footer-col">
-        <p class="footer-heading">Products</p>
-        <a href="https://nullrabbit.ai">NullRabbit</a>
-        <a href="https://slashr.dev">Slashr</a>
+        <h2>ForgeCRA</h2>
+        <div class="footer-links">
+          <a href="/forgecra/manufacturers">For manufacturers</a>
+          <a href="/forgecra/suppliers">For suppliers</a>
+        </div>
       </div>
       <div class="footer-col">
-        <p class="footer-heading">Contact</p>
-        <a href="mailto:security@polkaspots.com">security@polkaspots.com</a>
+        <h2>Company</h2>
+        <div class="footer-links">
+          <a href="/contact.html">Contact</a>
+          <a href="https://simonmorley.co.uk">Simon Morley</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Also building</h2>
+        <div class="footer-links">
+          <a href="https://nullrabbit.ai">NullRabbit</a>
+          <a href="https://slashr.dev">Slashr</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2004&ndash;2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 5508105.</p>
+    <div class="footer-base">
+      <p>&copy; 2005&ndash;2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 05508105. London.</p>
     </div>
   </footer>
-
-  <script src="/main.js" defer></script>
 </body>
 </html>

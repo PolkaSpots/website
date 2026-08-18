@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects.
+# Spec §2: "/" on the product property shows Page A (manufacturers) as default.
+/forgecra            /forgecra/manufacturers   302
+/forgecra/           /forgecra/manufacturers   302
