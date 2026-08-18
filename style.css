@@ -845,6 +845,30 @@ img { max-width: 100%; }
   color: var(--ink-50);
 }
 
+.keypoints {
+  max-width: 72ch;
+  margin: 0 0 40px;
+  padding: 26px 28px;
+  border-left: 3px solid var(--violet);
+  background: oklch(0.20 0.028 265 / 0.035);
+}
+
+.keypoints-label {
+  margin: 0 0 14px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+
+.keypoints ul { margin: 0; padding-left: 20px; }
+.keypoints li { font-size: 17px; line-height: 1.6; color: var(--ink-28); margin-top: 9px; }
+.keypoints li:first-child { margin-top: 0; }
+.keypoints li::marker { color: var(--violet); }
+
+.post-faq { margin-top: 64px; }
+
 /* ===== Blog ===================================================== */
 .post-mini { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .post-mini li { display: flex; align-items: baseline; gap: 14px; justify-content: space-between; }

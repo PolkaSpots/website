@@ -192,7 +192,6 @@ def footer(forgecra=False):
         <div class="footer-links">
           <a href="{URLS['contact']}">Contact</a>
           <a href="https://simonmorley.co.uk">Simon Morley</a>
-          <a href="/llms.txt">llms.txt</a>
         </div>
       </div>
       <div class="footer-col">
@@ -200,6 +199,7 @@ def footer(forgecra=False):
         <div class="footer-links">
           <a href="https://nullrabbit.ai">NullRabbit</a>
           <a href="https://slashr.dev">Slashr</a>
+          <a href="https://nrdax.com">NRDAX</a>
         </div>
       </div>
     </div>

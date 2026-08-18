@@ -39,9 +39,9 @@ Two product lines, both live on this domain:
 - [What security due diligence should tell an investment committee](https://polkaspots.com/security-due-diligence/blog/what-diligence-should-tell-an-investment-committee/): Not a severity distribution. Three things: does this change the price, does this change the plan, and what does it cost to fix. If the report cannot answer those, it was written for the wrong reader.
 - [A current ISO 27001 certificate is not evidence that you are secure](https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/): We have found production databases on the open internet at companies holding current certifications. The certificate was not fraudulent. It was answering a different question from the one the buyer thought it answered.
 - [What two hours of testing actually buys you](https://polkaspots.com/security-due-diligence/blog/what-two-hours-of-testing-buys-you/): A Flash Review is not a pentest and we do not pretend otherwise. Here is what fits in two hours, what does not, and why the constraint produces better results than it sounds like it should.
-- [Supplier evidence is a cross-company problem](https://polkaspots.com/cra-sbom-attestation/blog/supplier-evidence-is-a-cross-company-problem/): Binary analysis of firmware you already hold is well served by good vendors. Getting evidence out of forty companies that do not report to you is a different problem, and it is the one nobody owns.
-- [Most SBOMs we see are not usable. Here is what is missing.](https://polkaspots.com/cra-sbom-attestation/blog/what-makes-an-sbom-usable/): A file that parses is not the same as evidence you can rely on. The common failures are missing version precision, no unique identifiers, no dependency relationships, and no statement of who produced it or when.
-- [The CRA timeline: what actually applies, and when](https://polkaspots.com/cra-sbom-attestation/blog/cra-timeline-what-applies-when/): Article 14 reporting starts 11 September 2026. Everything else — SBOM, vulnerability handling, technical documentation — lands 11 December 2027. The gap between those two dates is where most of the confusion lives.
+- [Full CRA obligations are still 2027 — start the supplier work anyway](https://polkaspots.com/cra-sbom-attestation/blog/cra-2027-deadline-start-supplier-work-now/): Reporting obligations begin September 2026 and are event-triggered. The expensive problem sits under the December 2027 date and continues after it.
+- [Publish once, or fill in five portals](https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/): Suppliers are about to be asked for SBOMs by every manufacturer they sell into, each with its own format, portal and idea of complete. That does not scale on either side.
+- [Why the hard part of CRA is not generating an SBOM](https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/): Binary analysis turns a firmware image into an SBOM, and does it well. It cannot make a reluctant supplier send you better data next month, and it cannot produce an attestation that the supplier stands behind.
 
 
 ---
@@ -172,148 +172,149 @@ Go longer, too, when you are about to buy the company. A two-hour read on an acq
 Two hours buys you a fast, real answer to a narrow question, delivered by someone who has been doing this for twenty years, with no obligation to buy anything else. It does not buy you assurance. We would rather say that plainly than let you infer otherwise and be disappointed later.
 
 
-## Supplier evidence is a cross-company problem
+## Full CRA obligations are still 2027 — start the supplier work anyway
 
-URL: https://polkaspots.com/cra-sbom-attestation/blog/supplier-evidence-is-a-cross-company-problem/
-Published: 2026-08-12
-Tags: sbom, supply-chain, cra, supplier-management, attestation
+URL: https://polkaspots.com/cra-sbom-attestation/blog/cra-2027-deadline-start-supplier-work-now/
+Published: 2026-08-13
+Tags: cra, cyber-resilience-act, cra-deadline, harmonised-standards, sbom, annex-i
 
-There are two problems that get called "SBOM" and they are not the same problem.
+Two dates matter.
 
-The first is: *I have a firmware image and I want to know what is inside it.* This is a technical problem, it is well understood, and there are capable vendors solving it. Binary composition analysis works. If you hold the artefact, you can find out a great deal about it without anyone's cooperation.
+**11 September 2026:** reporting obligations for actively exploited vulnerabilities and serious incidents begin. These are event-triggered. A spreadsheet and a process can satisfy the minimum for many organisations.
 
-The second is: *I need current, structured, trustworthy component evidence from forty companies that do not work for me.* This is not a technical problem. It is a coordination problem wearing a technical costume, and the tooling built for the first problem does not touch it.
+**11 December 2027:** the full set of obligations applies — SBOM, vulnerability handling processes, technical documentation, and the rest.
 
-We only work on the second one.
+A lot of the current noise is about the first date. The more expensive problem sits under the second date and continues after it.
 
-## Why analysis does not close the gap
+## Why the September date is not the hard one
 
-Analysis tells you what is in the binary you have. It cannot tell you what changed in a supplier's next release, it cannot produce an attestation the supplier is willing to stand behind, and it cannot help at all where you never receive an artefact to analyse in the first place — which is common with subassemblies, licensed modules, and anything where the supplier ships you a black box.
+The reporting obligation is real and worth preparing for, but preparing for it is largely organisational. You need someone who owns the 24-hour clock, a decision path for what counts as reportable, and a route to submit.
 
-More fundamentally, an inferred component list is not the same artefact as a supplier's signed statement about their own product. When the question is "what did your supplier tell you, and when," a scan result is not the answer to that question. It is a useful cross-check on the answer.
+Crucially, nothing happens on that date unless something happens to you. There is no filing, no submission, no certificate. If nothing in your products is actively exploited, the date passes without incident.
 
-## Why the obvious solution does not scale
+That is why we do not sell readiness for it. It is being harvested commercially at the moment because it is the nearest date and fear converts, but buying tooling in a scramble to satisfy an event-triggered reporting duty tends to produce something that does not help at all with the December 2027 requirement to evidence what is actually inside your products.
 
-The obvious solution is a portal. The manufacturer stands one up, invites their suppliers, and collects.
+## Why supply-chain work is measured in months
 
-This works at ten suppliers and degrades badly after that, for a reason that has nothing to do with the software. Every manufacturer builds their own portal. Every supplier then has an account in five portals, each with a different schema, a different questionnaire and a different review cycle. The supplier's cost scales with the number of customers, and the supplier is the party with no regulatory exposure and no incentive to absorb that cost.
+Collecting usable SBOMs from a multi-tier supply chain takes months, not weeks.
 
-What happens next is predictable. Suppliers deprioritise it. Responses get thin, then late, then stop. The manufacturer, who does carry the exposure, is left chasing.
+Suppliers need time to produce something decent — for many that means changing their build pipeline, not just exporting a file. Manufacturers need time to quality-check what comes back, and to work out which suppliers are producing evidence they can act on and which are producing files that will not help when an advisory lands. And both sides need a way to keep the information current when components change, because a bill of materials produced once describes a moment that has already passed.
 
-## The shape of the answer
+None of those steps compress well. They involve other companies, on their schedules, with their priorities.
 
-The pattern that resolves this is not new, and it is not ours. E-invoicing went through the same thing: many-to-many relationships, per-partner integration cost growing quadratically, and eventually a neutral network in the middle that everyone connects to once.
+## The harmonised standards question
 
-Applied here, it means one attestation from the supplier, published once, shared per customer under the supplier's control. The supplier's cost stops scaling with customer count. The manufacturer gets structured, scored, current evidence. Neither party has to trust a competitor with their component data, which is the reason this has to sit with someone neutral rather than inside an analysis vendor's platform.
+Waiting until the harmonised standards are cited — still expected late 2026 to mid-2027 — before starting that work simply compresses the timeline.
 
-That neutrality is load-bearing. A supplier will not attest deeply into a system owned by a company that also sells analysis to their customers, and it is not irrational of them to refuse.
+It is worth being precise about what the wait buys. As of August 2026 no harmonised standards for the CRA have been cited in the Official Journal, which means no presumption of conformity is available to anyone yet. Everyone is interpreting Annex I directly and documenting their reasoning.
 
-## The part we do not know yet
+For some decisions that argues for patience. Finalising your conformity assessment route before the standards land risks rework.
 
-Everything above is a thesis, not a result. The load-bearing assumption is that suppliers will publish into a neutral exchange when they will not fill in five portals. We think that is true. We have not proved it.
+For supplier evidence it argues the opposite way. The identity of your suppliers, the quality of what they send you and the cadence on which they send it are not going to be changed by a standards citation. That work is the same work either way, and it is the part of the programme whose timeline you least control.
 
-That is why we are running paid pilots by hand before building a platform, and why the supplier side is free permanently — charging the side that creates the network value is how you kill the network before it exists. If it turns out suppliers are content to keep emailing PDFs, we would rather learn that from thirty conversations than from a year of engineering.
+[ForgeCRA](/cra-sbom-attestation/) maps to the Annex I requirements that exist today and will re-map when the harmonised standards appear. The point of starting now is not to claim early compliance — we make no certification claims of any kind. It is to stop treating supplier evidence as something that can be fixed in a scramble at the end of 2027.
 
-If you are a supplier being asked for the same evidence by several customers, we would genuinely like to hear how you are handling it now — including if the answer is that you are not.
+## If you already have tooling
 
+If you already have a working relationship with a binary analysis platform, keep it. It answers a question well, and [that question is not this one](/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/).
 
-## Most SBOMs we see are not usable. Here is what is missing.
+The missing piece for most mid-market manufacturers is still the upstream collection and attestation layer. That is the only part we are focused on, and if you want to test whether it is the missing piece for you, the [design-partner pilot](/cra-sbom-attestation/for-manufacturers/) is ninety days and deliberately small.
 
-URL: https://polkaspots.com/cra-sbom-attestation/blog/what-makes-an-sbom-usable/
-Published: 2026-07-22
-Tags: sbom, cyclonedx, spdx, cisa-minimum-elements, supply-chain, cra
 
-There is a gap between having an SBOM and having evidence. Plenty of organisations have crossed the first line and think they have crossed the second.
+## Publish once, or fill in five portals
 
-The test we apply is simple. If a customer, an auditor, or a market surveillance authority asked you a specific question about a component in a product you shipped eighteen months ago, could you answer it from what you hold? Most of the SBOMs we look at fail that test, and they fail it in a small number of repeated ways.
+URL: https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/
+Published: 2026-07-16
+Tags: sbom, suppliers, cra, neutral-exchange, cyclonedx, spdx, supply-chain
 
-## The baseline: CISA minimum elements
+Suppliers are about to be asked for SBOMs by every manufacturer they sell into. Each manufacturer will have its own preferred format, its own portal, and its own idea of what "complete" looks like.
 
-The US CISA minimum elements remain the most widely used shared floor, and they are a reasonable scoring baseline even for EU work. They ask for supplier name, component name, version of the component, other unique identifiers, dependency relationship, author of the SBOM data, and a timestamp.
+From the supplier's point of view this does not scale.
 
-That list looks unambitious until you check real files against it.
+From the manufacturer's point of view, chasing the same suppliers through email and one-off questionnaires also does not scale — especially once the number of upstream relationships moves past twenty and a 24-hour reporting clock exists for actively exploited vulnerabilities.
 
-## Where they actually fail
+## Why per-customer portals fail
 
-**Version precision.** "1.2" is not a version. "1.2.x", "latest", and "current release" are not versions. If the string does not resolve to exactly one artefact, you cannot answer whether you are affected when an advisory lands, which is the entire point.
+The failure is not technical. Any competent team can stand up a portal, define a schema and send invitations.
 
-**No unique identifiers.** A component name and a version, with no purl and no CPE, means matching against vulnerability data is string comparison and guesswork. This is the single highest-value field to fix and the most commonly absent.
+It fails because of where the cost lands. Every manufacturer who builds one pushes integration work onto suppliers, and the supplier's total cost grows with the number of customers who do it. The supplier carries no regulatory exposure for your product. So the work gets deprioritised, responses get thin, then late, then stop — and the party left holding the obligation is the one who built the portal.
 
-**Flat component lists with no relationships.** A list tells you what is present. It does not tell you what depends on what, which means it cannot tell you whether a vulnerable library is reachable, bundled, or vendored three levels down. The CRA language about top-level dependencies is a floor, not a target.
+Multiply that by every manufacturer doing the same thing and you have a system that reliably produces the outcome nobody wanted.
 
-**No author or timestamp.** An SBOM with no statement of who generated it and when is not evidence of anything. It cannot be shown to correspond to a particular build, and it cannot be shown to be current.
+## The pattern that has worked elsewhere
 
-**Generated once, at the wrong time.** An SBOM produced by hand at the point someone asked for it describes a moment that has already passed. Component sets change. If the document is not regenerated when the build changes, it decays from the day it is written.
+The pattern that has worked in other regulated multi-party settings — e-invoicing is the usual example — is a neutral exchange: the supplier publishes once, controls who can see what, and updates propagate to the parties they have chosen to share with.
 
-## Format is the easy part
+The economics invert. The supplier's effort becomes fixed rather than per-customer, which is the only version where doing it well is rational for them. The manufacturer gets structured, scored, current evidence instead of an inbox. And because nobody has to integrate bilaterally, adding the next relationship costs close to nothing.
 
-CycloneDX and SPDX are both fine. They are both commonly used and machine-readable, which is what the regulation asks for, and converting between them for most practical purposes is tractable.
+## Why it has to be neutral
 
-We mention this because format is where conversations often start and it is rarely where the problem is. A well-populated CycloneDX file and a well-populated SPDX file are both useful. A sparse one in either format is not. Arguing about the container while the contents are thin is a way of feeling productive.
+That is the shape [ForgeCRA](/cra-sbom-attestation/) is testing. It is not another manufacturer-owned questionnaire portal, and it is not an analysis vendor trying to become the system of record for every participant's data.
 
-## Scoring, not pass or fail
+Neutrality is load-bearing rather than a positioning choice. A supplier will not attest deeply into a platform owned by a company that also sells analysis to their customers, and that caution is entirely rational — their component list is commercially sensitive, and it describes their product to people who compete with them.
 
-We score submissions rather than accepting or rejecting them, because a binary gate produces the wrong behaviour on both sides. A supplier who fails a gate stops engaging. A manufacturer with a stack of "pass" results learns nothing about which of their suppliers are actually reliable.
+So: suppliers stay in control of their own SBOMs, choosing which customers see which products. Manufacturers get a structured, attested feed instead of an inbox full of PDFs. Nobody's data is resold.
 
-A score tells a manufacturer where to spend attention: these four suppliers are producing evidence you can act on, these eleven are producing files that will not help you when an advisory lands. That is a workable prioritisation. "Fourteen of fifteen suppliers responded" is not.
+## The part we have not proved
 
-## What this means if you are a supplier
+Whether suppliers will actually prefer this to the current chaos is an open question.
 
-The good news is that most of the failures above are cheap to fix once, in your build pipeline, and then they stay fixed. Generating from the build rather than by hand solves the timestamp, author and precision problems simultaneously. Adding purls is usually a configuration change rather than a project.
+The argument above is coherent and the precedent from e-invoicing is real, but neither of those is evidence about this market. It is entirely possible that suppliers are content to keep emailing PDFs and that the pain we think we see is not sharp enough to change behaviour.
 
-The reason this is worth doing is not that a regulator will ask you directly. In many cases they will not — your customers will, repeatedly, in their own formats, and the quality of what you send determines how many follow-up questionnaires you receive.
+That is why we are running a [first cohort](/cra-sbom-attestation/for-suppliers/) rather than assuming the answer. Suppliers are free permanently, the cohort is small, and the question we are trying to settle is behavioural rather than technical.
 
+If you are a manufacturer on the other side of this problem, [that is a different page](/cra-sbom-attestation/for-manufacturers/).
 
-## The CRA timeline: what actually applies, and when
 
-URL: https://polkaspots.com/cra-sbom-attestation/blog/cra-timeline-what-applies-when/
-Published: 2026-07-01
-Tags: cra, cyber-resilience-act, sbom, compliance-timing, eu
+## Why the hard part of CRA is not generating an SBOM
 
-The Cyber Resilience Act (Regulation (EU) 2024/2847) entered into force in December 2024, and its obligations arrive in stages. Most of the confusion we hear in conversations comes from collapsing those stages into a single deadline. They are not the same, they do not require the same work, and conflating them is how you end up buying the wrong thing.
+URL: https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/
+Published: 2026-06-18
+Tags: cra, sbom, cyber-resilience-act, supplier-sbom, binary-analysis, supply-chain-security
 
-Here is the sequence as we read it. This is our reading for planning purposes, not legal advice.
+Most of the tools in this space are very good at one thing: turning a firmware image or a build into a software bill of materials. That problem is largely solved.
 
-## 11 September 2026 — reporting obligations
+The problem that is not solved is getting trustworthy SBOMs from the people who actually supply the components.
 
-Article 14 reporting applies from this date. If you become aware of an actively exploited vulnerability in your product, or a severe incident affecting its security, you notify. The clocks are short: an early warning within 24 hours, a fuller notification within 72 hours, and a final report within 14 days.
+## The obligation does not move upstream
 
-Two things follow from that.
+Under the [Cyber Resilience Act](/cra-sbom-attestation/), the manufacturer who places the product on the EU market carries the obligation. That manufacturer is responsible for the evidence chain even when large parts of the software come from upstream suppliers.
 
-First, this obligation is **event-triggered**. Nothing happens on 11 September 2026 unless something happens to you. There is no filing, no submission, no certificate. If you ship nothing and nothing is exploited, the date passes without incident.
+There is no mechanism by which that responsibility transfers to the company that wrote the code. You can contract for cooperation, and you should, but the regulator's counterparty is you.
 
-Second, satisfying it is largely an operational and organisational problem, not a tooling one. You need someone who owns the clock, a decision path for what counts as reportable, and a route to submit. A spreadsheet and a named person will get most mid-market manufacturers through it.
+## What that looks like in practice
 
-This is why we do not sell readiness for this date. It is a real obligation, it is worth preparing for, and it is not where the hard work is.
+Ask twenty suppliers for a bill of materials and the responses sort themselves into a familiar pattern:
 
-## Late 2026 to mid 2027 — harmonised standards
+- Some suppliers send nothing.
+- Some send a spreadsheet from two years ago.
+- Some send a partial SBOM that is missing versions, hashes, or vulnerability context.
+- Almost none of them want to fill in a different questionnaire for every customer.
 
-As of August 2026, **no harmonised standards for the CRA have been cited in the Official Journal**. That matters more than it sounds.
+None of these are unreasonable behaviours on the supplier's part. They carry no regulatory exposure for your product, and each additional customer format is pure cost to them. The incentive gradient runs against you, and no amount of chasing changes that.
 
-Until standards are cited, there is no presumption of conformity. You cannot point at a standard, demonstrate you followed it, and be presumed compliant with the corresponding essential requirement. You are left interpreting Annex I directly and documenting your reasoning.
+## What binary analysis does and does not do
 
-The practical consequence is that "we're waiting for the standards" is a coherent position for some decisions and an expensive one for others. Waiting to finalise your conformity assessment route is reasonable. Waiting to start collecting component evidence from forty suppliers is not, because that work takes months regardless of what the standards eventually say.
+Binary analysis platforms — ONEKEY, Finite State and others — can generate an SBOM from the binary you already hold. That is useful, they do it well, and if you have one we would not suggest replacing it.
 
-## 11 December 2027 — full obligations
+What it does not do is make a reluctant supplier send you better data next month. And it does not create an audit trail showing that the supplier attested to the accuracy of what they provided.
 
-This is the date that actually changes what you have to build.
+That second point is the one that gets underestimated. An inferred component list and a signed supplier statement are different artefacts answering different questions. When a customer, auditor or market surveillance authority asks *what did your supplier tell you, and when*, a scan result is a cross-check on the answer, not the answer itself.
 
-From here, products with digital elements placed on the EU market have to meet the essential requirements in Annex I. That includes the security properties themselves, and — the part most people underestimate — the vulnerability handling requirements in Annex I Part II. Those require, among other things, that manufacturers identify and document the components in their products, including by drawing up a software bill of materials in a commonly used machine-readable format covering at the very least the top-level dependencies.
+There is also a coverage limit. Analysis needs an artefact. Subassemblies, licensed modules and anything delivered as a black box produce nothing to analyse, and those are exactly the relationships where you have least visibility already.
 
-You also need technical documentation that demonstrates conformity, and you need to keep it current for the support period.
+## The durable work
 
-There is **no size exemption**. Microenterprises and SMEs get some procedural relief in places, but the essential requirements apply to a fifteen-person hardware company the same way they apply to a large one.
+The durable work under the CRA is therefore less about "can we generate an SBOM" and more about "can we systematically collect, quality-score, and keep current the evidence that sits outside our own organisation."
 
-## 2028 and beyond
+Each of those three verbs is doing work:
 
-Support-period duties continue, market surveillance authorities become active, and the question stops being "did you produce the documentation" and becomes "is it still true". Continuous evidence is a different operational problem from one-time documentation, and most of the tooling conversation today has not caught up with it.
+**Collect** — structured requests to suppliers who have no obligation to you, chased on a cadence, tracked so you know who has not replied.
 
-## Why we describe it this way
+**Quality-score** — because a response is not the same as usable evidence. A file that arrives without precise versions or unique identifiers cannot answer the question you will eventually need to ask of it.
 
-The commercial temptation is to point at September 2026, describe it as a cliff, and sell against the fear. We are not going to do that, for two reasons.
+**Keep current** — component sets change with every release. A bill of materials produced once decays from the day it is written, and the CRA support-period duties run for years.
 
-The first is that it is not accurate. It is an event-triggered reporting duty, not a filing deadline.
+That is a network and workflow problem, not a scanning problem. It is the only part [ForgeCRA](/cra-sbom-attestation/) is focused on, and it is why we describe ourselves as complementary to the analysis vendors rather than competitive with them.
 
-The second is that it produces bad decisions. If you buy tooling in a panic in August 2026 to satisfy a reporting obligation, you will very likely buy something that does not help you at all with the December 2027 requirement to evidence what is actually inside your products — which is the harder problem, takes longer, and depends on companies you do not control.
-
-Start on the supplier evidence now. Not because a deadline is close, but because the work is slow and the deadline is fixed in law.
+If you are on the other side of this — a supplier being asked for the same evidence by several customers in several formats — [that problem has its own page](/cra-sbom-attestation/for-suppliers/).

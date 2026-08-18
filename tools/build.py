@@ -777,6 +777,25 @@ for section, cfg in BLOGS.items():
                 bits.append(f'<a class="quiet" href="{prev_p["url"]}">{prev_p["title"]} →</a>')
             nav_more = ('        <div class="post-nav">' + "".join(bits) + "</div>")
 
+        # Extractable summary: gives answer engines a clean set of claims to
+        # lift, and gives readers the argument before the argument.
+        key_points = ""
+        if p.get("key_points"):
+            items = "".join(f"<li>{md_inline(k)}</li>" for k in p["key_points"])
+            key_points = ('        <aside class="keypoints">\n'
+                          '          <p class="keypoints-label">In short</p>\n'
+                          f'          <ul>{items}</ul>\n'
+                          '        </aside>')
+
+        faq_block = ""
+        if p.get("faq"):
+            qs = "\n".join(
+                f'            <div class="faq"><h3>{md_inline(q["q"])}</h3>'
+                f'<p>{md_inline(q["a"])}</p></div>' for q in p["faq"])
+            faq_block = (f'        <section class="post-faq">\n{sec_head("Questions", "FAQ")}\n'
+                         f'          <div class="cols-2" style="margin-top: 28px; gap: 32px;">\n{qs}\n'
+                         '          </div>\n        </section>')
+
         seo_t = p.get("seo_title") or p["title"]
         if len(seo_t) <= 47:
             seo_t += " — PolkaSpots"
@@ -793,9 +812,11 @@ for section, cfg in BLOGS.items():
 
     <section class="band band--end">
       <div class="wrap">
+{key_points}
         <div class="prose">
 {markdown(p['body'])}
         </div>
+{faq_block}
 {nav_more}
       </div>
     </section>
@@ -816,7 +837,11 @@ for section, cfg in BLOGS.items():
                         "author": {"@type": "Person", "name": p.get("author", "Simon Morley"),
                                    "url": "https://simonmorley.co.uk"},
                         "publisher": {"@id": f"{ORIGIN}/#org"},
-                        "isPartOf": {"@type": "Blog", "@id": ORIGIN + cfg["url"]}}))
+                        "isPartOf": {"@type": "Blog", "@id": ORIGIN + cfg["url"]}},
+                       ({"@type": "FAQPage", "mainEntity": [
+                           {"@type": "Question", "name": q["q"],
+                            "acceptedAnswer": {"@type": "Answer", "text": q["a"]}}
+                           for q in p["faq"]]} if p.get("faq") else None)))
 
     write_feed(cfg["url"] + "feed.xml", cfg["feed_title"], cfg["desc"], cfg["url"], posts)
 

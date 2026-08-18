@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Publish Your SBOM Once, or Fill In Five Portals — PolkaSpots</title>
+  <meta name="description" content="Every manufacturer will ask suppliers for SBOMs in their own portal and format. A neutral exchange lets suppliers publish once and control who sees what.">
+  <link rel="canonical" href="https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <meta property="og:site_name" content="PolkaSpots">
+  <meta property="og:title" content="Publish Your SBOM Once, or Fill In Five Portals — PolkaSpots">
+  <meta property="og:description" content="Every manufacturer will ask suppliers for SBOMs in their own portal and format. A neutral exchange lets suppliers publish once and control who sees what.">
+  <meta property="og:url" content="https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Publish Your SBOM Once, or Fill In Five Portals — PolkaSpots">
+  <meta name="twitter:description" content="Every manufacturer will ask suppliers for SBOMs in their own portal and format. A neutral exchange lets suppliers publish once and control who sees what.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="application/rss+xml" title="ForgeCRA writing" href="/cra-sbom-attestation/blog/feed.xml">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://polkaspots.com/#org",
+      "name": "PolkaSpots",
+      "legalName": "PolkaSpots Limited",
+      "url": "https://polkaspots.com",
+      "email": "security@polkaspots.com",
+      "foundingDate": "2005",
+      "areaServed": [
+        "GB",
+        "EU"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "UK company number",
+        "value": "05508105"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "sameAs": [
+        "https://simonmorley.co.uk",
+        "https://nullrabbit.ai",
+        "https://slashr.dev"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://polkaspots.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ForgeCRA",
+          "item": "https://polkaspots.com/cra-sbom-attestation/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Blog",
+          "item": "https://polkaspots.com/cra-sbom-attestation/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Publish once, or fill in five portals",
+          "item": "https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Publish once, or fill in five portals",
+      "url": "https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/"
+      },
+      "datePublished": "2026-07-16",
+      "dateModified": "2026-07-16",
+      "description": "Suppliers are about to be asked for SBOMs by every manufacturer they sell into, each with its own format, portal and idea of complete. That does not scale on either side.",
+      "keywords": "sbom, suppliers, cra, neutral-exchange, cyclonedx, spdx, supply-chain",
+      "inLanguage": "en-GB",
+      "author": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "publisher": {
+        "@id": "https://polkaspots.com/#org"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://polkaspots.com/cra-sbom-attestation/blog/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why not just use a supplier portal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A portal works at around ten suppliers and degrades after that. Each manufacturer builds their own, so every supplier ends up with accounts in five portals, each with a different schema and review cycle. The supplier's cost scales with customer count while their regulatory exposure stays at zero."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which SBOM formats does a neutral exchange need to handle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CycloneDX and SPDX cover essentially all real usage, and both satisfy the commonly used machine-readable requirement. Converting between them is tractable for most practical purposes, so format is rarely the real obstacle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do suppliers have to pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Suppliers are free permanently. Charging the side that creates the network value is how you kill a network before it exists, so the cost sits with manufacturers, who carry the regulatory liability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who can see a supplier's SBOM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only the customers that supplier chooses, per product. A neutral exchange that resold or pooled supplier data would not be neutral, and suppliers would be right not to use it."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i class="v"></i><i></i></span>
+        <span class="wordmark-text">POLKASPOTS</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/flash-security-review/">Flash Review</a>
+        <a href="/security-due-diligence/">Pentesting</a>
+        <a href="/cra-sbom-attestation/" aria-current="page">ForgeCRA</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="band band--hero">
+      <div class="wrap">
+        <p class="eyebrow eyebrow--violet"><a href="/cra-sbom-attestation/blog/">ForgeCRA writing</a></p>
+        <h1 class="h1 h1--page">Publish once, or fill in five portals</h1>
+        <p class="post-meta"><time datetime="2026-07-16">2026-07-16</time> · Simon Morley · sbom · suppliers · cra · neutral-exchange · cyclonedx · spdx</p>
+      </div>
+    </article>
+
+    <section class="band band--end">
+      <div class="wrap">
+        <aside class="keypoints">
+          <p class="keypoints-label">In short</p>
+          <ul><li>Per-customer SBOM portals push integration cost onto the party with no regulatory exposure — the supplier — so they get deprioritised.</li><li>Manufacturers chasing the same suppliers by email does not scale past roughly twenty upstream relationships.</li><li>The pattern that resolved this elsewhere is a neutral exchange: publish once, control visibility, updates propagate. E-invoicing is the usual precedent.</li><li>Whether suppliers actually prefer this is unproven. That is why there is a first cohort rather than a launch.</li></ul>
+        </aside>
+        <div class="prose">
+<p>Suppliers are about to be asked for SBOMs by every manufacturer they sell into. Each manufacturer will have its own preferred format, its own portal, and its own idea of what "complete" looks like.</p>
+<p>From the supplier's point of view this does not scale.</p>
+<p>From the manufacturer's point of view, chasing the same suppliers through email and one-off questionnaires also does not scale — especially once the number of upstream relationships moves past twenty and a 24-hour reporting clock exists for actively exploited vulnerabilities.</p>
+<h2>Why per-customer portals fail</h2>
+<p>The failure is not technical. Any competent team can stand up a portal, define a schema and send invitations.</p>
+<p>It fails because of where the cost lands. Every manufacturer who builds one pushes integration work onto suppliers, and the supplier's total cost grows with the number of customers who do it. The supplier carries no regulatory exposure for your product. So the work gets deprioritised, responses get thin, then late, then stop — and the party left holding the obligation is the one who built the portal.</p>
+<p>Multiply that by every manufacturer doing the same thing and you have a system that reliably produces the outcome nobody wanted.</p>
+<h2>The pattern that has worked elsewhere</h2>
+<p>The pattern that has worked in other regulated multi-party settings — e-invoicing is the usual example — is a neutral exchange: the supplier publishes once, controls who can see what, and updates propagate to the parties they have chosen to share with.</p>
+<p>The economics invert. The supplier's effort becomes fixed rather than per-customer, which is the only version where doing it well is rational for them. The manufacturer gets structured, scored, current evidence instead of an inbox. And because nobody has to integrate bilaterally, adding the next relationship costs close to nothing.</p>
+<h2>Why it has to be neutral</h2>
+<p>That is the shape <a href="/cra-sbom-attestation/">ForgeCRA</a> is testing. It is not another manufacturer-owned questionnaire portal, and it is not an analysis vendor trying to become the system of record for every participant's data.</p>
+<p>Neutrality is load-bearing rather than a positioning choice. A supplier will not attest deeply into a platform owned by a company that also sells analysis to their customers, and that caution is entirely rational — their component list is commercially sensitive, and it describes their product to people who compete with them.</p>
+<p>So: suppliers stay in control of their own SBOMs, choosing which customers see which products. Manufacturers get a structured, attested feed instead of an inbox full of PDFs. Nobody's data is resold.</p>
+<h2>The part we have not proved</h2>
+<p>Whether suppliers will actually prefer this to the current chaos is an open question.</p>
+<p>The argument above is coherent and the precedent from e-invoicing is real, but neither of those is evidence about this market. It is entirely possible that suppliers are content to keep emailing PDFs and that the pain we think we see is not sharp enough to change behaviour.</p>
+<p>That is why we are running a <a href="/cra-sbom-attestation/for-suppliers/">first cohort</a> rather than assuming the answer. Suppliers are free permanently, the cohort is small, and the question we are trying to settle is behavioural rather than technical.</p>
+<p>If you are a manufacturer on the other side of this problem, <a href="/cra-sbom-attestation/for-manufacturers/">that is a different page</a>.</p>
+        </div>
+        <section class="post-faq">
+      <div class="section-head">
+        <span class="section-label">Questions</span>
+        <span class="section-num">FAQ</span>
+      </div>
+          <div class="cols-2" style="margin-top: 28px; gap: 32px;">
+            <div class="faq"><h3>Why not just use a supplier portal?</h3><p>A portal works at around ten suppliers and degrades after that. Each manufacturer builds their own, so every supplier ends up with accounts in five portals, each with a different schema and review cycle. The supplier's cost scales with customer count while their regulatory exposure stays at zero.</p></div>
+            <div class="faq"><h3>Which SBOM formats does a neutral exchange need to handle?</h3><p>CycloneDX and SPDX cover essentially all real usage, and both satisfy the commonly used machine-readable requirement. Converting between them is tractable for most practical purposes, so format is rarely the real obstacle.</p></div>
+            <div class="faq"><h3>Do suppliers have to pay?</h3><p>No. Suppliers are free permanently. Charging the side that creates the network value is how you kill a network before it exists, so the cost sits with manufacturers, who carry the regulatory liability.</p></div>
+            <div class="faq"><h3>Who can see a supplier's SBOM?</h3><p>Only the customers that supplier chooses, per product. A neutral exchange that resold or pooled supplier data would not be neutral, and suppliers would be right not to use it.</p></div>
+          </div>
+        </section>
+        <div class="post-nav"><a class="quiet" href="/cra-sbom-attestation/blog/cra-2027-deadline-start-supplier-work-now/">← Full CRA obligations are still 2027 — start the supplier work anyway</a><a class="quiet" href="/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/">Why the hard part of CRA is not generating an SBOM →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h2>Security testing</h2>
+        <div class="footer-links">
+          <a href="/flash-security-review/">Flash Review — £500</a>
+          <a href="/security-due-diligence/">Penetration testing</a>
+          <a href="/security-due-diligence/#remediation">Remediation</a>
+          <a href="/security-due-diligence/#monitoring">Ongoing monitoring</a>
+          <a href="/security-due-diligence/blog/">Security writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>ForgeCRA</h2>
+        <div class="footer-links">
+          <a href="/cra-sbom-attestation/">Overview</a>
+          <a href="/cra-sbom-attestation/for-manufacturers/">For manufacturers</a>
+          <a href="/cra-sbom-attestation/for-suppliers/">For suppliers</a>
+          <a href="/cra-sbom-attestation/blog/">CRA writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <div class="footer-links">
+          <a href="/contact/">Contact</a>
+          <a href="https://simonmorley.co.uk">Simon Morley</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Also building</h2>
+        <div class="footer-links">
+          <a href="https://nullrabbit.ai">NullRabbit</a>
+          <a href="https://slashr.dev">Slashr</a>
+          <a href="https://nrdax.com">NRDAX</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2005&ndash;2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 05508105. London.</p>
+      <p>ForgeCRA is a product of PolkaSpots Ltd, est. 2005 — London. Company number 05508105. <a href="mailto:security@polkaspots.com">security@polkaspots.com</a></p>
+      <p>No certification claims. We don't sell September-2026 panic — we build the evidence layer that outlasts it.</p>
+    </div>
+  </footer>
+</body>
+</html>

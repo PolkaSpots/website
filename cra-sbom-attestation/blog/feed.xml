@@ -7,41 +7,44 @@
     <language>en-GB</language>
     <atom:link href="https://polkaspots.com/cra-sbom-attestation/blog/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Supplier evidence is a cross-company problem</title>
-      <link>https://polkaspots.com/cra-sbom-attestation/blog/supplier-evidence-is-a-cross-company-problem/</link>
-      <guid isPermaLink="true">https://polkaspots.com/cra-sbom-attestation/blog/supplier-evidence-is-a-cross-company-problem/</guid>
-      <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
-      <description>Binary analysis of firmware you already hold is well served by good vendors. Getting evidence out of forty companies that do not report to you is a different problem, and it is the one nobody owns.</description>
-      <category>sbom</category>
-      <category>supply-chain</category>
-      <category>cra</category>
-      <category>supplier-management</category>
-      <category>attestation</category>
-    </item>
-    <item>
-      <title>Most SBOMs we see are not usable. Here is what is missing.</title>
-      <link>https://polkaspots.com/cra-sbom-attestation/blog/what-makes-an-sbom-usable/</link>
-      <guid isPermaLink="true">https://polkaspots.com/cra-sbom-attestation/blog/what-makes-an-sbom-usable/</guid>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 +0000</pubDate>
-      <description>A file that parses is not the same as evidence you can rely on. The common failures are missing version precision, no unique identifiers, no dependency relationships, and no statement of who produced it or when.</description>
-      <category>sbom</category>
-      <category>cyclonedx</category>
-      <category>spdx</category>
-      <category>cisa-minimum-elements</category>
-      <category>supply-chain</category>
-      <category>cra</category>
-    </item>
-    <item>
-      <title>The CRA timeline: what actually applies, and when</title>
-      <link>https://polkaspots.com/cra-sbom-attestation/blog/cra-timeline-what-applies-when/</link>
-      <guid isPermaLink="true">https://polkaspots.com/cra-sbom-attestation/blog/cra-timeline-what-applies-when/</guid>
-      <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
-      <description>Article 14 reporting starts 11 September 2026. Everything else — SBOM, vulnerability handling, technical documentation — lands 11 December 2027. The gap between those two dates is where most of the confusion lives.</description>
+      <title>Full CRA obligations are still 2027 — start the supplier work anyway</title>
+      <link>https://polkaspots.com/cra-sbom-attestation/blog/cra-2027-deadline-start-supplier-work-now/</link>
+      <guid isPermaLink="true">https://polkaspots.com/cra-sbom-attestation/blog/cra-2027-deadline-start-supplier-work-now/</guid>
+      <pubDate>Thu, 13 Aug 2026 00:00:00 +0000</pubDate>
+      <description>Reporting obligations begin September 2026 and are event-triggered. The expensive problem sits under the December 2027 date and continues after it.</description>
       <category>cra</category>
       <category>cyber-resilience-act</category>
+      <category>cra-deadline</category>
+      <category>harmonised-standards</category>
       <category>sbom</category>
-      <category>compliance-timing</category>
-      <category>eu</category>
+      <category>annex-i</category>
+    </item>
+    <item>
+      <title>Publish once, or fill in five portals</title>
+      <link>https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/</link>
+      <guid isPermaLink="true">https://polkaspots.com/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/</guid>
+      <pubDate>Thu, 16 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Suppliers are about to be asked for SBOMs by every manufacturer they sell into, each with its own format, portal and idea of complete. That does not scale on either side.</description>
+      <category>sbom</category>
+      <category>suppliers</category>
+      <category>cra</category>
+      <category>neutral-exchange</category>
+      <category>cyclonedx</category>
+      <category>spdx</category>
+      <category>supply-chain</category>
+    </item>
+    <item>
+      <title>Why the hard part of CRA is not generating an SBOM</title>
+      <link>https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/</link>
+      <guid isPermaLink="true">https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/</guid>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 +0000</pubDate>
+      <description>Binary analysis turns a firmware image into an SBOM, and does it well. It cannot make a reluctant supplier send you better data next month, and it cannot produce an attestation that the supplier stands behind.</description>
+      <category>cra</category>
+      <category>sbom</category>
+      <category>cyber-resilience-act</category>
+      <category>supplier-sbom</category>
+      <category>binary-analysis</category>
+      <category>supply-chain-security</category>
     </item>
   </channel>
 </rss>
