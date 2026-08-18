@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ISO 27001 Is Not Evidence That You Are Secure — PolkaSpots</title>
+  <meta name="description" content="We have found production databases open to the internet at companies holding current ISO 27001 certificates. The certificate answers a different question.">
+  <link rel="canonical" href="https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <meta property="og:site_name" content="PolkaSpots">
+  <meta property="og:title" content="ISO 27001 Is Not Evidence That You Are Secure — PolkaSpots">
+  <meta property="og:description" content="We have found production databases open to the internet at companies holding current ISO 27001 certificates. The certificate answers a different question.">
+  <meta property="og:url" content="https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ISO 27001 Is Not Evidence That You Are Secure — PolkaSpots">
+  <meta name="twitter:description" content="We have found production databases open to the internet at companies holding current ISO 27001 certificates. The certificate answers a different question.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="application/rss+xml" title="PolkaSpots security writing" href="/security-due-diligence/blog/feed.xml">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://polkaspots.com/#org",
+      "name": "PolkaSpots",
+      "legalName": "PolkaSpots Limited",
+      "url": "https://polkaspots.com",
+      "email": "security@polkaspots.com",
+      "foundingDate": "2005",
+      "areaServed": [
+        "GB",
+        "EU"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "UK company number",
+        "value": "05508105"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "sameAs": [
+        "https://simonmorley.co.uk",
+        "https://nullrabbit.ai",
+        "https://slashr.dev"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://polkaspots.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security due diligence",
+          "item": "https://polkaspots.com/security-due-diligence/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Blog",
+          "item": "https://polkaspots.com/security-due-diligence/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "A current ISO 27001 certificate is not evidence that you are secure",
+          "item": "https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "A current ISO 27001 certificate is not evidence that you are secure",
+      "url": "https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/"
+      },
+      "datePublished": "2026-07-16",
+      "dateModified": "2026-07-16",
+      "description": "We have found production databases on the open internet at companies holding current certifications. The certificate was not fraudulent. It was answering a different question from the one the buyer thought it answered.",
+      "keywords": "due-diligence, iso-27001, compliance, private-equity, m-and-a",
+      "inLanguage": "en-GB",
+      "author": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "publisher": {
+        "@id": "https://polkaspots.com/#org"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://polkaspots.com/security-due-diligence/blog/"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i class="v"></i><i></i></span>
+        <span class="wordmark-text">POLKASPOTS</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/flash-security-review/">Flash Review</a>
+        <a href="/security-due-diligence/" aria-current="page">Pentesting</a>
+        <a href="/cra-sbom-attestation/">ForgeCRA</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="band band--hero">
+      <div class="wrap">
+        <p class="eyebrow eyebrow--violet"><a href="/security-due-diligence/blog/">Security writing</a></p>
+        <h1 class="h1 h1--page">A current ISO 27001 certificate is not evidence that you are secure</h1>
+        <p class="post-meta"><time datetime="2026-07-16">2026-07-16</time> · Simon Morley · due-diligence · iso-27001 · compliance · private-equity · m-and-a</p>
+      </div>
+    </article>
+
+    <section class="band band--end">
+      <div class="wrap">
+
+        <div class="prose">
+<p>A recurring moment in deal work: the data room contains a current ISO 27001 certificate, the buyer treats the security question as closed, and we find something in the first afternoon that would have failed any reasonable definition of secure.</p>
+<p>This is not a story about fraudulent certificates. The certificates are usually real, the audits usually happened, and the auditors usually did their job. The problem is that the certificate answers a question the buyer is not asking.</p>
+<h2>What the certificate actually attests</h2>
+<p>Management-system certifications attest that you have a system for managing information security: that policies exist, that risks have been assessed and recorded, that controls have been selected with documented justification, and that the whole thing is reviewed on a cycle.</p>
+<p>Every one of those is about process. None of them is a statement that a specific system, on a specific day, is not exploitable.</p>
+<p>You can hold a valid certificate with a documented risk acceptance for the exact weakness that ends up breaching you. The acceptance is part of the system working as designed. Someone identified the risk, someone with authority accepted it, and it was recorded. The auditor's job was to check that this happened, not to overrule the judgement.</p>
+<p>Scope compounds this. Certification scope is a defined boundary, and it is often narrower than the business. A certificate covering the primary SaaS platform tells you nothing about the acquired subsidiary still running its own stack, or the internal tooling, or the staging environment that happens to hold a copy of production data.</p>
+<h2>What we find anyway</h2>
+<p>The fintech example we describe on the services page is representative rather than unusual: current certification, production database reachable from the public internet with default credentials. Nothing about the certification process was designed to catch that. No control in the applicable annex says "someone will attempt to connect to your database from outside".</p>
+<p>The general pattern is that certification measures whether you have a system for thinking about security, and offensive testing measures what happens when someone attacks you. Both are worth having. They are not substitutes, and the failure mode in deal work is treating the cheaper one as though it covers the other.</p>
+<h2>What this means for diligence</h2>
+<p>If you are buying, the certificate is a useful signal about organisational maturity. A company that has been through certification usually has someone accountable, some documentation, and some cadence. That is genuinely worth knowing.</p>
+<p>It is not a substitute for someone attempting to break in. The two questions we would want answered before signing are what the certification scope actually covers, and what a competent attacker finds in the first week — because those are the two things a certificate cannot tell you and both are cheap to establish.</p>
+<p>The uncomfortable version, which we say to buyers regularly: if the seller's security evidence consists entirely of certificates, you have learned that they can pass an audit. You have not learned whether their production database is on the internet. Those are different findings and only one of them repriced a deal.</p>
+        </div>
+
+        <div class="post-nav"><a class="quiet" href="/security-due-diligence/blog/what-diligence-should-tell-an-investment-committee/">← What security due diligence should tell an investment committee</a><a class="quiet" href="/security-due-diligence/blog/what-two-hours-of-testing-buys-you/">What two hours of testing actually buys you →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h2>Security testing</h2>
+        <div class="footer-links">
+          <a href="/flash-security-review/">Flash Review — £500</a>
+          <a href="/security-due-diligence/">Penetration testing</a>
+          <a href="/security-due-diligence/#remediation">Remediation</a>
+          <a href="/security-due-diligence/#monitoring">Ongoing monitoring</a>
+          <a href="/security-due-diligence/blog/">Security writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>ForgeCRA</h2>
+        <div class="footer-links">
+          <a href="/cra-sbom-attestation/">Overview</a>
+          <a href="/cra-sbom-attestation/for-manufacturers/">For manufacturers</a>
+          <a href="/cra-sbom-attestation/for-suppliers/">For suppliers</a>
+          <a href="/cra-sbom-attestation/blog/">CRA writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <div class="footer-links">
+          <a href="/contact/">Contact</a>
+          <a href="https://simonmorley.co.uk">Simon Morley</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Also building</h2>
+        <div class="footer-links">
+          <a href="https://nullrabbit.ai">NullRabbit</a>
+          <a href="https://slashr.dev">Slashr</a>
+          <a href="https://nrdax.com">NRDAX</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2005&ndash;2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 05508105. London.</p>
+    </div>
+  </footer>
+</body>
+</html>

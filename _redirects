@@ -1,0 +1,27 @@
+# Cloudflare Pages redirects.
+# 301 so link equity and any existing rankings move to the SEO paths.
+
+# Original site
+/flash-review.html            /flash-security-review/                     301
+/services.html                /security-due-diligence/                    301
+/contact.html                 /contact/                                   301
+/index-personal.html          /                                           301
+
+# ForgeCRA: brand paths -> keyword cluster
+/forgecra                     /cra-sbom-attestation/                      301
+/forgecra/*                   /cra-sbom-attestation/:splat               301
+/forgecra/manufacturers       /cra-sbom-attestation/for-manufacturers/    301
+/forgecra/manufacturers.html  /cra-sbom-attestation/for-manufacturers/    301
+/forgecra/suppliers           /cra-sbom-attestation/for-suppliers/        301
+/forgecra/suppliers.html      /cra-sbom-attestation/for-suppliers/        301
+/forgecra/cra-supplier-sbom-attestation/  /cra-sbom-attestation/for-manufacturers/  301
+/forgecra/sbom-for-suppliers/ /cra-sbom-attestation/for-suppliers/        301
+/forgecra/blog/*              /cra-sbom-attestation/blog/:splat           301
+
+# Convenience aliases people and agents guess at
+/blog                         /security-due-diligence/blog/               302
+/cra                          /cra-sbom-attestation/                      302
+/sbom                         /cra-sbom-attestation/                      302
+/sbom-attestation             /cra-sbom-attestation/                      302
+/pentest                      /security-due-diligence/                    302
+/flash-review                 /flash-security-review/                     301

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generating an SBOM Is the Easy Part of the CRA — PolkaSpots</title>
+  <meta name="description" content="CRA SBOM tooling generates bills of materials well. It cannot make a reluctant supplier send better data, and it produces no supplier attestation trail.">
+  <link rel="canonical" href="https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <meta property="og:site_name" content="PolkaSpots">
+  <meta property="og:title" content="Generating an SBOM Is the Easy Part of the CRA — PolkaSpots">
+  <meta property="og:description" content="CRA SBOM tooling generates bills of materials well. It cannot make a reluctant supplier send better data, and it produces no supplier attestation trail.">
+  <meta property="og:url" content="https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Generating an SBOM Is the Easy Part of the CRA — PolkaSpots">
+  <meta name="twitter:description" content="CRA SBOM tooling generates bills of materials well. It cannot make a reluctant supplier send better data, and it produces no supplier attestation trail.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="application/rss+xml" title="ForgeCRA writing" href="/cra-sbom-attestation/blog/feed.xml">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://polkaspots.com/#org",
+      "name": "PolkaSpots",
+      "legalName": "PolkaSpots Limited",
+      "url": "https://polkaspots.com",
+      "email": "security@polkaspots.com",
+      "foundingDate": "2005",
+      "areaServed": [
+        "GB",
+        "EU"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "UK company number",
+        "value": "05508105"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "sameAs": [
+        "https://simonmorley.co.uk",
+        "https://nullrabbit.ai",
+        "https://slashr.dev"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://polkaspots.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ForgeCRA",
+          "item": "https://polkaspots.com/cra-sbom-attestation/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Blog",
+          "item": "https://polkaspots.com/cra-sbom-attestation/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Why the hard part of CRA is not generating an SBOM",
+          "item": "https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Why the hard part of CRA is not generating an SBOM",
+      "url": "https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://polkaspots.com/cra-sbom-attestation/blog/cra-sbom-generation-is-not-the-hard-part/"
+      },
+      "datePublished": "2026-06-18",
+      "dateModified": "2026-06-18",
+      "description": "Binary analysis turns a firmware image into an SBOM, and does it well. It cannot make a reluctant supplier send you better data next month, and it cannot produce an attestation that the supplier stands behind.",
+      "keywords": "cra, sbom, cyber-resilience-act, supplier-sbom, binary-analysis, supply-chain-security",
+      "inLanguage": "en-GB",
+      "author": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "publisher": {
+        "@id": "https://polkaspots.com/#org"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://polkaspots.com/cra-sbom-attestation/blog/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the CRA require an SBOM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Annex I Part II requires manufacturers to identify and document components, including by drawing up a software bill of materials in a commonly used machine-readable format covering at the very least the top-level dependencies. Those obligations apply from 11 December 2027."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I satisfy the CRA by scanning my own firmware?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Scanning tells you what is in an artefact you already hold, which is genuinely useful. It does not produce evidence that a supplier attested to the accuracy of their own component data, and it cannot cover components where you never receive an analysable artefact."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is responsible under the CRA when the software comes from a supplier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The manufacturer placing the product on the EU market carries the obligation. Responsibility for the evidence chain does not transfer upstream, even when most of the software originates there."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I still need a binary analysis platform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you already have one, keep it. It answers a different question well. The gap for most mid-market manufacturers is upstream collection and attestation, not analysis of what they already hold."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i class="v"></i><i></i></span>
+        <span class="wordmark-text">POLKASPOTS</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/flash-security-review/">Flash Review</a>
+        <a href="/security-due-diligence/">Pentesting</a>
+        <a href="/cra-sbom-attestation/" aria-current="page">ForgeCRA</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="band band--hero">
+      <div class="wrap">
+        <p class="eyebrow eyebrow--violet"><a href="/cra-sbom-attestation/blog/">ForgeCRA writing</a></p>
+        <h1 class="h1 h1--page">Why the hard part of CRA is not generating an SBOM</h1>
+        <p class="post-meta"><time datetime="2026-06-18">2026-06-18</time> · Simon Morley · cra · sbom · cyber-resilience-act · supplier-sbom · binary-analysis · supply-chain-security</p>
+      </div>
+    </article>
+
+    <section class="band band--end">
+      <div class="wrap">
+        <aside class="keypoints">
+          <p class="keypoints-label">In short</p>
+          <ul><li>SBOM <em>generation</em> from a binary or a build is largely a solved problem, with capable vendors serving it.</li><li>SBOM <em>collection</em> from suppliers who do not report to you is not solved, and it is the obligation the CRA actually places on you.</li><li>Under the Cyber Resilience Act the manufacturer placing the product on the EU market owns the evidence chain, including the parts written by someone else.</li><li>Analysis of a binary you hold produces no supplier attestation, so it cannot show who asserted what, or when.</li></ul>
+        </aside>
+        <div class="prose">
+<p>Most of the tools in this space are very good at one thing: turning a firmware image or a build into a software bill of materials. That problem is largely solved.</p>
+<p>The problem that is not solved is getting trustworthy SBOMs from the people who actually supply the components.</p>
+<h2>The obligation does not move upstream</h2>
+<p>Under the <a href="/cra-sbom-attestation/">Cyber Resilience Act</a>, the manufacturer who places the product on the EU market carries the obligation. That manufacturer is responsible for the evidence chain even when large parts of the software come from upstream suppliers.</p>
+<p>There is no mechanism by which that responsibility transfers to the company that wrote the code. You can contract for cooperation, and you should, but the regulator's counterparty is you.</p>
+<h2>What that looks like in practice</h2>
+<p>Ask twenty suppliers for a bill of materials and the responses sort themselves into a familiar pattern:</p>
+<ul><li>Some suppliers send nothing.</li><li>Some send a spreadsheet from two years ago.</li><li>Some send a partial SBOM that is missing versions, hashes, or vulnerability context.</li><li>Almost none of them want to fill in a different questionnaire for every customer.</li></ul>
+<p>None of these are unreasonable behaviours on the supplier's part. They carry no regulatory exposure for your product, and each additional customer format is pure cost to them. The incentive gradient runs against you, and no amount of chasing changes that.</p>
+<h2>What binary analysis does and does not do</h2>
+<p>Binary analysis platforms — ONEKEY, Finite State and others — can generate an SBOM from the binary you already hold. That is useful, they do it well, and if you have one we would not suggest replacing it.</p>
+<p>What it does not do is make a reluctant supplier send you better data next month. And it does not create an audit trail showing that the supplier attested to the accuracy of what they provided.</p>
+<p>That second point is the one that gets underestimated. An inferred component list and a signed supplier statement are different artefacts answering different questions. When a customer, auditor or market surveillance authority asks <em>what did your supplier tell you, and when</em>, a scan result is a cross-check on the answer, not the answer itself.</p>
+<p>There is also a coverage limit. Analysis needs an artefact. Subassemblies, licensed modules and anything delivered as a black box produce nothing to analyse, and those are exactly the relationships where you have least visibility already.</p>
+<h2>The durable work</h2>
+<p>The durable work under the CRA is therefore less about "can we generate an SBOM" and more about "can we systematically collect, quality-score, and keep current the evidence that sits outside our own organisation."</p>
+<p>Each of those three verbs is doing work:</p>
+<p><strong>Collect</strong> — structured requests to suppliers who have no obligation to you, chased on a cadence, tracked so you know who has not replied.</p>
+<p><strong>Quality-score</strong> — because a response is not the same as usable evidence. A file that arrives without precise versions or unique identifiers cannot answer the question you will eventually need to ask of it.</p>
+<p><strong>Keep current</strong> — component sets change with every release. A bill of materials produced once decays from the day it is written, and the CRA support-period duties run for years.</p>
+<p>That is a network and workflow problem, not a scanning problem. It is the only part <a href="/cra-sbom-attestation/">ForgeCRA</a> is focused on, and it is why we describe ourselves as complementary to the analysis vendors rather than competitive with them.</p>
+<p>If you are on the other side of this — a supplier being asked for the same evidence by several customers in several formats — <a href="/cra-sbom-attestation/for-suppliers/">that problem has its own page</a>.</p>
+        </div>
+        <section class="post-faq">
+      <div class="section-head">
+        <span class="section-label">Questions</span>
+        <span class="section-num">FAQ</span>
+      </div>
+          <div class="cols-2" style="margin-top: 28px; gap: 32px;">
+            <div class="faq"><h3>Does the CRA require an SBOM?</h3><p>Yes. Annex I Part II requires manufacturers to identify and document components, including by drawing up a software bill of materials in a commonly used machine-readable format covering at the very least the top-level dependencies. Those obligations apply from 11 December 2027.</p></div>
+            <div class="faq"><h3>Can I satisfy the CRA by scanning my own firmware?</h3><p>Scanning tells you what is in an artefact you already hold, which is genuinely useful. It does not produce evidence that a supplier attested to the accuracy of their own component data, and it cannot cover components where you never receive an analysable artefact.</p></div>
+            <div class="faq"><h3>Who is responsible under the CRA when the software comes from a supplier?</h3><p>The manufacturer placing the product on the EU market carries the obligation. Responsibility for the evidence chain does not transfer upstream, even when most of the software originates there.</p></div>
+            <div class="faq"><h3>Do I still need a binary analysis platform?</h3><p>If you already have one, keep it. It answers a different question well. The gap for most mid-market manufacturers is upstream collection and attestation, not analysis of what they already hold.</p></div>
+          </div>
+        </section>
+        <div class="post-nav"><a class="quiet" href="/cra-sbom-attestation/blog/publish-sbom-once-or-fill-in-five-portals/">← Publish once, or fill in five portals</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h2>Security testing</h2>
+        <div class="footer-links">
+          <a href="/flash-security-review/">Flash Review — £500</a>
+          <a href="/security-due-diligence/">Penetration testing</a>
+          <a href="/security-due-diligence/#remediation">Remediation</a>
+          <a href="/security-due-diligence/#monitoring">Ongoing monitoring</a>
+          <a href="/security-due-diligence/blog/">Security writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>ForgeCRA</h2>
+        <div class="footer-links">
+          <a href="/cra-sbom-attestation/">Overview</a>
+          <a href="/cra-sbom-attestation/for-manufacturers/">For manufacturers</a>
+          <a href="/cra-sbom-attestation/for-suppliers/">For suppliers</a>
+          <a href="/cra-sbom-attestation/blog/">CRA writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <div class="footer-links">
+          <a href="/contact/">Contact</a>
+          <a href="https://simonmorley.co.uk">Simon Morley</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Also building</h2>
+        <div class="footer-links">
+          <a href="https://nullrabbit.ai">NullRabbit</a>
+          <a href="https://slashr.dev">Slashr</a>
+          <a href="https://nrdax.com">NRDAX</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2005&ndash;2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 05508105. London.</p>
+      <p>ForgeCRA is a product of PolkaSpots Ltd, est. 2005 — London. Company number 05508105. <a href="mailto:security@polkaspots.com">security@polkaspots.com</a></p>
+      <p>No certification claims. We don't sell September-2026 panic — we build the evidence layer that outlasts it.</p>
+    </div>
+  </footer>
+</body>
+</html>
