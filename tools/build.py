@@ -428,7 +428,7 @@ emit(MAKERS,
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">ForgeCRA collects, quality-scores, and attests SBOMs from your suppliers — so your Cyber Resilience Act evidence chain doesn't live in your inbox.</p>
           <!-- CALENDAR-SWAP: replace href with the Cal.com/Calendly booking link. -->
-          <a class="act act--ink act--lg plausible-event-name={BOOK_GOAL}" href="{BOOK_30}">BOOK A 30-MINUTE PILOT CALL</a>
+          <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
         </div>
       </div>
     </section>
@@ -463,7 +463,7 @@ emit(MAKERS,
           <div>
             <p>You get the full attestation workflow run for you; you shape the product; founding pricing locked for year one.</p>
             <!-- CALENDAR-SWAP -->
-            <a class="act act--lg plausible-event-name={BOOK_GOAL}" href="{BOOK_30}">BOOK A 30-MINUTE PILOT CALL</a>
+            <a class="act act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
           </div>
         </div>
       </div>
@@ -488,7 +488,7 @@ emit(MAKERS,
                  (Spec §3 sanctions the mailto fallback). For notification + spreadsheet set
                  action="https://formspree.io/f/YOUR_ID" method="POST" and delete enctype.
                  Field names are the Spec §4.5 set. -->
-            <form action="mailto:{MAIL}?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain">
+            <form action="mailto:{MAIL}?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain" data-goal="form_submit">
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
                 <label class="field"><span>Work email</span><input type="email" name="email" required></label>
@@ -505,7 +505,7 @@ emit(MAKERS,
                 </label>
                 <label class="field"><span>Biggest supplier-evidence pain</span><input type="text" name="pain" placeholder="One line is plenty" required></label>
               </div>
-              <button type="submit" class="act act--ink act--lg plausible-event-name=form_submit" style="margin-top: 32px;">SEND THE DETAILS</button>
+              <button type="submit" class="act act--ink act--lg" style="margin-top: 32px;">SEND THE DETAILS</button>
             </form>
             <p class="form-note">You're a supplier, not a manufacturer? <a href="{SUPPLIERS}">This is your page →</a></p>
           </div>
@@ -556,7 +556,7 @@ emit(SUPPLIERS,
         <h1 class="h1 h1--page">Publish once. Serve every customer.</h1>
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">Every manufacturer you sell into will soon demand SBOMs — each in their own portal, format, and questionnaire. ForgeCRA is the neutral exchange: attest once, share with every customer, under your control.</p>
-          <a class="act act--ink act--lg plausible-event-name=cta_click" href="#join">JOIN THE FIRST SUPPLIER COHORT</a>
+          <a class="act act--ink act--lg" href="#join" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
         </div>
       </div>
     </section>
@@ -600,7 +600,7 @@ emit(SUPPLIERS,
           </div>
           <div>
             <p>Free for suppliers, permanently. You control who sees what, and updates propagate to every customer you've shared with.</p>
-            <a class="act act--lg plausible-event-name=cta_click" href="#cohort-form">JOIN THE FIRST SUPPLIER COHORT</a>
+            <a class="act act--lg" href="#cohort-form" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
           </div>
         </div>
 
@@ -608,7 +608,7 @@ emit(SUPPLIERS,
           <p class="statement statement--sm">Tell us your formats and your customers.</p>
           <div>
             <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
-            <form id="cohort-form" action="mailto:{MAIL}?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain">
+            <form id="cohort-form" action="mailto:{MAIL}?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain" data-goal="form_submit">
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
                 <label class="field"><span>Work email</span><input type="email" name="email" required></label>
@@ -629,10 +629,10 @@ emit(SUPPLIERS,
                   </select>
                 </label>
               </div>
-              <button type="submit" class="act act--ink act--lg plausible-event-name=form_submit" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
+              <button type="submit" class="act act--ink act--lg" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
             </form>
             <!-- CALENDAR-SWAP: secondary CTA. Replace with the 20-minute booking link. -->
-            <p class="form-note"><a class="plausible-event-name={BOOK_GOAL}" href="{BOOK_20}">Or book a {CALL_MINS}-minute call →</a></p>
+            <p class="form-note"><a href="{BOOK_20}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">Or book a {CALL_MINS}-minute call →</a></p>
             <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="{MAKERS}">This is your page →</a></p>
           </div>
         </div>
@@ -670,7 +670,7 @@ emit(URLS["contact"],
             <!-- Posts via mailto + enctype="text/plain": no backend, works with JS disabled.
                  For a hosted handler set action="https://formspree.io/f/YOUR_ID" method="POST"
                  and delete enctype — the field names already match. -->
-            <form action="mailto:{MAIL}?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain">
+            <form action="mailto:{MAIL}?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain" data-goal="form_submit">
               <label class="field"><span>Name</span><input type="text" name="name" required></label>
               <label class="field" style="margin-top: 24px;"><span>Email</span><input type="email" name="email" required></label>
               <label class="field" style="margin-top: 24px;"><span>Message</span><textarea name="message" rows="6" required></textarea></label>

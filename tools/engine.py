@@ -41,18 +41,27 @@ URLS = {
 
 # --------------------------------------------------------------- analytics & booking
 # Plausible is cookieless, so no consent wall is needed (Landing Page Spec §3).
-# This is the account's own snippet — the site is identified by the script ID,
-# not by a data-domain attribute.
+# The account's own snippet: the site is identified by the script ID.
 #
-# NOTE: the plausible-event-name classes on the CTAs need "Tagged events"
-# switched on in Plausible > Site Settings, otherwise they are inert.
-# Not an f-string: the snippet contains braces.
+# Goals fire explicitly via plausible('name') rather than via the class-based
+# "Tagged events" feature, because that feature has to be switched on in the
+# dashboard and is silently inert until it is. Explicit calls work the moment
+# the script loads. Booking CTAs open in a new tab so the event is not racing
+# a same-tab navigation.
 ANALYTICS = """
   <!-- Privacy-friendly analytics by Plausible -->
   <script async src="https://plausible.io/js/pa-DQ-Xa2vnEhrSCIogD_ro3.js"></script>
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-goal]');
+      if(el){plausible(el.getAttribute('data-goal'))}
+    });
+    document.addEventListener('submit',function(e){
+      var f=e.target.closest('form[data-goal]');
+      if(f){plausible(f.getAttribute('data-goal'))}
+    },true);
   </script>"""
 
 # Booking links. One 30-minute Cal.com event serves both sides for now. If the

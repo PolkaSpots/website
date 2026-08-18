@@ -27,6 +27,14 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-goal]');
+      if(el){plausible(el.getAttribute('data-goal'))}
+    });
+    document.addEventListener('submit',function(e){
+      var f=e.target.closest('form[data-goal]');
+      if(f){plausible(f.getAttribute('data-goal'))}
+    },true);
   </script>
   <script type="application/ld+json">
 {
@@ -123,7 +131,7 @@
             <!-- Posts via mailto + enctype="text/plain": no backend, works with JS disabled.
                  For a hosted handler set action="https://formspree.io/f/YOUR_ID" method="POST"
                  and delete enctype — the field names already match. -->
-            <form action="mailto:security@polkaspots.com?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain">
+            <form action="mailto:security@polkaspots.com?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain" data-goal="form_submit">
               <label class="field"><span>Name</span><input type="text" name="name" required></label>
               <label class="field" style="margin-top: 24px;"><span>Email</span><input type="email" name="email" required></label>
               <label class="field" style="margin-top: 24px;"><span>Message</span><textarea name="message" rows="6" required></textarea></label>

@@ -27,6 +27,14 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-goal]');
+      if(el){plausible(el.getAttribute('data-goal'))}
+    });
+    document.addEventListener('submit',function(e){
+      var f=e.target.closest('form[data-goal]');
+      if(f){plausible(f.getAttribute('data-goal'))}
+    },true);
   </script>
   <script type="application/ld+json">
 {
@@ -136,7 +144,7 @@
         <h1 class="h1 h1--page">Publish once. Serve every customer.</h1>
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">Every manufacturer you sell into will soon demand SBOMs — each in their own portal, format, and questionnaire. ForgeCRA is the neutral exchange: attest once, share with every customer, under your control.</p>
-          <a class="act act--ink act--lg plausible-event-name=cta_click" href="#join">JOIN THE FIRST SUPPLIER COHORT</a>
+          <a class="act act--ink act--lg" href="#join" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
         </div>
       </div>
     </section>
@@ -211,7 +219,7 @@
           </div>
           <div>
             <p>Free for suppliers, permanently. You control who sees what, and updates propagate to every customer you've shared with.</p>
-            <a class="act act--lg plausible-event-name=cta_click" href="#cohort-form">JOIN THE FIRST SUPPLIER COHORT</a>
+            <a class="act act--lg" href="#cohort-form" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
           </div>
         </div>
 
@@ -219,7 +227,7 @@
           <p class="statement statement--sm">Tell us your formats and your customers.</p>
           <div>
             <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
-            <form id="cohort-form" action="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain">
+            <form id="cohort-form" action="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain" data-goal="form_submit">
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
                 <label class="field"><span>Work email</span><input type="email" name="email" required></label>
@@ -240,10 +248,10 @@
                   </select>
                 </label>
               </div>
-              <button type="submit" class="act act--ink act--lg plausible-event-name=form_submit" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
+              <button type="submit" class="act act--ink act--lg" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
             </form>
             <!-- CALENDAR-SWAP: secondary CTA. Replace with the 20-minute booking link. -->
-            <p class="form-note"><a class="plausible-event-name=call_booked" href="https://cal.com/simon-morley-np2it0/30min">Or book a 30-minute call →</a></p>
+            <p class="form-note"><a href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">Or book a 30-minute call →</a></p>
             <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="/cra-sbom-attestation/for-manufacturers/">This is your page →</a></p>
           </div>
         </div>

@@ -27,6 +27,14 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-goal]');
+      if(el){plausible(el.getAttribute('data-goal'))}
+    });
+    document.addEventListener('submit',function(e){
+      var f=e.target.closest('form[data-goal]');
+      if(f){plausible(f.getAttribute('data-goal'))}
+    },true);
   </script>
   <script type="application/ld+json">
 {
@@ -160,7 +168,7 @@
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">ForgeCRA collects, quality-scores, and attests SBOMs from your suppliers — so your Cyber Resilience Act evidence chain doesn't live in your inbox.</p>
           <!-- CALENDAR-SWAP: replace href with the Cal.com/Calendly booking link. -->
-          <a class="act act--ink act--lg plausible-event-name=call_booked" href="https://cal.com/simon-morley-np2it0/30min">BOOK A 30-MINUTE PILOT CALL</a>
+          <a class="act act--ink act--lg" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
         </div>
       </div>
     </section>
@@ -223,7 +231,7 @@
           <div>
             <p>You get the full attestation workflow run for you; you shape the product; founding pricing locked for year one.</p>
             <!-- CALENDAR-SWAP -->
-            <a class="act act--lg plausible-event-name=call_booked" href="https://cal.com/simon-morley-np2it0/30min">BOOK A 30-MINUTE PILOT CALL</a>
+            <a class="act act--lg" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
           </div>
         </div>
       </div>
@@ -256,7 +264,7 @@
                  (Spec §3 sanctions the mailto fallback). For notification + spreadsheet set
                  action="https://formspree.io/f/YOUR_ID" method="POST" and delete enctype.
                  Field names are the Spec §4.5 set. -->
-            <form action="mailto:security@polkaspots.com?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain">
+            <form action="mailto:security@polkaspots.com?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain" data-goal="form_submit">
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
                 <label class="field"><span>Work email</span><input type="email" name="email" required></label>
@@ -273,7 +281,7 @@
                 </label>
                 <label class="field"><span>Biggest supplier-evidence pain</span><input type="text" name="pain" placeholder="One line is plenty" required></label>
               </div>
-              <button type="submit" class="act act--ink act--lg plausible-event-name=form_submit" style="margin-top: 32px;">SEND THE DETAILS</button>
+              <button type="submit" class="act act--ink act--lg" style="margin-top: 32px;">SEND THE DETAILS</button>
             </form>
             <p class="form-note">You're a supplier, not a manufacturer? <a href="/cra-sbom-attestation/for-suppliers/">This is your page →</a></p>
           </div>
