@@ -41,17 +41,23 @@ URLS = {
 
 # --------------------------------------------------------------- analytics & booking
 # Plausible is cookieless, so no consent wall is needed (Landing Page Spec §3).
-# "tagged-events" is required for the class-based goals on the CTAs; without it
-# the plausible-event-name classes are inert.
-PLAUSIBLE_DOMAIN = "polkaspots.com"
-PLAUSIBLE_SRC = "https://plausible.io/js/script.tagged-events.outbound-links.js"
+# This is the account's own snippet — the site is identified by the script ID,
+# not by a data-domain attribute.
+#
+# NOTE: the plausible-event-name classes on the CTAs need "Tagged events"
+# switched on in Plausible > Site Settings, otherwise they are inert.
+# Not an f-string: the snippet contains braces.
+ANALYTICS = """
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-DQ-Xa2vnEhrSCIogD_ro3.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>"""
 
-# Booking links. Set these to the Cal.com event URLs and every CTA across the
-# site switches from the mailto fallback to the calendar in one edit.
-# Spec §8 requires the calendar embedded and tested end-to-end before spend.
-# One 30-minute event serves both sides for now. If the supplier conversation
-# turns out to want its own shorter slot, create a second Cal.com event type
-# and point CAL_20 at it — the supplier CTA copy is driven by CALL_MINS below.
+# Booking links. One 30-minute Cal.com event serves both sides for now. If the
+# supplier conversation wants its own shorter slot, create a second event type
+# and point CAL_20 at it — the supplier CTA copy is driven by CALL_MINS.
 CAL_30 = "https://cal.com/simon-morley-np2it0/30min"
 CAL_20 = "https://cal.com/simon-morley-np2it0/30min"
 CALL_MINS = "30"
@@ -65,15 +71,14 @@ MAILTO_20 = ("mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20call"
              "%0ACurrent%20SBOM%20format%3A%20%0A%0AA%20couple%20of%20times%20that%20suit%20for%20a"
              "%2030-minute%20call%3A%20%0A")
 
+# Fall back to the mailto if a calendar link is ever cleared, so no CTA is dead.
 BOOK_30 = CAL_30 or MAILTO_30
 BOOK_20 = CAL_20 or MAILTO_20
 
-# A real calendar can confirm a booking; a mailto cannot. Only tag the CTA as
-# call_booked once it actually leads to a calendar.
+# A calendar can confirm a booking; a mailto cannot. Only claim call_booked
+# when a real calendar is behind the CTA.
 BOOK_GOAL = "call_booked" if CAL_30 else "cta_click"
 
-ANALYTICS = f'''
-  <script defer data-domain="{PLAUSIBLE_DOMAIN}" src="{PLAUSIBLE_SRC}"></script>'''
 
 
 # key, nav label — URLs come from URLS so the two can never drift apart
