@@ -43,7 +43,7 @@ URLS = {
 NAV = [
     ("home",      URLS["home"],     "Home"),
     ("flash",     URLS["flash"],    "Flash Review"),
-    ("pen",       URLS["pen"],      "Pen Testing"),
+    ("pen",       URLS["pen"],      "Pentesting"),
     ("forgecra",  URLS["forgecra"], "ForgeCRA"),
     ("contact",   URLS["contact"],  "Contact"),
 ]
