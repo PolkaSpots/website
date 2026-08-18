@@ -208,8 +208,8 @@ emit(URLS["pen"],
           <div class="split-stack">
             <p class="body">We work with PE firms, VCs, M&amp;A lawyers, corporate finance advisors and insurance underwriters — anyone in a deal who'd rather find out now than later. We also work directly with companies who want to know where they stand before a launch, an audit, or a customer security review.</p>
             <div>
-              <a class="act act--ink act--mail" href="mailto:{MAIL}">{MAIL}<span aria-hidden="true">→</span></a>
-              <p class="act-note">Same-day reply with a clear scope and a fixed price.</p>
+              <a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
+              <p class="act-note">Or email <a href="mailto:{MAIL}">{MAIL}</a> — same-day reply with a clear scope and a fixed price.</p>
             </div>
           </div>
         </div>
@@ -372,6 +372,7 @@ emit(URLS["forgecra"],
           </article>
         </div>
         <p class="router-note">Two different offers. Choose the one that matches your role.</p>
+        <p class="router-note">Not sure which applies to you? <a href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">Book a {CALL_MINS}-minute call →</a></p>
         <p class="router-note"><a class="quiet" href="{URLS['cra_blog']}">Writing on the CRA, SBOM quality and supplier evidence →</a></p>
       </div>
     </section>
@@ -603,6 +604,7 @@ emit(SUPPLIERS,
           <div>
             <p>Free for suppliers, permanently. You control who sees what, and updates propagate to every customer you've shared with.</p>
             <a class="act act--lg" href="#cohort-form" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
+            <p style="margin: 16px 0 0;"><a class="quiet" href="{BOOK_20}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">Or book a {CALL_MINS}-minute call →</a></p>
           </div>
         </div>
 
@@ -635,8 +637,6 @@ emit(SUPPLIERS,
               </div>
               <button type="submit" class="act act--ink act--lg" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
             </form>
-            <!-- CALENDAR-SWAP: secondary CTA. Replace with the 20-minute booking link. -->
-            <p class="form-note"><a href="{BOOK_20}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">Or book a {CALL_MINS}-minute call →</a></p>
             <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="{MAKERS}">This is your page →</a></p>
           </div>
         </div>
@@ -669,6 +669,8 @@ emit(URLS["contact"],
             <h1 class="h1 h1--contact">Get in touch.</h1>
             <p class="lede lede--page" style="margin-top: 26px;">We reply the same day. Usually within the hour.</p>
             <a class="email-link" href="mailto:{MAIL}">{MAIL}</a>
+            <p style="margin-top: 28px;"><a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a></p>
+            <p class="act-note">Prefer to talk it through? Grab a slot directly.</p>
           </div>
           <div class="panel">
             <!-- Posts via mailto + enctype="text/plain": no backend, works with JS disabled.
