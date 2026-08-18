@@ -89,23 +89,10 @@ export async function onRequestPost({ request, env }) {
     return reply(200, { ok: true });
   }
 
-  // Zero-config default so the forms work without any dashboard setup.
-  // FormSubmit needs no account: the first submission emails FORM_TO an
-  // activation link, and everything after that is delivered.
-  //
-  // TRADE-OFF, worth a deliberate decision: submissions pass through a free
-  // third party. Set FORM_WEBHOOK or RESEND_API_KEY above and this is never
-  // reached — the data then stays inside your own infrastructure, which for a
-  // company selling supply-chain evidence integrity is the better look.
-  if (env.FORM_FALLBACK !== "off") {
-    const to = env.FORM_TO || "security@polkaspots.com";
-    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(to)}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ _subject: subject, ...data, ...meta }),
-    });
-    if (res.ok) return reply(200, { ok: true });
-  }
+  // A no-account relay (FormSubmit) was tried here and removed: it does not
+  // accept requests from Cloudflare's edge, and routing prospect data through
+  // a free third party is the wrong trade for a company selling supply-chain
+  // evidence integrity. Delivery needs one env var above.
 
   // Everything failed — tell the client so it can fall back to the mailto
   // rather than let a submission disappear.
