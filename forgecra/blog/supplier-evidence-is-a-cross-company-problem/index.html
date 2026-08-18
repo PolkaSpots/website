@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Supplier evidence is a cross-company problem — PolkaSpots</title>
+  <meta name="description" content="Binary analysis of firmware you hold is solved. Getting current SBOMs out of forty companies that don't report to you is a different problem entirely.">
+  <link rel="canonical" href="https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <meta property="og:site_name" content="PolkaSpots">
+  <meta property="og:title" content="Supplier evidence is a cross-company problem — PolkaSpots">
+  <meta property="og:description" content="Binary analysis of firmware you hold is solved. Getting current SBOMs out of forty companies that don't report to you is a different problem entirely.">
+  <meta property="og:url" content="https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Supplier evidence is a cross-company problem — PolkaSpots">
+  <meta name="twitter:description" content="Binary analysis of firmware you hold is solved. Getting current SBOMs out of forty companies that don't report to you is a different problem entirely.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="alternate" type="application/rss+xml" title="ForgeCRA writing" href="/forgecra/blog/feed.xml">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://polkaspots.com/#org",
+      "name": "PolkaSpots",
+      "legalName": "PolkaSpots Limited",
+      "url": "https://polkaspots.com",
+      "email": "security@polkaspots.com",
+      "foundingDate": "2005",
+      "areaServed": [
+        "GB",
+        "EU"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "UK company number",
+        "value": "05508105"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "sameAs": [
+        "https://simonmorley.co.uk",
+        "https://nullrabbit.ai",
+        "https://slashr.dev"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://polkaspots.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ForgeCRA",
+          "item": "https://polkaspots.com/forgecra/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Blog",
+          "item": "https://polkaspots.com/forgecra/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Supplier evidence is a cross-company problem",
+          "item": "https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Supplier evidence is a cross-company problem",
+      "url": "https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/"
+      },
+      "datePublished": "2026-08-12",
+      "dateModified": "2026-08-12",
+      "description": "Binary analysis of firmware you already hold is well served by good vendors. Getting evidence out of forty companies that do not report to you is a different problem, and it is the one nobody owns.",
+      "keywords": "sbom, supply-chain, cra, supplier-management, attestation",
+      "inLanguage": "en-GB",
+      "author": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "publisher": {
+        "@id": "https://polkaspots.com/#org"
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://polkaspots.com/forgecra/blog/"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i class="v"></i><i></i></span>
+        <span class="wordmark-text">POLKASPOTS</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/flash-security-review/">Flash Review</a>
+        <a href="/security-due-diligence/">Pen Testing</a>
+        <a href="/forgecra/" aria-current="page">ForgeCRA</a>
+        <a href="/forgecra/sbom-for-suppliers/">Suppliers</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="band band--hero">
+      <div class="wrap">
+        <p class="eyebrow eyebrow--violet"><a href="/forgecra/blog/">ForgeCRA writing</a></p>
+        <h1 class="h1 h1--page">Supplier evidence is a cross-company problem</h1>
+        <p class="post-meta"><time datetime="2026-08-12">2026-08-12</time> · Simon Morley · sbom · supply-chain · cra · supplier-management · attestation</p>
+      </div>
+    </article>
+
+    <section class="band band--end">
+      <div class="wrap">
+        <div class="prose">
+<p>There are two problems that get called "SBOM" and they are not the same problem.</p>
+<p>The first is: <em>I have a firmware image and I want to know what is inside it.</em> This is a technical problem, it is well understood, and there are capable vendors solving it. Binary composition analysis works. If you hold the artefact, you can find out a great deal about it without anyone's cooperation.</p>
+<p>The second is: <em>I need current, structured, trustworthy component evidence from forty companies that do not work for me.</em> This is not a technical problem. It is a coordination problem wearing a technical costume, and the tooling built for the first problem does not touch it.</p>
+<p>We only work on the second one.</p>
+<h2>Why analysis does not close the gap</h2>
+<p>Analysis tells you what is in the binary you have. It cannot tell you what changed in a supplier's next release, it cannot produce an attestation the supplier is willing to stand behind, and it cannot help at all where you never receive an artefact to analyse in the first place — which is common with subassemblies, licensed modules, and anything where the supplier ships you a black box.</p>
+<p>More fundamentally, an inferred component list is not the same artefact as a supplier's signed statement about their own product. When the question is "what did your supplier tell you, and when," a scan result is not the answer to that question. It is a useful cross-check on the answer.</p>
+<h2>Why the obvious solution does not scale</h2>
+<p>The obvious solution is a portal. The manufacturer stands one up, invites their suppliers, and collects.</p>
+<p>This works at ten suppliers and degrades badly after that, for a reason that has nothing to do with the software. Every manufacturer builds their own portal. Every supplier then has an account in five portals, each with a different schema, a different questionnaire and a different review cycle. The supplier's cost scales with the number of customers, and the supplier is the party with no regulatory exposure and no incentive to absorb that cost.</p>
+<p>What happens next is predictable. Suppliers deprioritise it. Responses get thin, then late, then stop. The manufacturer, who does carry the exposure, is left chasing.</p>
+<h2>The shape of the answer</h2>
+<p>The pattern that resolves this is not new, and it is not ours. E-invoicing went through the same thing: many-to-many relationships, per-partner integration cost growing quadratically, and eventually a neutral network in the middle that everyone connects to once.</p>
+<p>Applied here, it means one attestation from the supplier, published once, shared per customer under the supplier's control. The supplier's cost stops scaling with customer count. The manufacturer gets structured, scored, current evidence. Neither party has to trust a competitor with their component data, which is the reason this has to sit with someone neutral rather than inside an analysis vendor's platform.</p>
+<p>That neutrality is load-bearing. A supplier will not attest deeply into a system owned by a company that also sells analysis to their customers, and it is not irrational of them to refuse.</p>
+<h2>The part we do not know yet</h2>
+<p>Everything above is a thesis, not a result. The load-bearing assumption is that suppliers will publish into a neutral exchange when they will not fill in five portals. We think that is true. We have not proved it.</p>
+<p>That is why we are running paid pilots by hand before building a platform, and why the supplier side is free permanently — charging the side that creates the network value is how you kill the network before it exists. If it turns out suppliers are content to keep emailing PDFs, we would rather learn that from thirty conversations than from a year of engineering.</p>
+<p>If you are a supplier being asked for the same evidence by several customers, we would genuinely like to hear how you are handling it now — including if the answer is that you are not.</p>
+        </div>
+        <div class="post-nav"><a class="quiet" href="/forgecra/blog/what-makes-an-sbom-usable/">Most SBOMs we see are not usable. Here is what is missing. →</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h2>Security testing</h2>
+        <div class="footer-links">
+          <a href="/flash-security-review/">Flash Review — £500</a>
+          <a href="/security-due-diligence/">Penetration testing</a>
+          <a href="/security-due-diligence/#remediation">Remediation</a>
+          <a href="/security-due-diligence/#monitoring">Ongoing monitoring</a>
+          <a href="/security-due-diligence/blog/">Security writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>ForgeCRA</h2>
+        <div class="footer-links">
+          <a href="/forgecra/">Overview</a>
+          <a href="/forgecra/cra-supplier-sbom-attestation/">For manufacturers</a>
+          <a href="/forgecra/sbom-for-suppliers/">For suppliers</a>
+          <a href="/forgecra/blog/">CRA writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <div class="footer-links">
+          <a href="/contact/">Contact</a>
+          <a href="https://simonmorley.co.uk">Simon Morley</a>
+          <a href="/llms.txt">llms.txt</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Also building</h2>
+        <div class="footer-links">
+          <a href="https://nullrabbit.ai">NullRabbit</a>
+          <a href="https://slashr.dev">Slashr</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2005&ndash;2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 05508105. London.</p>
+      <p>ForgeCRA is a product of PolkaSpots Ltd, est. 2005 — London. Company number 05508105. <a href="mailto:security@polkaspots.com">security@polkaspots.com</a></p>
+      <p>No certification claims. We don't sell September-2026 panic — we build the evidence layer that outlasts it.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ForgeCRA — Publish your SBOM once, serve every customer</title>
-  <meta name="description" content="Every manufacturer you sell into will soon demand SBOMs, each in their own portal and format. ForgeCRA is the neutral exchange: attest once, share with every customer. Free for suppliers, permanently.">
-  <link rel="canonical" href="https://polkaspots.com/forgecra/suppliers">
+  <title>Publish Your SBOM Once, Serve Every Customer — ForgeCRA</title>
+  <meta name="description" content="Every customer wants your SBOM in their own portal. Attest once on a neutral exchange, share per customer, control who sees what. Free for suppliers.">
+  <link rel="canonical" href="https://polkaspots.com/forgecra/sbom-for-suppliers/">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 
-  <meta property="og:title" content="ForgeCRA — Publish your SBOM once, serve every customer">
-  <meta property="og:description" content="Every manufacturer you sell into will soon demand SBOMs, each in their own portal and format. ForgeCRA is the neutral exchange: attest once, share with every customer. Free for suppliers, permanently.">
-  <meta property="og:url" content="https://polkaspots.com/forgecra/suppliers">
+  <meta property="og:site_name" content="PolkaSpots">
+  <meta property="og:title" content="Publish Your SBOM Once, Serve Every Customer — ForgeCRA">
+  <meta property="og:description" content="Every customer wants your SBOM in their own portal. Attest once on a neutral exchange, share per customer, control who sees what. Free for suppliers.">
+  <meta property="og:url" content="https://polkaspots.com/forgecra/sbom-for-suppliers/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="ForgeCRA — Publish your SBOM once, serve every customer">
-  <meta name="twitter:description" content="Every manufacturer you sell into will soon demand SBOMs, each in their own portal and format. ForgeCRA is the neutral exchange: attest once, share with every customer. Free for suppliers, permanently.">
+  <meta name="twitter:title" content="Publish Your SBOM Once, Serve Every Customer — ForgeCRA">
+  <meta name="twitter:description" content="Every customer wants your SBOM in their own portal. Attest once on a neutral exchange, share per customer, control who sees what. Free for suppliers.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +26,89 @@
        page_view, cta_click, form_submit, call_booked.
   <script defer data-domain="polkaspots.com" src="https://plausible.io/js/script.js"></script>
   -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://polkaspots.com/#org",
+      "name": "PolkaSpots",
+      "legalName": "PolkaSpots Limited",
+      "url": "https://polkaspots.com",
+      "email": "security@polkaspots.com",
+      "foundingDate": "2005",
+      "areaServed": [
+        "GB",
+        "EU"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "London",
+        "addressCountry": "GB"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "name": "UK company number",
+        "value": "05508105"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Simon Morley",
+        "url": "https://simonmorley.co.uk"
+      },
+      "sameAs": [
+        "https://simonmorley.co.uk",
+        "https://nullrabbit.ai",
+        "https://slashr.dev"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://polkaspots.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "ForgeCRA",
+          "item": "https://polkaspots.com/forgecra/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "For suppliers",
+          "item": "https://polkaspots.com/forgecra/sbom-for-suppliers/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "ForgeCRA supplier SBOM publishing",
+      "serviceType": "SBOM attestation and controlled sharing",
+      "provider": {
+        "@id": "https://polkaspots.com/#org"
+      },
+      "areaServed": [
+        "GB",
+        "EU"
+      ],
+      "url": "https://polkaspots.com/forgecra/sbom-for-suppliers/",
+      "description": "Suppliers attest one SBOM (CycloneDX or SPDX), then share it per customer with updates propagating automatically. Free for suppliers, permanently.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "GBP",
+        "description": "Free for suppliers, permanently."
+      }
+    }
+  ]
+}
+  </script>
 </head>
 <body>
   <header class="masthead">
@@ -34,11 +119,11 @@
       </a>
       <nav class="nav" aria-label="Primary">
         <a href="/">Home</a>
-        <a href="/flash-review.html">Flash Review</a>
-        <a href="/services.html">Pen Testing</a>
-        <a href="/forgecra/manufacturers">ForgeCRA</a>
-        <a href="/forgecra/suppliers" aria-current="page">Suppliers</a>
-        <a href="/contact.html">Contact</a>
+        <a href="/flash-security-review/">Flash Review</a>
+        <a href="/security-due-diligence/">Pen Testing</a>
+        <a href="/forgecra/">ForgeCRA</a>
+        <a href="/forgecra/sbom-for-suppliers/" aria-current="page">Suppliers</a>
+        <a href="/contact/">Contact</a>
       </nav>
     </div>
   </header>
@@ -46,7 +131,7 @@
   <main>
     <section class="band band--hero">
       <div class="wrap">
-        <p class="eyebrow eyebrow--violet">ForgeCRA — for suppliers</p>
+        <p class="eyebrow eyebrow--violet">ForgeCRA · For suppliers</p>
         <h1 class="h1 h1--page">Publish once. Serve every customer.</h1>
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">Every manufacturer you sell into will soon demand SBOMs — each in their own portal, format, and questionnaire. ForgeCRA is the neutral exchange: attest once, share with every customer, under your control.</p>
@@ -132,7 +217,7 @@
         <div class="split split--form" style="margin-top: 56px;">
           <p class="statement statement--sm">Tell us your formats and your customers.</p>
           <div>
-            <!-- FORM-SWAP: see manufacturers.html. Field names are the Spec §5.5 set. -->
+            <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
             <form id="cohort-form" action="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain">
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
@@ -142,19 +227,15 @@
                 <label class="field"><span>Manufacturer customers</span>
                   <select name="customers" required>
                     <option value="">Select…</option>
-                    <option value="1-4">1–4</option>
-                    <option value="5-9">5–9</option>
-                    <option value="10-24">10–24</option>
-                    <option value="25+">25+</option>
+                    <option value="1-4">1–4</option><option value="5-9">5–9</option>
+                    <option value="10-24">10–24</option><option value="25+">25+</option>
                   </select>
                 </label>
                 <label class="field"><span>Current SBOM format</span>
                   <select name="format" required>
                     <option value="">Select…</option>
-                    <option value="CycloneDX">CycloneDX</option>
-                    <option value="SPDX">SPDX</option>
-                    <option value="Spreadsheet">Spreadsheet</option>
-                    <option value="None">None</option>
+                    <option value="CycloneDX">CycloneDX</option><option value="SPDX">SPDX</option>
+                    <option value="Spreadsheet">Spreadsheet</option><option value="None">None</option>
                   </select>
                 </label>
               </div>
@@ -162,7 +243,7 @@
             </form>
             <!-- CALENDAR-SWAP: secondary CTA. Replace with the 20-minute booking link. -->
             <p class="form-note"><a class="plausible-event-name=cta_click" href="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20call&amp;body=Company%3A%20%0ARole%3A%20%0ANumber%20of%20manufacturer%20customers%3A%20%0ACurrent%20SBOM%20format%3A%20%0A%0AA%20couple%20of%20times%20that%20suit%20for%20a%2020-minute%20call%3A%20%0A">Or book a 20-minute call →</a></p>
-            <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="/forgecra/manufacturers">This is your page →</a></p>
+            <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="/forgecra/cra-supplier-sbom-attestation/">This is your page →</a></p>
           </div>
         </div>
       </div>
@@ -174,24 +255,28 @@
       <div class="footer-col">
         <h2>Security testing</h2>
         <div class="footer-links">
-          <a href="/flash-review.html">Flash Review — £500</a>
-          <a href="/services.html">Full Pentest</a>
-          <a href="/services.html">Remediation</a>
-          <a href="/services.html">Ongoing Monitoring</a>
+          <a href="/flash-security-review/">Flash Review — £500</a>
+          <a href="/security-due-diligence/">Penetration testing</a>
+          <a href="/security-due-diligence/#remediation">Remediation</a>
+          <a href="/security-due-diligence/#monitoring">Ongoing monitoring</a>
+          <a href="/security-due-diligence/blog/">Security writing</a>
         </div>
       </div>
       <div class="footer-col">
         <h2>ForgeCRA</h2>
         <div class="footer-links">
-          <a href="/forgecra/manufacturers">For manufacturers</a>
-          <a href="/forgecra/suppliers">For suppliers</a>
+          <a href="/forgecra/">Overview</a>
+          <a href="/forgecra/cra-supplier-sbom-attestation/">For manufacturers</a>
+          <a href="/forgecra/sbom-for-suppliers/">For suppliers</a>
+          <a href="/forgecra/blog/">CRA writing</a>
         </div>
       </div>
       <div class="footer-col">
         <h2>Company</h2>
         <div class="footer-links">
-          <a href="/contact.html">Contact</a>
+          <a href="/contact/">Contact</a>
           <a href="https://simonmorley.co.uk">Simon Morley</a>
+          <a href="/llms.txt">llms.txt</a>
         </div>
       </div>
       <div class="footer-col">

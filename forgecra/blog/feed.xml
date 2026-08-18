@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ForgeCRA writing</title>
+    <link>https://polkaspots.com/forgecra/blog/</link>
+    <description>Writing on EU Cyber Resilience Act obligations and timing, SBOM quality, CycloneDX and SPDX, and the supplier evidence problem.</description>
+    <language>en-GB</language>
+    <atom:link href="https://polkaspots.com/forgecra/blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Supplier evidence is a cross-company problem</title>
+      <link>https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/</link>
+      <guid isPermaLink="true">https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/</guid>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 +0000</pubDate>
+      <description>Binary analysis of firmware you already hold is well served by good vendors. Getting evidence out of forty companies that do not report to you is a different problem, and it is the one nobody owns.</description>
+      <category>sbom</category>
+      <category>supply-chain</category>
+      <category>cra</category>
+      <category>supplier-management</category>
+      <category>attestation</category>
+    </item>
+    <item>
+      <title>Most SBOMs we see are not usable. Here is what is missing.</title>
+      <link>https://polkaspots.com/forgecra/blog/what-makes-an-sbom-usable/</link>
+      <guid isPermaLink="true">https://polkaspots.com/forgecra/blog/what-makes-an-sbom-usable/</guid>
+      <pubDate>Wed, 22 Jul 2026 00:00:00 +0000</pubDate>
+      <description>A file that parses is not the same as evidence you can rely on. The common failures are missing version precision, no unique identifiers, no dependency relationships, and no statement of who produced it or when.</description>
+      <category>sbom</category>
+      <category>cyclonedx</category>
+      <category>spdx</category>
+      <category>cisa-minimum-elements</category>
+      <category>supply-chain</category>
+      <category>cra</category>
+    </item>
+    <item>
+      <title>The CRA timeline: what actually applies, and when</title>
+      <link>https://polkaspots.com/forgecra/blog/cra-timeline-what-applies-when/</link>
+      <guid isPermaLink="true">https://polkaspots.com/forgecra/blog/cra-timeline-what-applies-when/</guid>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 +0000</pubDate>
+      <description>Article 14 reporting starts 11 September 2026. Everything else — SBOM, vulnerability handling, technical documentation — lands 11 December 2027. The gap between those two dates is where most of the confusion lives.</description>
+      <category>cra</category>
+      <category>cyber-resilience-act</category>
+      <category>sbom</category>
+      <category>compliance-timing</category>
+      <category>eu</category>
+    </item>
+  </channel>
+</rss>

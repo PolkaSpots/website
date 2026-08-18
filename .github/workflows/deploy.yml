@@ -14,6 +14,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build deps
+        run: pip install --quiet pyyaml
+
+      # Regenerates every page plus sitemap.xml, robots.txt, llms.txt,
+      # llms-full.txt and both RSS feeds, so the sitemap can never drift
+      # from the content that is actually published.
+      - name: Build site
+        run: python3 tools/build.py
+
+      - name: Fail if the build left anything stale
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Committed output differs from a fresh build:"
+            git status --porcelain
+            echo "Run 'python3 tools/build.py' and commit the result."
+            exit 1
+          fi
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

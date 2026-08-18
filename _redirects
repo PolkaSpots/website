@@ -1,4 +1,17 @@
 # Cloudflare Pages redirects.
-# Spec §2: "/" on the product property shows Page A (manufacturers) as default.
-/forgecra            /forgecra/manufacturers   302
-/forgecra/           /forgecra/manufacturers   302
+# Old URLs -> the SEO paths. 301 so link equity and any existing rankings move.
+/flash-review.html            /flash-security-review/                    301
+/services.html                /security-due-diligence/                   301
+/contact.html                 /contact/                                  301
+/index-personal.html          /                                          301
+/forgecra/manufacturers       /forgecra/cra-supplier-sbom-attestation/   301
+/forgecra/manufacturers.html  /forgecra/cra-supplier-sbom-attestation/   301
+/forgecra/suppliers           /forgecra/sbom-for-suppliers/              301
+/forgecra/suppliers.html      /forgecra/sbom-for-suppliers/              301
+
+# Convenience aliases people and agents guess at
+/blog                         /security-due-diligence/blog/              302
+/cra                          /forgecra/                                 302
+/sbom                         /forgecra/                                 302
+/pentest                      /security-due-diligence/                   302
+/flash-review                 /flash-security-review/                    301

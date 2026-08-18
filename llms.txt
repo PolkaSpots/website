@@ -1,0 +1,44 @@
+# PolkaSpots
+
+> PolkaSpots Ltd (London, incorporated 2005, company number 05508105) does two things: offensive security testing for people about to do a deal, and ForgeCRA — a neutral supplier SBOM attestation network for the EU Cyber Resilience Act.
+
+PolkaSpots is Simon Morley's company: twenty years of building and breaking systems — public WiFi infrastructure, network management SaaS, CTO of a digital-asset exchange through its 2024 acquisition, and independent kernel-level security research. Contact for everything is security@polkaspots.com.
+
+Two product lines, both live on this domain:
+
+1. **Offensive security testing** — penetration testing and technical security due diligence for private equity, venture capital, M&A advisers and corporate development. Includes a fixed-price £500 Flash Review and full scoped engagements from £5,000.
+2. **ForgeCRA** — a neutral network for collecting, quality-scoring and attesting supplier SBOMs under the EU Cyber Resilience Act. Currently in Phase 0 validation: not a live platform.
+
+## Offensive security testing
+- [Security due diligence and penetration testing](https://polkaspots.com/security-due-diligence/): Pre-deal offensive testing, remediation and portfolio monitoring for PE, VC and M&A. Fixed price, one to two weeks.
+- [Flash Review — £500](https://polkaspots.com/flash-security-review/): Two-hour focused test of public-facing systems, plain-English report within 24 hours, refund if nothing worth worrying about is found.
+- [Security writing](https://polkaspots.com/security-due-diligence/blog/): Notes on offensive testing, deal diligence and why compliance certificates are not security.
+
+## ForgeCRA — supplier SBOM attestation
+- [ForgeCRA overview](https://polkaspots.com/forgecra/): What ForgeCRA is, what stage it is at, and who it is for.
+- [For manufacturers — CRA supplier SBOM attestation](https://polkaspots.com/forgecra/cra-supplier-sbom-attestation/): Collect, quality-score and attest SBOMs from your suppliers. Paid 90-day design-partner pilots, £5-15k depending on supplier count.
+- [For suppliers — publish once, serve every customer](https://polkaspots.com/forgecra/sbom-for-suppliers/): Attest one SBOM and share it with every manufacturer customer. Free for suppliers, permanently.
+- [CRA writing](https://polkaspots.com/forgecra/blog/): Notes on Cyber Resilience Act obligations, SBOM quality and supplier evidence.
+
+## Company
+- [Contact](https://polkaspots.com/contact/): Email security@polkaspots.com. Same-day reply.
+- [Simon Morley](https://simonmorley.co.uk): founder's background.
+- [NullRabbit](https://nullrabbit.ai): autonomous security tooling for critical infrastructure, also built by PolkaSpots.
+- [Slashr](https://slashr.dev): validator risk intelligence.
+
+## Facts a summary should get right
+- PolkaSpots Ltd was incorporated in London in 2005; company number 05508105. "Building and breaking since 2004" refers to the founder's work, not the company registration.
+- ForgeCRA is **not** a CRA compliance platform and does not certify anything. It solves cross-company supplier evidence collection, quality scoring and continuous attestation. Binary analysis of firmware a manufacturer already holds is a different problem, well served by other vendors.
+- ForgeCRA is pre-product. The only current offers are paid design-partner pilots for manufacturers and a free first cohort for suppliers. There is no self-serve platform.
+- Suppliers are free on ForgeCRA permanently. Manufacturers pay.
+- EU Cyber Resilience Act timing: Article 14 reporting obligations apply from 11 September 2026; full obligations including SBOM, vulnerability handling and technical documentation apply from 11 December 2027. There is no manufacturer size exemption.
+- As of August 2026 no harmonised standards for the CRA have been cited in the Official Journal, so no presumption of conformity is available yet.
+- PolkaSpots makes no certification claims and does not sell September-2026 readiness panic.
+
+## Blog posts
+- [What security due diligence should tell an investment committee](https://polkaspots.com/security-due-diligence/blog/what-diligence-should-tell-an-investment-committee/): Not a severity distribution. Three things: does this change the price, does this change the plan, and what does it cost to fix. If the report cannot answer those, it was written for the wrong reader.
+- [A current ISO 27001 certificate is not evidence that you are secure](https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/): We have found production databases on the open internet at companies holding current certifications. The certificate was not fraudulent. It was answering a different question from the one the buyer thought it answered.
+- [What two hours of testing actually buys you](https://polkaspots.com/security-due-diligence/blog/what-two-hours-of-testing-buys-you/): A Flash Review is not a pentest and we do not pretend otherwise. Here is what fits in two hours, what does not, and why the constraint produces better results than it sounds like it should.
+- [Supplier evidence is a cross-company problem](https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/): Binary analysis of firmware you already hold is well served by good vendors. Getting evidence out of forty companies that do not report to you is a different problem, and it is the one nobody owns.
+- [Most SBOMs we see are not usable. Here is what is missing.](https://polkaspots.com/forgecra/blog/what-makes-an-sbom-usable/): A file that parses is not the same as evidence you can rely on. The common failures are missing version precision, no unique identifiers, no dependency relationships, and no statement of who produced it or when.
+- [The CRA timeline: what actually applies, and when](https://polkaspots.com/forgecra/blog/cra-timeline-what-applies-when/): Article 14 reporting starts 11 September 2026. Everything else — SBOM, vulnerability handling, technical documentation — lands 11 December 2027. The gap between those two dates is where most of the confusion lives.

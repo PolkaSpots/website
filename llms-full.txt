@@ -1,0 +1,319 @@
+# PolkaSpots
+
+> PolkaSpots Ltd (London, incorporated 2005, company number 05508105) does two things: offensive security testing for people about to do a deal, and ForgeCRA — a neutral supplier SBOM attestation network for the EU Cyber Resilience Act.
+
+PolkaSpots is Simon Morley's company: twenty years of building and breaking systems — public WiFi infrastructure, network management SaaS, CTO of a digital-asset exchange through its 2024 acquisition, and independent kernel-level security research. Contact for everything is security@polkaspots.com.
+
+Two product lines, both live on this domain:
+
+1. **Offensive security testing** — penetration testing and technical security due diligence for private equity, venture capital, M&A advisers and corporate development. Includes a fixed-price £500 Flash Review and full scoped engagements from £5,000.
+2. **ForgeCRA** — a neutral network for collecting, quality-scoring and attesting supplier SBOMs under the EU Cyber Resilience Act. Currently in Phase 0 validation: not a live platform.
+
+## Offensive security testing
+- [Security due diligence and penetration testing](https://polkaspots.com/security-due-diligence/): Pre-deal offensive testing, remediation and portfolio monitoring for PE, VC and M&A. Fixed price, one to two weeks.
+- [Flash Review — £500](https://polkaspots.com/flash-security-review/): Two-hour focused test of public-facing systems, plain-English report within 24 hours, refund if nothing worth worrying about is found.
+- [Security writing](https://polkaspots.com/security-due-diligence/blog/): Notes on offensive testing, deal diligence and why compliance certificates are not security.
+
+## ForgeCRA — supplier SBOM attestation
+- [ForgeCRA overview](https://polkaspots.com/forgecra/): What ForgeCRA is, what stage it is at, and who it is for.
+- [For manufacturers — CRA supplier SBOM attestation](https://polkaspots.com/forgecra/cra-supplier-sbom-attestation/): Collect, quality-score and attest SBOMs from your suppliers. Paid 90-day design-partner pilots, £5-15k depending on supplier count.
+- [For suppliers — publish once, serve every customer](https://polkaspots.com/forgecra/sbom-for-suppliers/): Attest one SBOM and share it with every manufacturer customer. Free for suppliers, permanently.
+- [CRA writing](https://polkaspots.com/forgecra/blog/): Notes on Cyber Resilience Act obligations, SBOM quality and supplier evidence.
+
+## Company
+- [Contact](https://polkaspots.com/contact/): Email security@polkaspots.com. Same-day reply.
+- [Simon Morley](https://simonmorley.co.uk): founder's background.
+- [NullRabbit](https://nullrabbit.ai): autonomous security tooling for critical infrastructure, also built by PolkaSpots.
+- [Slashr](https://slashr.dev): validator risk intelligence.
+
+## Facts a summary should get right
+- PolkaSpots Ltd was incorporated in London in 2005; company number 05508105. "Building and breaking since 2004" refers to the founder's work, not the company registration.
+- ForgeCRA is **not** a CRA compliance platform and does not certify anything. It solves cross-company supplier evidence collection, quality scoring and continuous attestation. Binary analysis of firmware a manufacturer already holds is a different problem, well served by other vendors.
+- ForgeCRA is pre-product. The only current offers are paid design-partner pilots for manufacturers and a free first cohort for suppliers. There is no self-serve platform.
+- Suppliers are free on ForgeCRA permanently. Manufacturers pay.
+- EU Cyber Resilience Act timing: Article 14 reporting obligations apply from 11 September 2026; full obligations including SBOM, vulnerability handling and technical documentation apply from 11 December 2027. There is no manufacturer size exemption.
+- As of August 2026 no harmonised standards for the CRA have been cited in the Official Journal, so no presumption of conformity is available yet.
+- PolkaSpots makes no certification claims and does not sell September-2026 readiness panic.
+
+## Blog posts
+- [What security due diligence should tell an investment committee](https://polkaspots.com/security-due-diligence/blog/what-diligence-should-tell-an-investment-committee/): Not a severity distribution. Three things: does this change the price, does this change the plan, and what does it cost to fix. If the report cannot answer those, it was written for the wrong reader.
+- [A current ISO 27001 certificate is not evidence that you are secure](https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/): We have found production databases on the open internet at companies holding current certifications. The certificate was not fraudulent. It was answering a different question from the one the buyer thought it answered.
+- [What two hours of testing actually buys you](https://polkaspots.com/security-due-diligence/blog/what-two-hours-of-testing-buys-you/): A Flash Review is not a pentest and we do not pretend otherwise. Here is what fits in two hours, what does not, and why the constraint produces better results than it sounds like it should.
+- [Supplier evidence is a cross-company problem](https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/): Binary analysis of firmware you already hold is well served by good vendors. Getting evidence out of forty companies that do not report to you is a different problem, and it is the one nobody owns.
+- [Most SBOMs we see are not usable. Here is what is missing.](https://polkaspots.com/forgecra/blog/what-makes-an-sbom-usable/): A file that parses is not the same as evidence you can rely on. The common failures are missing version precision, no unique identifiers, no dependency relationships, and no statement of who produced it or when.
+- [The CRA timeline: what actually applies, and when](https://polkaspots.com/forgecra/blog/cra-timeline-what-applies-when/): Article 14 reporting starts 11 September 2026. Everything else — SBOM, vulnerability handling, technical documentation — lands 11 December 2027. The gap between those two dates is where most of the confusion lives.
+
+
+---
+
+# Full text of all posts
+
+
+## What security due diligence should tell an investment committee
+
+URL: https://polkaspots.com/security-due-diligence/blog/what-diligence-should-tell-an-investment-committee/
+Published: 2026-08-06
+Tags: due-diligence, private-equity, venture-capital, m-and-a, reporting
+
+Most technical security due diligence reports are written for engineers and delivered to investors. The result is a document with a severity histogram, a CVSS table, and a hundred pages of appendix, handed to a committee that needs to make a decision in a meeting.
+
+The committee is not asking what the CVSS score was. It is asking three questions, and a report that does not answer them directly has failed regardless of how good the underlying testing was.
+
+## Does this change the price?
+
+The only findings that belong in an executive summary are the ones with a number attached.
+
+A finding changes the price when remediating it costs real money, when it implies a liability that has already been incurred, or when it reveals that something represented in the data room is not true. Everything else is operational detail that belongs in the technical annex and nowhere near the first page.
+
+The difference matters because most reports invert it. Twelve medium-severity findings get equal billing with the one thing that actually matters — that the seller described an architecture they do not have, or that customer data has been accessible for long enough that notification obligations may already exist.
+
+## Does this change the plan?
+
+Some findings do not move the price but do change what the first hundred days look like.
+
+If the platform cannot support the integration you have modelled without significant rework, that is a diligence finding even though nothing is exploitable. If there is exactly one person who understands the deployment pipeline and they are not staying, that is a security finding in every practical sense. If the roadmap assumes a multi-tenant capability the current isolation model cannot deliver safely, the committee needs to know before the synergy case is signed off.
+
+These rarely appear in security reports because they are not vulnerabilities. They are the things that determine whether the plan survives contact with the asset.
+
+## What does it cost to fix?
+
+An estimate, in money and elapsed time, with an ordering.
+
+This is the part most often missing and the easiest to supply. We already know what the remediation involves, because we found it and we have fixed things like it before. Withholding that and leaving the buyer to obtain a second opinion on the cost of the first opinion serves nobody.
+
+An estimate that is wrong by thirty percent is enormously more useful than no estimate, because it lets the number be built into the deal. "Critical: unauthenticated admin access" with no cost attached becomes a negotiation about vibes. "Critical: unauthenticated admin access, roughly three engineer-weeks, can be done before close" becomes a line item.
+
+## What the annex is for
+
+None of this argues for less technical depth. The full detail — methodology, evidence, reproduction steps, severity reasoning — should all be there, because the target's engineers need it to act and because a serious buyer's own technical people will want to check the work.
+
+It just should not be the first thing the committee reads. Two pages that answer the three questions, then everything else behind it for the people who need it.
+
+## The test
+
+Before a report goes out we ask whether a partner could read the first two pages, walk into a meeting, and defend a position on the deal. If the answer is no, the report is not finished, however thorough the testing was.
+
+
+## A current ISO 27001 certificate is not evidence that you are secure
+
+URL: https://polkaspots.com/security-due-diligence/blog/a-current-certificate-is-not-security/
+Published: 2026-07-16
+Tags: due-diligence, iso-27001, compliance, private-equity, m-and-a
+
+A recurring moment in deal work: the data room contains a current ISO 27001 certificate, the buyer treats the security question as closed, and we find something in the first afternoon that would have failed any reasonable definition of secure.
+
+This is not a story about fraudulent certificates. The certificates are usually real, the audits usually happened, and the auditors usually did their job. The problem is that the certificate answers a question the buyer is not asking.
+
+## What the certificate actually attests
+
+Management-system certifications attest that you have a system for managing information security: that policies exist, that risks have been assessed and recorded, that controls have been selected with documented justification, and that the whole thing is reviewed on a cycle.
+
+Every one of those is about process. None of them is a statement that a specific system, on a specific day, is not exploitable.
+
+You can hold a valid certificate with a documented risk acceptance for the exact weakness that ends up breaching you. The acceptance is part of the system working as designed. Someone identified the risk, someone with authority accepted it, and it was recorded. The auditor's job was to check that this happened, not to overrule the judgement.
+
+Scope compounds this. Certification scope is a defined boundary, and it is often narrower than the business. A certificate covering the primary SaaS platform tells you nothing about the acquired subsidiary still running its own stack, or the internal tooling, or the staging environment that happens to hold a copy of production data.
+
+## What we find anyway
+
+The fintech example we describe on the services page is representative rather than unusual: current certification, production database reachable from the public internet with default credentials. Nothing about the certification process was designed to catch that. No control in the applicable annex says "someone will attempt to connect to your database from outside".
+
+The general pattern is that certification measures whether you have a system for thinking about security, and offensive testing measures what happens when someone attacks you. Both are worth having. They are not substitutes, and the failure mode in deal work is treating the cheaper one as though it covers the other.
+
+## What this means for diligence
+
+If you are buying, the certificate is a useful signal about organisational maturity. A company that has been through certification usually has someone accountable, some documentation, and some cadence. That is genuinely worth knowing.
+
+It is not a substitute for someone attempting to break in. The two questions we would want answered before signing are what the certification scope actually covers, and what a competent attacker finds in the first week — because those are the two things a certificate cannot tell you and both are cheap to establish.
+
+The uncomfortable version, which we say to buyers regularly: if the seller's security evidence consists entirely of certificates, you have learned that they can pass an audit. You have not learned whether their production database is on the internet. Those are different findings and only one of them repriced a deal.
+
+
+## What two hours of testing actually buys you
+
+URL: https://polkaspots.com/security-due-diligence/blog/what-two-hours-of-testing-buys-you/
+Published: 2026-06-24
+Tags: penetration-testing, flash-review, methodology, attack-surface
+
+We sell a £500, two-hour security review with a refund if we find nothing worth worrying about. The reasonable first reaction is that two hours is not enough time to do anything useful. That is half right, and the half that is wrong is worth explaining.
+
+## What two hours is not
+
+It is not a penetration test. A real engagement against a moderately complex application is one to two weeks, because most of that time goes into understanding the system well enough to reason about its business logic — who is allowed to do what, which of those rules are enforced server-side, and where the model breaks under an unexpected sequence of requests. You cannot compress that.
+
+It is not coverage. We are not going to touch every endpoint, every role, or every integration. Anyone offering you comprehensive assurance in two hours is selling you a scan with a nicer cover page.
+
+It is not a compliance artefact. It will not satisfy an auditor and it is not designed to.
+
+## What it is
+
+Two hours is enough time to answer one specific question honestly: **if a competent attacker spent an afternoon on you, would they get somewhere?**
+
+That question is answerable because attackers are not comprehensive either. They are opportunistic. They look at what is exposed, they look for the cheap wins, and they escalate from whatever they find first. The first two hours of a real attack and the first two hours of our review look substantially alike.
+
+In practice that time goes into enumeration and the fast paths. What is actually exposed, versus what you think is exposed. Subdomains nobody remembers owning. Staging environments reachable from the internet. Admin interfaces at predictable paths. Object references that increment. Authentication that is checked in the UI and not on the API. Credentials and keys in places they should not be — public repositories, JavaScript bundles, error responses.
+
+None of that is clever. That is the point. The things that get companies breached are usually not clever.
+
+## Why the constraint helps
+
+A fixed two hours forces prioritisation in a way an open-ended engagement does not. There is no time to write up theoretical risk, so we do not. There is no time to pad a report to justify a day rate, so we do not. You get what we actually found, what it means, and what to do about it, because that is all there is time to produce.
+
+The refund does the same job from the other direction. If your public surface is genuinely tight, we do not get paid, which means we are not incentivised to dress up a low-severity finding as something it is not. That has happened and we refunded, and it was a better outcome than the alternative — you got a straight answer and we did not spend a client's money manufacturing concern.
+
+## When you want the longer engagement instead
+
+If the answer you need is "are we secure" rather than "is anything obviously wrong," you want the full engagement. Specifically, go longer when the risk is concentrated in business logic rather than configuration: multi-tenant systems where the interesting question is cross-tenant isolation, anything moving money, anything with a complex permissions model, anything where the failure mode is regulatory rather than embarrassing.
+
+Go longer, too, when you are about to buy the company. A two-hour read on an acquisition target is a useful smoke test and a bad basis for a decision with eight figures attached.
+
+## The honest summary
+
+Two hours buys you a fast, real answer to a narrow question, delivered by someone who has been doing this for twenty years, with no obligation to buy anything else. It does not buy you assurance. We would rather say that plainly than let you infer otherwise and be disappointed later.
+
+
+## Supplier evidence is a cross-company problem
+
+URL: https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/
+Published: 2026-08-12
+Tags: sbom, supply-chain, cra, supplier-management, attestation
+
+There are two problems that get called "SBOM" and they are not the same problem.
+
+The first is: *I have a firmware image and I want to know what is inside it.* This is a technical problem, it is well understood, and there are capable vendors solving it. Binary composition analysis works. If you hold the artefact, you can find out a great deal about it without anyone's cooperation.
+
+The second is: *I need current, structured, trustworthy component evidence from forty companies that do not work for me.* This is not a technical problem. It is a coordination problem wearing a technical costume, and the tooling built for the first problem does not touch it.
+
+We only work on the second one.
+
+## Why analysis does not close the gap
+
+Analysis tells you what is in the binary you have. It cannot tell you what changed in a supplier's next release, it cannot produce an attestation the supplier is willing to stand behind, and it cannot help at all where you never receive an artefact to analyse in the first place — which is common with subassemblies, licensed modules, and anything where the supplier ships you a black box.
+
+More fundamentally, an inferred component list is not the same artefact as a supplier's signed statement about their own product. When the question is "what did your supplier tell you, and when," a scan result is not the answer to that question. It is a useful cross-check on the answer.
+
+## Why the obvious solution does not scale
+
+The obvious solution is a portal. The manufacturer stands one up, invites their suppliers, and collects.
+
+This works at ten suppliers and degrades badly after that, for a reason that has nothing to do with the software. Every manufacturer builds their own portal. Every supplier then has an account in five portals, each with a different schema, a different questionnaire and a different review cycle. The supplier's cost scales with the number of customers, and the supplier is the party with no regulatory exposure and no incentive to absorb that cost.
+
+What happens next is predictable. Suppliers deprioritise it. Responses get thin, then late, then stop. The manufacturer, who does carry the exposure, is left chasing.
+
+## The shape of the answer
+
+The pattern that resolves this is not new, and it is not ours. E-invoicing went through the same thing: many-to-many relationships, per-partner integration cost growing quadratically, and eventually a neutral network in the middle that everyone connects to once.
+
+Applied here, it means one attestation from the supplier, published once, shared per customer under the supplier's control. The supplier's cost stops scaling with customer count. The manufacturer gets structured, scored, current evidence. Neither party has to trust a competitor with their component data, which is the reason this has to sit with someone neutral rather than inside an analysis vendor's platform.
+
+That neutrality is load-bearing. A supplier will not attest deeply into a system owned by a company that also sells analysis to their customers, and it is not irrational of them to refuse.
+
+## The part we do not know yet
+
+Everything above is a thesis, not a result. The load-bearing assumption is that suppliers will publish into a neutral exchange when they will not fill in five portals. We think that is true. We have not proved it.
+
+That is why we are running paid pilots by hand before building a platform, and why the supplier side is free permanently — charging the side that creates the network value is how you kill the network before it exists. If it turns out suppliers are content to keep emailing PDFs, we would rather learn that from thirty conversations than from a year of engineering.
+
+If you are a supplier being asked for the same evidence by several customers, we would genuinely like to hear how you are handling it now — including if the answer is that you are not.
+
+
+## Most SBOMs we see are not usable. Here is what is missing.
+
+URL: https://polkaspots.com/forgecra/blog/what-makes-an-sbom-usable/
+Published: 2026-07-22
+Tags: sbom, cyclonedx, spdx, cisa-minimum-elements, supply-chain, cra
+
+There is a gap between having an SBOM and having evidence. Plenty of organisations have crossed the first line and think they have crossed the second.
+
+The test we apply is simple. If a customer, an auditor, or a market surveillance authority asked you a specific question about a component in a product you shipped eighteen months ago, could you answer it from what you hold? Most of the SBOMs we look at fail that test, and they fail it in a small number of repeated ways.
+
+## The baseline: CISA minimum elements
+
+The US CISA minimum elements remain the most widely used shared floor, and they are a reasonable scoring baseline even for EU work. They ask for supplier name, component name, version of the component, other unique identifiers, dependency relationship, author of the SBOM data, and a timestamp.
+
+That list looks unambitious until you check real files against it.
+
+## Where they actually fail
+
+**Version precision.** "1.2" is not a version. "1.2.x", "latest", and "current release" are not versions. If the string does not resolve to exactly one artefact, you cannot answer whether you are affected when an advisory lands, which is the entire point.
+
+**No unique identifiers.** A component name and a version, with no purl and no CPE, means matching against vulnerability data is string comparison and guesswork. This is the single highest-value field to fix and the most commonly absent.
+
+**Flat component lists with no relationships.** A list tells you what is present. It does not tell you what depends on what, which means it cannot tell you whether a vulnerable library is reachable, bundled, or vendored three levels down. The CRA language about top-level dependencies is a floor, not a target.
+
+**No author or timestamp.** An SBOM with no statement of who generated it and when is not evidence of anything. It cannot be shown to correspond to a particular build, and it cannot be shown to be current.
+
+**Generated once, at the wrong time.** An SBOM produced by hand at the point someone asked for it describes a moment that has already passed. Component sets change. If the document is not regenerated when the build changes, it decays from the day it is written.
+
+## Format is the easy part
+
+CycloneDX and SPDX are both fine. They are both commonly used and machine-readable, which is what the regulation asks for, and converting between them for most practical purposes is tractable.
+
+We mention this because format is where conversations often start and it is rarely where the problem is. A well-populated CycloneDX file and a well-populated SPDX file are both useful. A sparse one in either format is not. Arguing about the container while the contents are thin is a way of feeling productive.
+
+## Scoring, not pass or fail
+
+We score submissions rather than accepting or rejecting them, because a binary gate produces the wrong behaviour on both sides. A supplier who fails a gate stops engaging. A manufacturer with a stack of "pass" results learns nothing about which of their suppliers are actually reliable.
+
+A score tells a manufacturer where to spend attention: these four suppliers are producing evidence you can act on, these eleven are producing files that will not help you when an advisory lands. That is a workable prioritisation. "Fourteen of fifteen suppliers responded" is not.
+
+## What this means if you are a supplier
+
+The good news is that most of the failures above are cheap to fix once, in your build pipeline, and then they stay fixed. Generating from the build rather than by hand solves the timestamp, author and precision problems simultaneously. Adding purls is usually a configuration change rather than a project.
+
+The reason this is worth doing is not that a regulator will ask you directly. In many cases they will not — your customers will, repeatedly, in their own formats, and the quality of what you send determines how many follow-up questionnaires you receive.
+
+
+## The CRA timeline: what actually applies, and when
+
+URL: https://polkaspots.com/forgecra/blog/cra-timeline-what-applies-when/
+Published: 2026-07-01
+Tags: cra, cyber-resilience-act, sbom, compliance-timing, eu
+
+The Cyber Resilience Act (Regulation (EU) 2024/2847) entered into force in December 2024, and its obligations arrive in stages. Most of the confusion we hear in conversations comes from collapsing those stages into a single deadline. They are not the same, they do not require the same work, and conflating them is how you end up buying the wrong thing.
+
+Here is the sequence as we read it. This is our reading for planning purposes, not legal advice.
+
+## 11 September 2026 — reporting obligations
+
+Article 14 reporting applies from this date. If you become aware of an actively exploited vulnerability in your product, or a severe incident affecting its security, you notify. The clocks are short: an early warning within 24 hours, a fuller notification within 72 hours, and a final report within 14 days.
+
+Two things follow from that.
+
+First, this obligation is **event-triggered**. Nothing happens on 11 September 2026 unless something happens to you. There is no filing, no submission, no certificate. If you ship nothing and nothing is exploited, the date passes without incident.
+
+Second, satisfying it is largely an operational and organisational problem, not a tooling one. You need someone who owns the clock, a decision path for what counts as reportable, and a route to submit. A spreadsheet and a named person will get most mid-market manufacturers through it.
+
+This is why we do not sell readiness for this date. It is a real obligation, it is worth preparing for, and it is not where the hard work is.
+
+## Late 2026 to mid 2027 — harmonised standards
+
+As of August 2026, **no harmonised standards for the CRA have been cited in the Official Journal**. That matters more than it sounds.
+
+Until standards are cited, there is no presumption of conformity. You cannot point at a standard, demonstrate you followed it, and be presumed compliant with the corresponding essential requirement. You are left interpreting Annex I directly and documenting your reasoning.
+
+The practical consequence is that "we're waiting for the standards" is a coherent position for some decisions and an expensive one for others. Waiting to finalise your conformity assessment route is reasonable. Waiting to start collecting component evidence from forty suppliers is not, because that work takes months regardless of what the standards eventually say.
+
+## 11 December 2027 — full obligations
+
+This is the date that actually changes what you have to build.
+
+From here, products with digital elements placed on the EU market have to meet the essential requirements in Annex I. That includes the security properties themselves, and — the part most people underestimate — the vulnerability handling requirements in Annex I Part II. Those require, among other things, that manufacturers identify and document the components in their products, including by drawing up a software bill of materials in a commonly used machine-readable format covering at the very least the top-level dependencies.
+
+You also need technical documentation that demonstrates conformity, and you need to keep it current for the support period.
+
+There is **no size exemption**. Microenterprises and SMEs get some procedural relief in places, but the essential requirements apply to a fifteen-person hardware company the same way they apply to a large one.
+
+## 2028 and beyond
+
+Support-period duties continue, market surveillance authorities become active, and the question stops being "did you produce the documentation" and becomes "is it still true". Continuous evidence is a different operational problem from one-time documentation, and most of the tooling conversation today has not caught up with it.
+
+## Why we describe it this way
+
+The commercial temptation is to point at September 2026, describe it as a cliff, and sell against the fear. We are not going to do that, for two reasons.
+
+The first is that it is not accurate. It is an event-triggered reporting duty, not a filing deadline.
+
+The second is that it produces bad decisions. If you buy tooling in a panic in August 2026 to satisfy a reporting obligation, you will very likely buy something that does not help you at all with the December 2027 requirement to evidence what is actually inside your products — which is the harder problem, takes longer, and depends on companies you do not control.
+
+Start on the supplier evidence now. Not because a deadline is close, but because the work is slow and the deadline is fixed in law.
