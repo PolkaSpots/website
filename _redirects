@@ -1,15 +1,16 @@
-# Cloudflare Pages redirects.
+# Cloudflare Pages redirects. Rules are evaluated top-down and the FIRST match
+# wins, so every exact path must sit above the catch-all splat below it.
 # 301 so link equity and any existing rankings move to the SEO paths.
 
-# Original site
+# --- Original site -----------------------------------------------------
 /flash-review.html            /flash-security-review/                     301
 /services.html                /security-due-diligence/                    301
 /contact.html                 /contact/                                   301
 /index-personal.html          /                                           301
 
-# ForgeCRA: brand paths -> keyword cluster
+# --- ForgeCRA: exact paths (must precede the splat) --------------------
 /forgecra                     /cra-sbom-attestation/                      301
-/forgecra/*                   /cra-sbom-attestation/:splat               301
+/forgecra/                    /cra-sbom-attestation/                      301
 /forgecra/manufacturers       /cra-sbom-attestation/for-manufacturers/    301
 /forgecra/manufacturers.html  /cra-sbom-attestation/for-manufacturers/    301
 /forgecra/suppliers           /cra-sbom-attestation/for-suppliers/        301
@@ -18,7 +19,11 @@
 /forgecra/sbom-for-suppliers/ /cra-sbom-attestation/for-suppliers/        301
 /forgecra/blog/*              /cra-sbom-attestation/blog/:splat           301
 
-# Convenience aliases people and agents guess at
+# Anything else under the old root goes to the router rather than a
+# constructed path that would soft-404 onto the homepage.
+/forgecra/*                   /cra-sbom-attestation/                      301
+
+# --- Convenience aliases people and agents guess at --------------------
 /blog                         /security-due-diligence/blog/               302
 /cra                          /cra-sbom-attestation/                      302
 /sbom                         /cra-sbom-attestation/                      302
