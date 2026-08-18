@@ -6,137 +6,164 @@ User-agent: *
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 # Search and AI/answer engines — explicitly allowed
 User-agent: GPTBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Claude-SearchBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Googlebot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: CCBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: cohere-ai
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Applebot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Amazonbot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Bytespider
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: YouBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: DuckAssistBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: MistralAI-User
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: meta-externalagent
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: facebookexternalhit
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: LinkedInBot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Twitterbot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 User-agent: Slackbot
 Allow: /
 Disallow: /tools/
 Disallow: /content/
+Disallow: /api/
 
 # SEO scrapers with no user-facing product — declined
 User-agent: AhrefsBot

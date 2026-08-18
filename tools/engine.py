@@ -60,7 +60,26 @@ ANALYTICS = """
     });
     document.addEventListener('submit',function(e){
       var f=e.target.closest('form[data-goal]');
-      if(f){plausible(f.getAttribute('data-goal'))}
+      if(!f)return;
+      plausible(f.getAttribute('data-goal'));
+      if(!f.dataset.endpoint)return;
+      e.preventDefault();
+      var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
+      if(b){b.disabled=true;b.textContent='SENDING…'}
+      var d=Object.fromEntries(new FormData(f));
+      d._subject=f.dataset.subject||document.title;
+      fetch(f.dataset.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+        .then(function(r){
+          if(!r.ok)throw 0;
+          f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
+        })
+        .catch(function(){
+          // Endpoint unconfigured or unreachable: fall back to the mail client
+          // rather than losing the submission.
+          if(b){b.disabled=false;b.textContent=t}
+          f.removeAttribute('data-endpoint');
+          f.submit();
+        });
     },true);
   </script>"""
 
@@ -382,7 +401,7 @@ BAD_BOTS = ["AhrefsBot", "SemrushBot", "MJ12bot", "DotBot", "BLEXBot", "Majestic
 # Build sources are deployed alongside the site (Pages ships the whole repo),
 # so keep them out of the index: the raw post markdown would otherwise be a
 # duplicate of every published article.
-NO_CRAWL = ["/tools/", "/content/"]
+NO_CRAWL = ["/tools/", "/content/", "/api/"]
 
 
 def write_robots():

@@ -33,7 +33,26 @@
     });
     document.addEventListener('submit',function(e){
       var f=e.target.closest('form[data-goal]');
-      if(f){plausible(f.getAttribute('data-goal'))}
+      if(!f)return;
+      plausible(f.getAttribute('data-goal'));
+      if(!f.dataset.endpoint)return;
+      e.preventDefault();
+      var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
+      if(b){b.disabled=true;b.textContent='SENDING…'}
+      var d=Object.fromEntries(new FormData(f));
+      d._subject=f.dataset.subject||document.title;
+      fetch(f.dataset.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+        .then(function(r){
+          if(!r.ok)throw 0;
+          f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
+        })
+        .catch(function(){
+          // Endpoint unconfigured or unreachable: fall back to the mail client
+          // rather than losing the submission.
+          if(b){b.disabled=false;b.textContent=t}
+          f.removeAttribute('data-endpoint');
+          f.submit();
+        });
     },true);
   </script>
   <script type="application/ld+json">
@@ -227,7 +246,9 @@
           <p class="statement statement--sm">Tell us your formats and your customers.</p>
           <div>
             <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
-            <form id="cohort-form" action="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain" data-goal="form_submit">
+            <form id="cohort-form" action="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain"
+                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="ForgeCRA supplier cohort">
+              <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
                 <label class="field"><span>Work email</span><input type="email" name="email" required></label>

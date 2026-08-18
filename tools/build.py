@@ -488,7 +488,9 @@ emit(MAKERS,
                  (Spec §3 sanctions the mailto fallback). For notification + spreadsheet set
                  action="https://formspree.io/f/YOUR_ID" method="POST" and delete enctype.
                  Field names are the Spec §4.5 set. -->
-            <form action="mailto:{MAIL}?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain" data-goal="form_submit">
+            <form action="mailto:{MAIL}?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain"
+                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="ForgeCRA enquiry — manufacturer">
+              <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
                 <label class="field"><span>Work email</span><input type="email" name="email" required></label>
@@ -608,7 +610,9 @@ emit(SUPPLIERS,
           <p class="statement statement--sm">Tell us your formats and your customers.</p>
           <div>
             <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
-            <form id="cohort-form" action="mailto:{MAIL}?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain" data-goal="form_submit">
+            <form id="cohort-form" action="mailto:{MAIL}?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain"
+                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="ForgeCRA supplier cohort">
+              <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
                 <label class="field"><span>Work email</span><input type="email" name="email" required></label>
@@ -670,7 +674,9 @@ emit(URLS["contact"],
             <!-- Posts via mailto + enctype="text/plain": no backend, works with JS disabled.
                  For a hosted handler set action="https://formspree.io/f/YOUR_ID" method="POST"
                  and delete enctype — the field names already match. -->
-            <form action="mailto:{MAIL}?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain" data-goal="form_submit">
+            <form action="mailto:{MAIL}?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain"
+                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="Enquiry via polkaspots.com">
+              <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <label class="field"><span>Name</span><input type="text" name="name" required></label>
               <label class="field" style="margin-top: 24px;"><span>Email</span><input type="email" name="email" required></label>
               <label class="field" style="margin-top: 24px;"><span>Message</span><textarea name="message" rows="6" required></textarea></label>
