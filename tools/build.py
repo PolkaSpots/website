@@ -380,6 +380,7 @@ emit(URLS["forgecra"],
           </article>
         </div>
         <p class="router-note">Two different offers. Choose the one that matches your role.</p>
+        <p class="router-note"><a class="quiet" href="{URLS['cra_blog']}">Writing on the CRA, SBOM quality and supplier evidence →</a></p>
       </div>
     </section>
   </main>

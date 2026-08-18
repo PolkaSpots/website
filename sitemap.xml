@@ -7,25 +7,25 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://polkaspots.com/flash-security-review/</loc>
-    <lastmod>2026-08-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://polkaspots.com/forgecra/</loc>
+    <loc>https://polkaspots.com/cra-sbom-attestation/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://polkaspots.com/forgecra/cra-supplier-sbom-attestation/</loc>
+    <loc>https://polkaspots.com/cra-sbom-attestation/for-manufacturers/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://polkaspots.com/forgecra/sbom-for-suppliers/</loc>
+    <loc>https://polkaspots.com/cra-sbom-attestation/for-suppliers/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://polkaspots.com/flash-security-review/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -37,7 +37,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://polkaspots.com/forgecra/blog/</loc>
+    <loc>https://polkaspots.com/cra-sbom-attestation/blog/</loc>
     <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -49,19 +49,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://polkaspots.com/forgecra/blog/cra-timeline-what-applies-when/</loc>
+    <loc>https://polkaspots.com/cra-sbom-attestation/blog/cra-timeline-what-applies-when/</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://polkaspots.com/forgecra/blog/supplier-evidence-is-a-cross-company-problem/</loc>
+    <loc>https://polkaspots.com/cra-sbom-attestation/blog/supplier-evidence-is-a-cross-company-problem/</loc>
     <lastmod>2026-08-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://polkaspots.com/forgecra/blog/what-makes-an-sbom-usable/</loc>
+    <loc>https://polkaspots.com/cra-sbom-attestation/blog/what-makes-an-sbom-usable/</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

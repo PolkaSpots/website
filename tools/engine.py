@@ -24,26 +24,30 @@ COMPANY_NO = "05508105"
 FONTS = ("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700"
          "&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap")
 
-# key, url, nav label
-NAV = [
-    ("home",      "/",                                     "Home"),
-    ("flash",     "/flash-security-review/",               "Flash Review"),
-    ("pen",       "/security-due-diligence/",              "Pen Testing"),
-    ("forgecra",  "/forgecra/",                            "ForgeCRA"),
-    ("contact",   "/contact/",                             "Contact"),
-]
-
 URLS = {
     "home":        "/",
     "flash":       "/flash-security-review/",
     "pen":         "/security-due-diligence/",
-    "forgecra":    "/forgecra/",
-    "makers":      "/forgecra/cra-supplier-sbom-attestation/",
-    "suppliers":   "/forgecra/sbom-for-suppliers/",
+    # Keyword root: the paid-search terms are "CRA SBOM", "CRA supplier SBOM"
+    # and "SBOM attestation" (Landing Page Spec §6). The brand has no search
+    # volume yet, so it lives in the title and copy, not the path.
+    "forgecra":    "/cra-sbom-attestation/",
+    "makers":      "/cra-sbom-attestation/for-manufacturers/",
+    "suppliers":   "/cra-sbom-attestation/for-suppliers/",
     "contact":     "/contact/",
     "sec_blog":    "/security-due-diligence/blog/",
-    "cra_blog":    "/forgecra/blog/",
+    "cra_blog":    "/cra-sbom-attestation/blog/",
 }
+
+# key, nav label — URLs come from URLS so the two can never drift apart
+NAV = [
+    ("home",      URLS["home"],     "Home"),
+    ("flash",     URLS["flash"],    "Flash Review"),
+    ("pen",       URLS["pen"],      "Pen Testing"),
+    ("forgecra",  URLS["forgecra"], "ForgeCRA"),
+    ("contact",   URLS["contact"],  "Contact"),
+]
+
 
 # Registry filled by emit(); drives sitemap, llms.txt and the link audit.
 PAGES = []
