@@ -4,85 +4,139 @@
 
 User-agent: *
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 # Search and AI/answer engines — explicitly allowed
 User-agent: GPTBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Claude-User
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Googlebot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Bingbot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: CCBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Applebot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: YouBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: DuckAssistBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: MistralAI-User
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: LinkedInBot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 User-agent: Slackbot
 Allow: /
+Disallow: /tools/
+Disallow: /content/
 
 # SEO scrapers with no user-facing product — declined
 User-agent: AhrefsBot

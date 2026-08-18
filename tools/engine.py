@@ -328,14 +328,21 @@ BAD_BOTS = ["AhrefsBot", "SemrushBot", "MJ12bot", "DotBot", "BLEXBot", "Majestic
             "DataForSeoBot", "PetalBot", "SeekportBot", "serpstatbot"]
 
 
+# Build sources are deployed alongside the site (Pages ships the whole repo),
+# so keep them out of the index: the raw post markdown would otherwise be a
+# duplicate of every published article.
+NO_CRAWL = ["/tools/", "/content/"]
+
+
 def write_robots():
+    deny = [f"Disallow: {d}" for d in NO_CRAWL]
     parts = ["# polkaspots.com — PolkaSpots Ltd, London, est. 2005",
              "# Offensive security testing and ForgeCRA supplier SBOM attestation.",
              "# Search and AI/LLM crawlers are welcome on all public content.",
-             "", "User-agent: *", "Allow: /", ""]
+             "", "User-agent: *", "Allow: /", *deny, ""]
     parts.append("# Search and AI/answer engines — explicitly allowed")
     for a in AI_AGENTS:
-        parts += [f"User-agent: {a}", "Allow: /", ""]
+        parts += [f"User-agent: {a}", "Allow: /", *deny, ""]
     parts.append("# SEO scrapers with no user-facing product — declined")
     for a in BAD_BOTS:
         parts += [f"User-agent: {a}", "Disallow: /", ""]
