@@ -52,6 +52,12 @@ NAV = [
 # Registry filled by emit(); drives sitemap, llms.txt and the link audit.
 PAGES = []
 
+# Sitemap lastmod for pages that are not posts. Set by build.py from the
+# newest post date. It must be derived from content, never from the clock:
+# the deploy verifies a fresh build matches what was committed, so a
+# date-dependent build would start failing the day after every commit.
+DEFAULT_LASTMOD = None
+
 
 # --------------------------------------------------------------- markdown
 def md_inline(t):
@@ -204,7 +210,7 @@ def footer(forgecra=False):
       </div>
     </div>
     <div class="footer-base">
-      <p>&copy; 2005&ndash;{datetime.now().year} {COMPANY}. Registered in England &amp; Wales, company number {COMPANY_NO}. London.</p>{extra}
+      <p>&copy; 2005&ndash;{(DEFAULT_LASTMOD or "2026")[:4]} {COMPANY}. Registered in England &amp; Wales, company number {COMPANY_NO}. London.</p>{extra}
     </div>
   </footer>
 </body>
@@ -293,7 +299,7 @@ def emit(url, title, desc, body, active, *, ld=None, forgecra=False,
     if not noindex:
         PAGES.append({"url": url, "title": title, "desc": desc,
                       "changefreq": changefreq, "priority": priority,
-                      "lastmod": lastmod or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+                      "lastmod": lastmod or DEFAULT_LASTMOD or "2026-08-18",
                       "llms": llms})
     return path
 

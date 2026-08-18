@@ -24,6 +24,11 @@ ANALYTICS = """
 sec_posts = load_posts("security")
 cra_posts = load_posts("forgecra")
 
+# Deterministic sitemap: pages inherit the newest post date rather than today,
+# so two builds of the same commit are byte-identical.
+import engine
+engine.DEFAULT_LASTMOD = max(p["date"] for p in sec_posts + cra_posts)
+
 
 def feed_head(path, title):
     return f'\n  <link rel="alternate" type="application/rss+xml" title="{title}" href="{path}">'
@@ -96,7 +101,7 @@ emit("/",
 {sec_head('Who we are', '01')}
         <div class="split">
           <p class="statement">PolkaSpots Ltd, London, 2005. <a href="https://simonmorley.co.uk">Simon Morley's</a> vehicle for twenty years — public WiFi, network SaaS, exchange CTO, kernel research.</p>
-          <p class="body" style="padding-top: 6px;">We know where engineers cut corners because we've been the ones doing it.</p>
+          <p class="body" style="padding-top: 6px;">We know where engineers cut corners because we've spent two decades running the teams working to the same deadlines.</p>
         </div>
       </div>
     </section>
