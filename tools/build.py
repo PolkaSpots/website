@@ -6,20 +6,7 @@ from engine import *  # noqa
 
 MAKERS, SUPPLIERS = URLS["makers"], URLS["suppliers"]
 
-BOOK_A = ("mailto:security@polkaspots.com?subject=ForgeCRA%20pilot%20call%20%E2%80%94%20manufacturer"
-          "&amp;body=Company%3A%20%0ARole%3A%20%0AApprox%20number%20of%20upstream%20suppliers%3A%20"
-          "%0ABiggest%20supplier-evidence%20pain%3A%20%0A%0AA%20couple%20of%20times%20that%20suit"
-          "%20for%20a%2030-minute%20call%3A%20%0A")
-BOOK_B = ("mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20call"
-          "&amp;body=Company%3A%20%0ARole%3A%20%0ANumber%20of%20manufacturer%20customers%3A%20"
-          "%0ACurrent%20SBOM%20format%3A%20%0A%0AA%20couple%20of%20times%20that%20suit%20for%20a"
-          "%2020-minute%20call%3A%20%0A")
 STRIPE = "https://buy.stripe.com/eVq5km3u2bcEgLx77KgrS00"
-ANALYTICS = """
-  <!-- ANALYTICS-SWAP: separate goals per page are required (Spec §3):
-       page_view, cta_click, form_submit, call_booked.
-  <script defer data-domain="polkaspots.com" src="https://plausible.io/js/script.js"></script>
-  -->"""
 
 sec_posts = load_posts("security")
 cra_posts = load_posts("forgecra")
@@ -441,7 +428,7 @@ emit(MAKERS,
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">ForgeCRA collects, quality-scores, and attests SBOMs from your suppliers — so your Cyber Resilience Act evidence chain doesn't live in your inbox.</p>
           <!-- CALENDAR-SWAP: replace href with the Cal.com/Calendly booking link. -->
-          <a class="act act--ink act--lg plausible-event-name=cta_click" href="{BOOK_A}">BOOK A 30-MINUTE PILOT CALL</a>
+          <a class="act act--ink act--lg plausible-event-name={BOOK_GOAL}" href="{BOOK_30}">BOOK A 30-MINUTE PILOT CALL</a>
         </div>
       </div>
     </section>
@@ -476,7 +463,7 @@ emit(MAKERS,
           <div>
             <p>You get the full attestation workflow run for you; you shape the product; founding pricing locked for year one.</p>
             <!-- CALENDAR-SWAP -->
-            <a class="act act--lg plausible-event-name=cta_click" href="{BOOK_A}">BOOK A 30-MINUTE PILOT CALL</a>
+            <a class="act act--lg plausible-event-name={BOOK_GOAL}" href="{BOOK_30}">BOOK A 30-MINUTE PILOT CALL</a>
           </div>
         </div>
       </div>
@@ -527,7 +514,7 @@ emit(MAKERS,
     </section>
   </main>
 """,
-     "forgecra", priority="0.9", changefreq="weekly", forgecra=True, extra_head=ANALYTICS,
+     "forgecra", priority="0.9", changefreq="weekly", forgecra=True,
      ld=jsonld(ORG,
                breadcrumbs([("Home", "/"), ("ForgeCRA", URLS["forgecra"]), ("For manufacturers", MAKERS)]),
                {"@type": "FAQPage", "mainEntity": [
@@ -645,7 +632,7 @@ emit(SUPPLIERS,
               <button type="submit" class="act act--ink act--lg plausible-event-name=form_submit" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
             </form>
             <!-- CALENDAR-SWAP: secondary CTA. Replace with the 20-minute booking link. -->
-            <p class="form-note"><a class="plausible-event-name=cta_click" href="{BOOK_B}">Or book a 20-minute call →</a></p>
+            <p class="form-note"><a class="plausible-event-name={BOOK_GOAL}" href="{BOOK_20}">Or book a 20-minute call →</a></p>
             <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="{MAKERS}">This is your page →</a></p>
           </div>
         </div>
@@ -653,7 +640,7 @@ emit(SUPPLIERS,
     </section>
   </main>
 """,
-     "forgecra", priority="0.9", changefreq="weekly", forgecra=True, extra_head=ANALYTICS,
+     "forgecra", priority="0.9", changefreq="weekly", forgecra=True,
      ld=jsonld(ORG,
                breadcrumbs([("Home", "/"), ("ForgeCRA", URLS["forgecra"]), ("For suppliers", SUPPLIERS)]),
                {"@type": "Service", "name": "ForgeCRA supplier SBOM publishing",

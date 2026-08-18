@@ -39,6 +39,39 @@ URLS = {
     "cra_blog":    "/cra-sbom-attestation/blog/",
 }
 
+# --------------------------------------------------------------- analytics & booking
+# Plausible is cookieless, so no consent wall is needed (Landing Page Spec §3).
+# "tagged-events" is required for the class-based goals on the CTAs; without it
+# the plausible-event-name classes are inert.
+PLAUSIBLE_DOMAIN = "polkaspots.com"
+PLAUSIBLE_SRC = "https://plausible.io/js/script.tagged-events.outbound-links.js"
+
+# Booking links. Set these to the Cal.com event URLs and every CTA across the
+# site switches from the mailto fallback to the calendar in one edit.
+# Spec §8 requires the calendar embedded and tested end-to-end before spend.
+CAL_30 = ""   # e.g. "https://cal.com/simonmorley/forgecra-pilot"   (manufacturers)
+CAL_20 = ""   # e.g. "https://cal.com/simonmorley/forgecra-supplier" (suppliers)
+
+MAILTO_30 = ("mailto:security@polkaspots.com?subject=ForgeCRA%20pilot%20call%20%E2%80%94%20manufacturer"
+             "&amp;body=Company%3A%20%0ARole%3A%20%0AApprox%20number%20of%20upstream%20suppliers%3A%20"
+             "%0ABiggest%20supplier-evidence%20pain%3A%20%0A%0AA%20couple%20of%20times%20that%20suit"
+             "%20for%20a%2030-minute%20call%3A%20%0A")
+MAILTO_20 = ("mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20call"
+             "&amp;body=Company%3A%20%0ARole%3A%20%0ANumber%20of%20manufacturer%20customers%3A%20"
+             "%0ACurrent%20SBOM%20format%3A%20%0A%0AA%20couple%20of%20times%20that%20suit%20for%20a"
+             "%2020-minute%20call%3A%20%0A")
+
+BOOK_30 = CAL_30 or MAILTO_30
+BOOK_20 = CAL_20 or MAILTO_20
+
+# A real calendar can confirm a booking; a mailto cannot. Only tag the CTA as
+# call_booked once it actually leads to a calendar.
+BOOK_GOAL = "call_booked" if CAL_30 else "cta_click"
+
+ANALYTICS = f'''
+  <script defer data-domain="{PLAUSIBLE_DOMAIN}" src="{PLAUSIBLE_SRC}"></script>'''
+
+
 # key, nav label — URLs come from URLS so the two can never drift apart
 NAV = [
     ("home",      URLS["home"],     "Home"),
@@ -291,7 +324,7 @@ def emit(url, title, desc, body, active, *, ld=None, forgecra=False,
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="{FONTS}" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">{extra_head}
+  <link rel="stylesheet" href="/style.css">{ANALYTICS}{extra_head}
 {ld or ''}
 </head>
 <body>""" + masthead(active) + body + footer(forgecra)
