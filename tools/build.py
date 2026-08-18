@@ -83,7 +83,7 @@ emit("/",
             </div>
             <p class="card-body">Neutral network for collecting, scoring and attesting supplier SBOMs.</p>
             <div class="card-actions">
-              <a class="act act--ink" href="{MAKERS}">FOR MANUFACTURERS →</a>
+              <a class="act act--ink" href="{URLS['forgecra']}">FOR MANUFACTURERS →</a>
               <a class="quiet" href="{SUPPLIERS}">Suppliers publish here — free →</a>
             </div>
           </article>
@@ -344,86 +344,52 @@ emit(URLS["flash"],
                            "availability": "https://schema.org/InStock", "url": ORIGIN + URLS["flash"]}}))
 
 
-# ==================================================================== FORGECRA HUB
-latest_cra = "".join(
-    f'          <li><a href="{p["url"]}">{p["title"]}</a> <span class="post-date">{p["date"]}</span></li>'
-    for p in cra_posts[:3])
-
+# ==================================================================== FORGECRA ROUTER
+# Deliberately short. This page is a router, not a marketing page: headline,
+# one line, two equal-weight cards, one clarifying sentence. Nothing else.
 emit(URLS["forgecra"],
      "ForgeCRA — Supplier SBOM Attestation for the EU CRA",
-     "Neutral network for collecting, quality-scoring and attesting supplier SBOMs under the EU Cyber Resilience Act. Free for suppliers. Currently in validation.",
+     "Neutral network for supplier SBOM attestation under the EU Cyber Resilience Act. One offer for manufacturers, one for suppliers.",
      f"""
   <main>
     <section class="band band--hero">
       <div class="wrap">
-        <p class="eyebrow eyebrow--violet">ForgeCRA · A PolkaSpots product</p>
-        <h1 class="h1 h1--page">The evidence layer between manufacturers and their suppliers.</h1>
-        <p class="lede lede--page">The Cyber Resilience Act makes manufacturers responsible for component evidence they don't hold. ForgeCRA is the neutral network for collecting, quality-scoring and attesting supplier SBOMs — one attestation, shared with every customer who needs it.</p>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="wrap">
-{sec_head('Pick your side', '01')}
-        <div class="cards" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
-          <article class="card card--ink">
-            <div class="card-tags"><span class="tag tag--live">PAID PILOTS OPEN</span><span class="tag-meta">MANUFACTURERS</span></div>
-            <div>
-              <h2>You have to evidence your supply chain</h2>
-              <p class="card-tagline">CRA makes you responsible for evidence you don't control.</p>
-            </div>
-            <p class="card-body">We request structured SBOMs from your suppliers, chase them, score them against CRA and CISA minimum elements, and keep the attestation current.</p>
-            <div class="card-actions"><a class="act" href="{MAKERS}">FOR MANUFACTURERS →</a></div>
-          </article>
-          <article class="card">
-            <div class="card-tags"><span class="tag">FREE, PERMANENTLY</span><span class="tag-meta">SUPPLIERS</span></div>
-            <div>
-              <h2>You are being asked for the same SBOM five times</h2>
-              <p class="card-tagline">Publish once. Serve every customer.</p>
-            </div>
-            <p class="card-body">Attest one SBOM — signed, dated, quality-scored — and share it per customer. Updates propagate to everyone you've shared with.</p>
-            <div class="card-actions"><a class="act act--ink" href="{SUPPLIERS}">FOR SUPPLIERS →</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="band">
-      <div class="wrap">
-{sec_head('Where this is up to', '02')}
-        <div class="split">
-          <p class="statement">ForgeCRA is in Phase 0 validation. It is not a live platform, and we are not going to pretend otherwise.</p>
-          <div class="split-stack">
-            <p class="body">The only things on offer today are paid 90-day design-partner pilots for manufacturers, run by hand, and a free first cohort for suppliers. If the supply side doesn't want a neutral exchange, we would rather find that out now than build for a year first.</p>
-            <p class="body">Binary analysis of firmware you already hold is a solved problem with good vendors serving it. ForgeCRA is not that. It solves the cross-company collection, quality-scoring and continuous attestation problem, which nobody owns.</p>
-          </div>
-        </div>
+        <p class="eyebrow eyebrow--violet">A PolkaSpots product</p>
+        <h1 class="h1 h1--page">ForgeCRA</h1>
+        <p class="lede lede--page">Neutral network for supplier SBOM attestation under the EU Cyber Resilience Act.</p>
       </div>
     </section>
 
     <section class="band band--end">
       <div class="wrap">
-{sec_head('Writing', '03')}
-        <div class="split">
-          <p class="statement">Notes on CRA obligations, SBOM quality, and the supplier evidence problem.</p>
-          <div class="split-stack">
-            <ul class="post-mini">
-{latest_cra}
-            </ul>
-            <p><a class="quiet" href="{URLS['cra_blog']}">All CRA writing →</a></p>
-          </div>
+        <div class="cards" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+          <article class="card">
+            <div><h2>For manufacturers</h2></div>
+            <p class="card-body">CRA makes you responsible for evidence you don't control.</p>
+            <div class="card-actions">
+              <a class="act act--ink" href="{MAKERS}">CONTINUE →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div><h2>For suppliers</h2></div>
+            <p class="card-body">Publish once. Serve every customer.</p>
+            <div class="card-actions">
+              <a class="act act--ink" href="{SUPPLIERS}">CONTINUE →</a>
+            </div>
+          </article>
         </div>
+        <p class="router-note">Two different offers. Choose the one that matches your role.</p>
       </div>
     </section>
   </main>
 """,
-     "forgecra", priority="0.9", changefreq="weekly", forgecra=True,
-     extra_head=feed_head(URLS["cra_blog"] + "feed.xml", "ForgeCRA writing"),
+     "forgecra", priority="0.9", changefreq="monthly", forgecra=True,
      ld=jsonld(ORG, breadcrumbs([("Home", "/"), ("ForgeCRA", URLS["forgecra"])]),
                {"@type": "Product", "name": "ForgeCRA", "url": ORIGIN + URLS["forgecra"],
                 "brand": {"@id": f"{ORIGIN}/#org"},
                 "category": "Supply chain security evidence",
-                "description": "Neutral supplier SBOM attestation network for the EU Cyber Resilience Act. Collects, quality-scores and attests SBOMs across company boundaries. In Phase 0 validation; paid design-partner pilots for manufacturers, free for suppliers."}))
+                "description": "Neutral supplier SBOM attestation network for the EU Cyber Resilience Act. In Phase 0 validation; paid design-partner pilots for manufacturers, free for suppliers."}))
 
 
 # ==================================================================== FORGECRA — MANUFACTURERS
@@ -681,7 +647,7 @@ emit(SUPPLIERS,
     </section>
   </main>
 """,
-     "suppliers", priority="0.9", changefreq="weekly", forgecra=True, extra_head=ANALYTICS,
+     "forgecra", priority="0.9", changefreq="weekly", forgecra=True, extra_head=ANALYTICS,
      ld=jsonld(ORG,
                breadcrumbs([("Home", "/"), ("ForgeCRA", URLS["forgecra"]), ("For suppliers", SUPPLIERS)]),
                {"@type": "Service", "name": "ForgeCRA supplier SBOM publishing",

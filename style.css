@@ -839,6 +839,12 @@ img { max-width: 100%; }
 .footer-base p + p { margin-top: 8px; }
 
 
+.router-note {
+  margin: 28px 0 0;
+  font-size: 16px;
+  color: var(--ink-50);
+}
+
 /* ===== Blog ===================================================== */
 .post-mini { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .post-mini li { display: flex; align-items: baseline; gap: 14px; justify-content: space-between; }

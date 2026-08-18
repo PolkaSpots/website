@@ -30,7 +30,6 @@ NAV = [
     ("flash",     "/flash-security-review/",               "Flash Review"),
     ("pen",       "/security-due-diligence/",              "Pen Testing"),
     ("forgecra",  "/forgecra/",                            "ForgeCRA"),
-    ("suppliers", "/forgecra/sbom-for-suppliers/",         "Suppliers"),
     ("contact",   "/contact/",                             "Contact"),
 ]
 
