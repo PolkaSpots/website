@@ -69,8 +69,9 @@ ANALYTICS = """
       var d=Object.fromEntries(new FormData(f));
       d._subject=f.dataset.subject||document.title;
       fetch(f.dataset.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
-        .then(function(r){
-          if(!r.ok)throw 0;
+        .then(function(r){return r.json()})
+        .then(function(j){
+          if(!j||!j.ok)throw 0;
           f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
         })
         .catch(function(){

@@ -36,7 +36,7 @@ export async function onRequestPost({ request, env }) {
       data = Object.fromEntries(await request.formData());
     }
   } catch (err) {
-    return reply(400, { ok: false, error: "unreadable body" });
+    return reply(200, { ok: false, error: "unreadable body" });
   }
 
   // Honeypot: real people leave it empty, bots fill everything in.
@@ -50,7 +50,7 @@ export async function onRequestPost({ request, env }) {
     .filter(([, v]) => String(v).trim() !== "")
     .map(([k, v]) => `${k}: ${String(v).slice(0, 2000)}`);
 
-  if (!fields.length) return reply(400, { ok: false, error: "empty submission" });
+  if (!fields.length) return reply(200, { ok: false, error: "empty submission" });
 
   const text = fields.join("\n");
   const meta = {
@@ -66,7 +66,10 @@ export async function onRequestPost({ request, env }) {
       // `text` suits Slack; the flat fields suit Zapier and Make.
       body: JSON.stringify({ text: `*${subject}*\n${text}`, subject, ...data, ...meta }),
     });
-    if (!res.ok) return reply(502, { ok: false, error: "webhook rejected" });
+    if (!res.ok) {
+      return reply(200, { ok: false, error: "webhook rejected", status: res.status,
+                          detail: (await res.text()).slice(0, 400) });
+    }
     return reply(200, { ok: true });
   }
 
@@ -85,7 +88,10 @@ export async function onRequestPost({ request, env }) {
         text: `${text}\n\n---\nsubmitted: ${meta.submitted}\npage: ${meta.page}\ncountry: ${meta.country}`,
       }),
     });
-    if (!res.ok) return reply(502, { ok: false, error: "email provider rejected" });
+    if (!res.ok) {
+      return reply(200, { ok: false, error: "email provider rejected", status: res.status,
+                          detail: (await res.text()).slice(0, 400) });
+    }
     return reply(200, { ok: true });
   }
 
@@ -96,7 +102,7 @@ export async function onRequestPost({ request, env }) {
 
   // Everything failed — tell the client so it can fall back to the mailto
   // rather than let a submission disappear.
-  return reply(503, { ok: false, error: "no destination configured" });
+  return reply(200, { ok: false, error: "no destination configured" });
 }
 
 /**
