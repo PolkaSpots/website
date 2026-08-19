@@ -437,7 +437,7 @@ emit(MAKERS,
         <h1 class="h1 h1--page">CRA makes you responsible for evidence you don't control.</h1>
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">ForgeCRA collects, quality-scores, and attests SBOMs from your suppliers — so your Cyber Resilience Act evidence chain doesn't live in your inbox.</p>
-          <p class="hero-credibility">Built by Simon Morley — repeat founder, infrastructure and security, one prior acquisition — inside PolkaSpots Ltd, which has been doing network and security work since 2005.</p>
+          <p class="hero-credibility">Built by Simon Morley — repeat founder, infrastructure and security — inside PolkaSpots Ltd, which has been doing network and security work since 2005.</p>
           <!-- CALENDAR-SWAP: replace href with the Cal.com/Calendly booking link. -->
           <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_mfr_hero" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
         </div>
