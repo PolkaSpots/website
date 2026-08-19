@@ -59,63 +59,65 @@ export async function onRequestPost({ request, env }) {
     country: request.headers.get("cf-ipcountry") || "",
   };
 
+  // Deliver to EVERY configured destination, not the first one that matches —
+  // a Slack ping and an email in the inbox serve different purposes and you
+  // usually want both. Runs them concurrently; one bad destination cannot stop
+  // another. The submission counts as delivered if at least one succeeds.
+  const jobs = [];
+
   if (env.FORM_WEBHOOK) {
-    const res = await fetch(env.FORM_WEBHOOK, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      // `text` suits Slack; the flat fields suit Zapier and Make.
-      body: JSON.stringify({ text: `*${subject}*\n${text}`, subject, ...data, ...meta }),
-    });
-    if (!res.ok) {
-      return reply(200, { ok: false, error: "webhook rejected", status: res.status,
-                          detail: (await res.text()).slice(0, 400) });
-    }
-    return reply(200, { ok: true });
+    jobs.push(
+      fetch(env.FORM_WEBHOOK, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // `text` renders in Slack; the flat fields suit Zapier and Make.
+        body: JSON.stringify({
+          text: `*${subject}*\n${text}\n_${meta.page || "no referrer"}_`,
+          subject, ...data, ...meta,
+        }),
+      })
+        .then((r) => ({ name: "webhook", ok: r.ok, status: r.status }))
+        .catch((e) => ({ name: "webhook", ok: false, status: 0, detail: String(e).slice(0, 200) }))
+    );
   }
 
   if (env.RESEND_API_KEY) {
-    // Until polkaspots.com is verified in Resend, that account may only send to
-    // its own address (simon@polkaspots.com) — anything else is a 403. Once the
-    // domain is verified, set FORM_TO=security@polkaspots.com to route it to the
-    // address the site actually advertises.
-    const body = {
-      to: env.FORM_TO || "simon@polkaspots.com",
-      reply_to: data.email || undefined,
-      subject,
-      text: `${text}\n\n---\nsubmitted: ${meta.submitted}\npage: ${meta.page}\ncountry: ${meta.country}`,
-    };
-
     const send = (from) => fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ from, ...body }),
+      body: JSON.stringify({
+        from,
+        to: env.FORM_TO || "security@polkaspots.com",
+        reply_to: data.email || undefined,
+        subject,
+        text: `${text}\n\n---\nsubmitted: ${meta.submitted}\npage: ${meta.page}\ncountry: ${meta.country}`,
+      }),
     });
 
-    // Prefer our own domain. Resend refuses it with a 403 until the domain is
-    // verified there, so fall back to their shared sender rather than losing
-    // the submission. Verifying polkaspots.com in Resend makes the first
-    // attempt succeed with no code change.
-    const preferred = env.FORM_FROM || "forms@polkaspots.com";
-    let res = await send(preferred);
-
-    if (res.status === 403 && !env.FORM_FROM) {
-      res = await send("onboarding@resend.dev");
-    }
-
-    if (!res.ok) {
-      return reply(200, { ok: false, error: "email provider rejected", status: res.status,
-                          detail: (await res.text()).slice(0, 400) });
-    }
-    return reply(200, { ok: true });
+    // Prefer our own domain; fall back to Resend's shared sender only while
+    // polkaspots.com is unverified there.
+    jobs.push(
+      (async () => {
+        let r = await send(env.FORM_FROM || "forms@polkaspots.com");
+        if (r.status === 403 && !env.FORM_FROM) r = await send("onboarding@resend.dev");
+        return { name: "email", ok: r.ok, status: r.status,
+                 detail: r.ok ? undefined : (await r.text()).slice(0, 300) };
+      })().catch((e) => ({ name: "email", ok: false, status: 0, detail: String(e).slice(0, 200) }))
+    );
   }
 
-  // A no-account relay (FormSubmit) was tried here and removed: it does not
-  // accept requests from Cloudflare's edge, and routing prospect data through
-  // a free third party is the wrong trade for a company selling supply-chain
-  // evidence integrity. Delivery needs one env var above.
+  if (jobs.length) {
+    const results = await Promise.all(jobs);
+    const delivered = results.filter((r) => r.ok).map((r) => r.name);
+    const failed = results.filter((r) => !r.ok);
+    if (delivered.length) {
+      return reply(200, { ok: true, delivered, failed: failed.length ? failed : undefined });
+    }
+    return reply(200, { ok: false, error: "all destinations failed", failed });
+  }
 
   // Everything failed — tell the client so it can fall back to the mailto
   // rather than let a submission disappear.
@@ -135,7 +137,7 @@ export async function onRequestGet({ env }) {
     configured: {
       FORM_WEBHOOK: Boolean(env.FORM_WEBHOOK),
       RESEND_API_KEY: Boolean(env.RESEND_API_KEY),
-      FORM_TO: env.FORM_TO || "(default) simon@polkaspots.com",
+      FORM_TO: env.FORM_TO || "(default) security@polkaspots.com",
       FORM_FROM: env.FORM_FROM || "(default) forms@polkaspots.com",
     },
     visibleKeys: Object.keys(env || {}).sort(),
