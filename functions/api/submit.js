@@ -99,6 +99,22 @@ export async function onRequestPost({ request, env }) {
   return reply(503, { ok: false, error: "no destination configured" });
 }
 
-export async function onRequestGet() {
-  return reply(405, { ok: false, error: "post only" });
+/**
+ * GET reports which destinations the Function can actually see. Booleans only —
+ * never the values — so it is safe to leave in place. Cloudflare Pages binds
+ * environment variables per deployment, so if this says false after you have
+ * saved one, check it was saved against Production rather than Preview, then
+ * redeploy: existing deployments keep the environment they were created with.
+ */
+export async function onRequestGet({ env }) {
+  return reply(200, {
+    ok: true,
+    configured: {
+      FORM_WEBHOOK: Boolean(env.FORM_WEBHOOK),
+      RESEND_API_KEY: Boolean(env.RESEND_API_KEY),
+      FORM_TO: env.FORM_TO || "(default) security@polkaspots.com",
+      FORM_FROM: env.FORM_FROM || "(default) forms@polkaspots.com",
+    },
+    visibleKeys: Object.keys(env || {}).sort(),
+  });
 }
