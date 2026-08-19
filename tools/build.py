@@ -512,10 +512,10 @@ emit(MAKERS,
 
     <section class="band">
       <div class="wrap">
-{sec_head('How we will know if this failed', '07')}
+{sec_head('How you will know it worked', '07')}
         <div class="stack">
           <p class="body">At pilot start we record your current supplier response rate. That is the control.</p>
-          <p class="body">If our collection does not beat it, the pilot has not worked, and we will say so in the readout rather than hand you a dashboard. This is a joint experiment with a paid delivery floor, not a licence.</p>
+          <p class="body">Ninety days later there is a number to set against it, and the readout tells you plainly what happened rather than handing you a dashboard to interpret. Running this as a measured pilot rather than a licence is what makes that answer worth having.</p>
         </div>
       </div>
     </section>
