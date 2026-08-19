@@ -74,8 +74,12 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (env.RESEND_API_KEY) {
+    // Until polkaspots.com is verified in Resend, that account may only send to
+    // its own address (simon@polkaspots.com) — anything else is a 403. Once the
+    // domain is verified, set FORM_TO=security@polkaspots.com to route it to the
+    // address the site actually advertises.
     const body = {
-      to: env.FORM_TO || "security@polkaspots.com",
+      to: env.FORM_TO || "simon@polkaspots.com",
       reply_to: data.email || undefined,
       subject,
       text: `${text}\n\n---\nsubmitted: ${meta.submitted}\npage: ${meta.page}\ncountry: ${meta.country}`,
@@ -131,7 +135,7 @@ export async function onRequestGet({ env }) {
     configured: {
       FORM_WEBHOOK: Boolean(env.FORM_WEBHOOK),
       RESEND_API_KEY: Boolean(env.RESEND_API_KEY),
-      FORM_TO: env.FORM_TO || "(default) security@polkaspots.com",
+      FORM_TO: env.FORM_TO || "(default) simon@polkaspots.com",
       FORM_FROM: env.FORM_FROM || "(default) forms@polkaspots.com",
     },
     visibleKeys: Object.keys(env || {}).sort(),
