@@ -86,9 +86,9 @@ emit("/",
     <section class="band">
       <div class="wrap">
 {sec_head('Who we are', '01')}
-        <div class="split">
+        <div class="stack">
           <p class="statement">PolkaSpots Ltd, London, 2005. <a href="https://simonmorley.co.uk">Simon Morley's</a> vehicle for twenty years — public WiFi, network SaaS, exchange CTO, kernel research.</p>
-          <p class="body" style="padding-top: 6px;">We know where engineers cut corners because we've spent two decades running the teams working to the same deadlines.</p>
+          <p class="body">We know where engineers cut corners because we've spent two decades running the teams working to the same deadlines.</p>
         </div>
       </div>
     </section>
@@ -167,9 +167,9 @@ emit(URLS["pen"],
     <section class="band">
       <div class="wrap">
 {sec_head('The problem', '01')}
-        <div class="split">
+        <div class="stack">
           <p class="statement">Traditional security reviews are broken. You get a 200-page report written by someone who's never touched a terminal. It's full of risk matrices and colour-coded tables. The deal closes. The report goes in a drawer. Six months later something blows up that was buried on page 147.</p>
-          <p class="body" style="padding-top: 6px;">Compliance certifications mean someone filled in a form correctly. They don't mean the production database isn't open to the internet.</p>
+          <p class="body">Compliance certifications mean someone filled in a form correctly. They don't mean the production database isn't open to the internet.</p>
         </div>
       </div>
     </section>
@@ -203,9 +203,9 @@ emit(URLS["pen"],
     <section class="band">
       <div class="wrap">
 {sec_head('Who this is for', '04')}
-        <div class="split">
+        <div class="stack">
           <p class="statement">If you're buying a company — or investing in one — and you want to know whether the tech is actually solid before you sign, talk to us.</p>
-          <div class="split-stack">
+          <div>
             <p class="body">We work with PE firms, VCs, M&amp;A lawyers, corporate finance advisors and insurance underwriters — anyone in a deal who'd rather find out now than later. We also work directly with companies who want to know where they stand before a launch, an audit, or a customer security review.</p>
             <div>
               <a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_pen" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
@@ -467,9 +467,9 @@ emit(MAKERS,
     <section class="band band--pad">
       <div class="wrap">
 {sec_head('Why your suppliers will actually respond', '03')}
-        <div class="split">
+        <div class="stack">
           <p class="statement">ForgeCRA does not sell analysis, is not owned by anyone who does, and never resells supplier data.</p>
-          <p class="body" style="padding-top: 6px;">That matters to you, not only to them. A supplier will not hand component detail to a vendor that also sells competitive analysis to their customers — which is why supplier data collection stalls when it is run by an analysis vendor or by a manufacturer directly. Neutrality is what makes the ask answerable.</p>
+          <p class="body">That matters to you, not only to them. A supplier will not hand component detail to a vendor that also sells competitive analysis to their customers — which is why supplier data collection stalls when it is run by an analysis vendor or by a manufacturer directly. Neutrality is what makes the ask answerable.</p>
         </div>
       </div>
     </section>
@@ -477,9 +477,9 @@ emit(MAKERS,
     <section class="band">
       <div class="wrap">
 {sec_head('This shape has worked before', '04')}
-        <div class="split">
+        <div class="stack">
           <p class="statement">E-invoicing had the same problem: every buyer wanted a different portal, and suppliers complied badly with all of them. Peppol solved it with one connection to many counterparties instead of bilateral integrations.</p>
-          <p class="body" style="padding-top: 6px;">Peppol had a government mandate behind it. The CRA creates the same pressure on evidence without specifying the plumbing. That gap is what ForgeCRA is built for — and it is also the honest risk: nobody is mandating the network, so it has to earn its density.</p>
+          <p class="body">Peppol had a government mandate behind it. The CRA creates the same pressure on evidence without specifying the plumbing. That gap is what ForgeCRA is built for — and it is also the honest risk: nobody is mandating the network, so it has to earn its density.</p>
         </div>
       </div>
     </section>
@@ -513,9 +513,9 @@ emit(MAKERS,
     <section class="band">
       <div class="wrap">
 {sec_head('How we will know if this failed', '07')}
-        <div class="split">
+        <div class="stack">
           <p class="statement">At pilot start we record your current supplier response rate. That is the control.</p>
-          <p class="body" style="padding-top: 6px;">If our collection does not beat it, the pilot has not worked, and we will say so in the readout rather than hand you a dashboard. This is a joint experiment with a paid delivery floor, not a licence.</p>
+          <p class="body">If our collection does not beat it, the pilot has not worked, and we will say so in the readout rather than hand you a dashboard. This is a joint experiment with a paid delivery floor, not a licence.</p>
         </div>
       </div>
     </section>
@@ -628,9 +628,9 @@ emit(SUPPLIERS,
     <section class="band band--pad">
       <div class="wrap">
 {sec_head('Neutral by design', '03')}
-        <div class="split">
+        <div class="stack">
           <p class="statement">ForgeCRA is not a competing analysis vendor, not owned by one, and never resells your data.</p>
-          <p class="body" style="padding-top: 6px;">You choose exactly which customers see which products' SBOMs. Free for suppliers, permanently — we charge the side with the regulatory liability, never the side that creates the network.</p>
+          <p class="body">You choose exactly which customers see which products' SBOMs. Free for suppliers, permanently — we charge the side with the regulatory liability, never the side that creates the network.</p>
         </div>
       </div>
     </section>
