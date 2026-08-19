@@ -250,19 +250,6 @@ img { max-width: 100%; }
   line-height: 1.6;
 }
 
-/* The big Archivo argument column */
-.statement {
-  margin: 0;
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-  text-wrap: pretty;
-}
-
-.statement--sm { font-size: 24px; }
-
 .body {
   margin: 0;
   font-size: 16px;
@@ -279,6 +266,7 @@ img { max-width: 100%; }
 }
 
 .band--ink .note { color: var(--on-ink-mute); }
+.band--ink .body { color: var(--on-ink); }
 
 /* Continuous prose stays in ONE column. The two-column .split is for a heading
    beside a distinct element (a form, a panel, a list) — never for splitting a

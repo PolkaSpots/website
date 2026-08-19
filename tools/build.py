@@ -97,7 +97,7 @@ emit("/",
       <div class="wrap">
 {sec_head('Get in touch', '02')}
         <div class="act-row">
-          <p class="statement" style="max-width: 520px;">Security testing or a CRA supplier problem — same inbox, same day reply.</p>
+          <p class="body" style="max-width: 520px;">Security testing or a CRA supplier problem — same inbox, same day reply.</p>
           <div>
             <a class="act act--ink act--mail" href="mailto:{MAIL}">EMAIL US<span aria-hidden="true">→</span></a>
             <p class="act-note">Send us an email. We'll reply today.</p>
@@ -220,7 +220,7 @@ emit(URLS["pen"],
       <div class="wrap">
 {sec_head('Writing', '05')}
         <div class="split">
-          <p class="statement">Notes on offensive testing, deal diligence, and what a security review is actually worth.</p>
+          <p class="body">Notes on offensive testing, deal diligence, and what a security review is actually worth.</p>
           <div class="split-stack">
             <ul class="post-mini">
 {latest_sec}
@@ -298,9 +298,9 @@ emit(URLS["flash"],
       <div class="wrap">
 {sec_head("What this isn't", '02')}
         <div class="cols-3">
-          <p class="statement" style="font-size: 21px; line-height: 1.4;">It's not a vulnerability scan. We don't run Nessus and email you the output.</p>
-          <p class="statement" style="font-size: 21px; line-height: 1.4;">It's not a full pentest. Two hours isn't enough for that — this is a fast, focused look at your attack surface.</p>
-          <p class="statement" style="font-size: 21px; line-height: 1.4;">It's not a sales funnel disguised as a service. If you want a full pentest afterwards, great. If you don't, that's fine too. No follow-up calls, no &ldquo;let's schedule a demo.&rdquo;</p>
+          <p class="body">It's not a vulnerability scan. We don't run Nessus and email you the output.</p>
+          <p class="body">It's not a full pentest. Two hours isn't enough for that — this is a fast, focused look at your attack surface.</p>
+          <p class="body">It's not a sales funnel disguised as a service. If you want a full pentest afterwards, great. If you don't, that's fine too. No follow-up calls, no &ldquo;let's schedule a demo.&rdquo;</p>
         </div>
       </div>
     </section>
@@ -524,7 +524,7 @@ emit(MAKERS,
       <div class="wrap">
 {sec_head('Or send us the details', '08')}
         <div class="split split--form">
-          <p class="statement statement--sm">If a call is easier later, tell us where you stand and we'll come back to you.</p>
+          <p class="body">If a call is easier later, tell us where you stand and we'll come back to you.</p>
           <div>
             <!-- FORM-SWAP: posts via mailto so it works with JS disabled and needs no backend
                  (Spec §3 sanctions the mailto fallback). For notification + spreadsheet set
@@ -651,7 +651,7 @@ emit(SUPPLIERS,
         </div>
 
         <div class="split split--form" style="margin-top: 56px;">
-          <p class="statement statement--sm">Tell us your formats and your customers.</p>
+          <p class="body">Tell us your formats and your customers.</p>
           <div>
             <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
             <form action="mailto:{MAIL}?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain"
