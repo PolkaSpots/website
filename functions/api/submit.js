@@ -74,20 +74,33 @@ export async function onRequestPost({ request, env }) {
   }
 
   if (env.RESEND_API_KEY) {
-    const res = await fetch("https://api.resend.com/emails", {
+    const body = {
+      to: env.FORM_TO || "security@polkaspots.com",
+      reply_to: data.email || undefined,
+      subject,
+      text: `${text}\n\n---\nsubmitted: ${meta.submitted}\npage: ${meta.page}\ncountry: ${meta.country}`,
+    };
+
+    const send = (from) => fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from: env.FORM_FROM || "forms@polkaspots.com",
-        to: env.FORM_TO || "security@polkaspots.com",
-        reply_to: data.email || undefined,
-        subject,
-        text: `${text}\n\n---\nsubmitted: ${meta.submitted}\npage: ${meta.page}\ncountry: ${meta.country}`,
-      }),
+      body: JSON.stringify({ from, ...body }),
     });
+
+    // Prefer our own domain. Resend refuses it with a 403 until the domain is
+    // verified there, so fall back to their shared sender rather than losing
+    // the submission. Verifying polkaspots.com in Resend makes the first
+    // attempt succeed with no code change.
+    const preferred = env.FORM_FROM || "forms@polkaspots.com";
+    let res = await send(preferred);
+
+    if (res.status === 403 && !env.FORM_FROM) {
+      res = await send("onboarding@resend.dev");
+    }
+
     if (!res.ok) {
       return reply(200, { ok: false, error: "email provider rejected", status: res.status,
                           detail: (await res.text()).slice(0, 400) });
