@@ -239,7 +239,7 @@ def footer(forgecra=False):
     if forgecra:
         extra = (
             f'\n      <p>ForgeCRA is a product of PolkaSpots Ltd, est. 2005 — London. '
-            f'Company number {COMPANY_NO}. <a href="mailto:{MAIL}">{MAIL}</a></p>'
+            f'Company number {COMPANY_NO}. <a href="mailto:{MAIL}">Email us</a>.</p>'
             "\n      <p>No certification claims. We don't sell September-2026 panic — "
             "we build the evidence layer that outlasts it.</p>")
     return f"""

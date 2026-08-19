@@ -99,7 +99,7 @@ emit("/",
         <div class="act-row">
           <p class="statement" style="max-width: 520px;">Security testing or a CRA supplier problem — same inbox, same day reply.</p>
           <div>
-            <a class="act act--ink act--mail" href="mailto:{MAIL}">{MAIL}<span aria-hidden="true">→</span></a>
+            <a class="act act--ink act--mail" href="mailto:{MAIL}">EMAIL US<span aria-hidden="true">→</span></a>
             <p class="act-note">Send us an email. We'll reply today.</p>
           </div>
         </div>
@@ -209,7 +209,7 @@ emit(URLS["pen"],
             <p class="body">We work with PE firms, VCs, M&amp;A lawyers, corporate finance advisors and insurance underwriters — anyone in a deal who'd rather find out now than later. We also work directly with companies who want to know where they stand before a launch, an audit, or a customer security review.</p>
             <div>
               <a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
-              <p class="act-note">Or email <a href="mailto:{MAIL}">{MAIL}</a> — same-day reply with a clear scope and a fixed price.</p>
+              <p class="act-note">Or <a href="mailto:{MAIL}">email us</a> — same-day reply with a clear scope and a fixed price.</p>
             </div>
           </div>
         </div>
@@ -321,7 +321,7 @@ emit(URLS["flash"],
 {steps}
         </div>
         <a class="act act--lg" href="{STRIPE}" style="margin-top: 48px;">BUY A FLASH REVIEW — £500</a>
-        <p class="act-note">Secure payment via Stripe. No subscription. No commitment. Questions first? <a href="mailto:{MAIL}">{MAIL}</a></p>
+        <p class="act-note">Secure payment via Stripe. No subscription. No commitment. Questions first? <a href="mailto:{MAIL}">Email us</a>.</p>
       </div>
     </section>
   </main>
@@ -684,7 +684,7 @@ emit(URLS["contact"],
               <label class="field" style="margin-top: 24px;"><span>Message</span><textarea name="message" rows="6" required></textarea></label>
               <button type="submit" class="act">SEND</button>
             </form>
-            <p class="panel-note">This opens your email client. Prefer to write directly? <a href="mailto:{MAIL}">{MAIL}</a></p>
+            <p class="panel-note">This opens your email client. Prefer to <a href="mailto:{MAIL}">write directly</a>?</p>
           </div>
         </div>
       </div>
