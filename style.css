@@ -285,9 +285,11 @@ img { max-width: 100%; }
 /* Continuous prose stays in ONE column. The two-column .split is for a heading
    beside a distinct element (a form, a panel, a list) — never for splitting a
    single argument in half, which reads as the text having been chopped up. */
+/* Full column width, matching the hero and lede above it. A narrower measure
+   here made body copy wrap far earlier than everything around it, which reads
+   as the paragraph having been broken. */
 .stack {
   margin-top: 40px;
-  max-width: 74ch;
 }
 
 .stack .statement { margin-bottom: 22px; }
@@ -751,7 +753,6 @@ img { max-width: 100%; }
 
 .hero-credibility {
   margin: 20px 0 0;
-  max-width: 68ch;
   font-size: 15px;
   line-height: 1.6;
   color: var(--ink-50);

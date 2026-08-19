@@ -349,7 +349,7 @@ emit(URLS["forgecra"],
         <p class="eyebrow eyebrow--violet">A PolkaSpots product</p>
         <h1 class="h1 h1--page">ForgeCRA</h1>
         <p class="lede lede--page">Neutral network for supplier SBOM attestation under the EU Cyber Resilience Act.</p>
-        <p class="body" style="margin-top: 24px; max-width: 74ch;">Under the CRA, the manufacturer is responsible for evidence that sits with suppliers. Existing tools analyse what a manufacturer already holds; they cannot make a supplier send anything. ForgeCRA collects, quality-scores and attests SBOMs across company boundaries — one publication from the supplier, served to every customer who needs it.</p>
+        <p class="body" style="margin-top: 24px;">Under the CRA, the manufacturer is responsible for evidence that sits with suppliers. Existing tools analyse what a manufacturer already holds; they cannot make a supplier send anything. ForgeCRA collects, quality-scores and attests SBOMs across company boundaries — one publication from the supplier, served to every customer who needs it.</p>
       </div>
     </section>
 
@@ -450,7 +450,7 @@ emit(MAKERS,
         <div class="cols-3">
 {prob_cols}
         </div>
-        <p class="body" style="margin-top: 36px; max-width: 74ch;">CRA penalties reach €15 million or 2.5% of worldwide annual turnover. That is why this has a budget line. It is not the reason to move now. The reason to move now is that supplier collection takes months, and December 2027 does not move.</p>
+        <p class="body" style="margin-top: 36px;">CRA penalties reach €15 million or 2.5% of worldwide annual turnover. That is why this has a budget line. It is not the reason to move now. The reason to move now is that supplier collection takes months, and December 2027 does not move.</p>
       </div>
     </section>
 
@@ -620,7 +620,7 @@ emit(SUPPLIERS,
         <div class="cols-3">
 {sup_stage_cols}
         </div>
-        <p class="stage-step" style="margin-top: 32px; max-width: 74ch;">If a customer sent you here, step three is already half done — they are waiting on the share, and you keep control of what they see.</p>
+        <p class="stage-step" style="margin-top: 32px;">If a customer sent you here, step three is already half done — they are waiting on the share, and you keep control of what they see.</p>
         <p class="note">Illustrative only. The first cohort is run with us directly — there is no self-serve platform yet.</p>
       </div>
     </section>
