@@ -380,11 +380,15 @@ img { max-width: 100%; }
   border: 0;
 }
 
+/* The meta label wraps to a second line on the longest card, which pushed that
+   card's heading out of line with its neighbours. A floor equal to the wrapped
+   height keeps all three headings on the same baseline whatever the label says. */
 .card-tags {
   display: flex;
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
+  min-height: 46px;
 }
 
 .tag {
