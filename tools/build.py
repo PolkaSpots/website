@@ -130,7 +130,7 @@ offers = [
      "For PE and VC firms with a portfolio. Continuous visibility into the security posture of your investments. We keep watching so you know when something's gone wrong before it becomes a headline. Regular testing, ongoing advice, and a direct line to someone who knows your systems."),
 ]
 offer_cards = "\n".join(
-    f'          <div class="offer"{f" id={a}" if a else ""}><div><h2>{n}</h2>'
+    f'          <div class="offer"{f' id="{a}"' if a else ""}><div><h2>{n}</h2>'
     f'<div class="price">{p}</div></div><p>{b}</p></div>' for n, p, a, b in offers)
 
 findings = [
@@ -208,7 +208,7 @@ emit(URLS["pen"],
           <div class="split-stack">
             <p class="body">We work with PE firms, VCs, M&amp;A lawyers, corporate finance advisors and insurance underwriters — anyone in a deal who'd rather find out now than later. We also work directly with companies who want to know where they stand before a launch, an audit, or a customer security review.</p>
             <div>
-              <a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
+              <a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_pen" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
               <p class="act-note">Or <a href="mailto:{MAIL}">email us</a> — same-day reply with a clear scope and a fixed price.</p>
             </div>
           </div>
@@ -349,6 +349,7 @@ emit(URLS["forgecra"],
         <p class="eyebrow eyebrow--violet">A PolkaSpots product</p>
         <h1 class="h1 h1--page">ForgeCRA</h1>
         <p class="lede lede--page">Neutral network for supplier SBOM attestation under the EU Cyber Resilience Act.</p>
+        <p class="body" style="margin-top: 24px; max-width: 74ch;">Under the CRA, the manufacturer is responsible for evidence that sits with suppliers. Existing tools analyse what a manufacturer already holds; they cannot make a supplier send anything. ForgeCRA collects, quality-scores and attests SBOMs across company boundaries — one publication from the supplier, served to every customer who needs it.</p>
       </div>
     </section>
 
@@ -372,7 +373,7 @@ emit(URLS["forgecra"],
           </article>
         </div>
         <p class="router-note">Two different offers. Choose the one that matches your role.</p>
-        <p class="router-note">Not sure which applies to you? <a href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">Book a {CALL_MINS}-minute call →</a></p>
+        <p class="router-note">Not sure which applies to you? <a href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_router" target="_blank" rel="noopener">Book a {CALL_MINS}-minute call →</a></p>
         <p class="router-note"><a class="quiet" href="{URLS['cra_blog']}">Writing on the CRA, SBOM quality and supplier evidence →</a></p>
       </div>
     </section>
@@ -401,12 +402,14 @@ fc_stages = [
      "Audit-ready evidence pack whenever it's asked for"),
 ]
 fc_faq = [
+    ("We're building our own supplier portal.",
+     "Then each supplier does the work once for you, and again for every other customer with a portal. Suppliers comply badly with work that does not compound — that is the pattern behind the SBOMs you are getting today. A neutral exchange lets a supplier publish once and share with all of you, which is the only version they have a reason to keep current."),
     ("We already use ONEKEY / Finite State / similar.",
      "They analyse what you already hold. We get you what you don't hold. We complement them — several design partners will run both."),
     ("Email works fine.",
      "At 20+ suppliers with a 24-hour reporting clock, email has no quality scoring, no attestation trail, and no update propagation. The pilot measures whether that's true for you."),
     ("We're waiting for the harmonised standards.",
-     "None are cited yet. We map Annex I now and re-map automatically when they land. Supplier collection takes months — waiting is the expensive option."),
+     "As of 19 August 2026, no CRA harmonised standard has been ratified or cited in the Official Journal, so no product category has a presumption of conformity. We map Annex I now and re-map automatically when they land. Supplier collection takes months — waiting is the expensive option."),
 ]
 prob_cols = "\n".join(f'          <p class="claim">{t}</p>' for t in fc_problems)
 stage_cols = "\n".join(
@@ -414,8 +417,14 @@ stage_cols = "\n".join(
     f'            <div class="stage-title">{t}</div>\n'
     f'            <p class="stage-step">{s}</p>\n'
     f'            <p class="stage-body">{b}</p>\n          </div>' for n, t, s, b in fc_stages)
+DECAY_NOTE = ("""<!-- DECAYING CLAIM: verify monthly against
+     https://www.cyberresilienceact.eu/state-of-play.html
+     Last verified 2026-08-19. Update the date in the visible copy each time. -->
+          """)
 faq_cols = "\n".join(
-    f'          <div class="faq"><h3>&ldquo;{q}&rdquo;</h3><p>{a}</p></div>' for q, a in fc_faq)
+    '          '
+    + (DECAY_NOTE if "harmonised standards" in q else "")
+    + f'<div class="faq"><h3>&ldquo;{q}&rdquo;</h3><p>{a}</p></div>' for q, a in fc_faq)
 
 emit(MAKERS,
      "CRA Supplier SBOM Attestation for Manufacturers — ForgeCRA",
@@ -428,8 +437,9 @@ emit(MAKERS,
         <h1 class="h1 h1--page">CRA makes you responsible for evidence you don't control.</h1>
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">ForgeCRA collects, quality-scores, and attests SBOMs from your suppliers — so your Cyber Resilience Act evidence chain doesn't live in your inbox.</p>
+          <p class="hero-credibility">Built by Simon Morley — repeat founder, infrastructure and security, one prior acquisition — inside PolkaSpots Ltd, which has been doing network and security work since 2005.</p>
           <!-- CALENDAR-SWAP: replace href with the Cal.com/Calendly booking link. -->
-          <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
+          <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_mfr_hero" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
         </div>
       </div>
     </section>
@@ -440,6 +450,7 @@ emit(MAKERS,
         <div class="cols-3">
 {prob_cols}
         </div>
+        <p class="body" style="margin-top: 36px; max-width: 74ch;">CRA penalties reach €15 million or 2.5% of worldwide annual turnover. That is why this has a budget line. It is not the reason to move now. The reason to move now is that supplier collection takes months, and December 2027 does not move.</p>
       </div>
     </section>
 
@@ -455,16 +466,36 @@ emit(MAKERS,
 
     <section class="band band--pad">
       <div class="wrap">
-{sec_head('The offer', '03')}
+{sec_head('Why your suppliers will actually respond', '03')}
+        <div class="split">
+          <p class="statement">ForgeCRA does not sell analysis, is not owned by anyone who does, and never resells supplier data.</p>
+          <p class="body" style="padding-top: 6px;">That matters to you, not only to them. A supplier will not hand component detail to a vendor that also sells competitive analysis to their customers — which is why supplier data collection stalls when it is run by an analysis vendor or by a manufacturer directly. Neutrality is what makes the ask answerable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('This shape has worked before', '04')}
+        <div class="split">
+          <p class="statement">E-invoicing had the same problem: every buyer wanted a different portal, and suppliers complied badly with all of them. Peppol solved it with one connection to many counterparties instead of bilateral integrations.</p>
+          <p class="body" style="padding-top: 6px;">Peppol had a government mandate behind it. The CRA creates the same pressure on evidence without specifying the plumbing. That gap is what ForgeCRA is built for — and it is also the honest risk: nobody is mandating the network, so it has to earn its density.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--pad">
+      <div class="wrap">
+{sec_head('The offer', '05')}
         <div class="offer-box">
           <div>
             <div class="kicker">DESIGN PARTNERS — PAID 90-DAY PILOT</div>
-            <h2>We're selecting a small group of design partners for a paid 90-day pilot (£5–15k depending on supplier count).</h2>
+            <h2>We're selecting three design partners for a paid 90-day pilot (£5–15k depending on supplier count).</h2>
           </div>
           <div>
             <p>You get the full attestation workflow run for you; you shape the product; founding pricing locked for year one.</p>
             <!-- CALENDAR-SWAP -->
-            <a class="act act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
+            <a class="act act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_mfr_offer" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
           </div>
         </div>
       </div>
@@ -472,16 +503,26 @@ emit(MAKERS,
 
     <section class="band">
       <div class="wrap">
-{sec_head('Questions we get', '04')}
+{sec_head('Questions we get', '06')}
         <div class="cols-3">
 {faq_cols}
         </div>
       </div>
     </section>
 
+    <section class="band">
+      <div class="wrap">
+{sec_head('How we will know if this failed', '07')}
+        <div class="split">
+          <p class="statement">At pilot start we record your current supplier response rate. That is the control.</p>
+          <p class="body" style="padding-top: 6px;">If our collection does not beat it, the pilot has not worked, and we will say so in the readout rather than hand you a dashboard. This is a joint experiment with a paid delivery floor, not a licence.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="band band--end">
       <div class="wrap">
-{sec_head('Or send us the details', '05')}
+{sec_head('Or send us the details', '08')}
         <div class="split split--form">
           <p class="statement statement--sm">If a call is easier later, tell us where you stand and we'll come back to you.</p>
           <div>
@@ -490,7 +531,7 @@ emit(MAKERS,
                  action="https://formspree.io/f/YOUR_ID" method="POST" and delete enctype.
                  Field names are the Spec §4.5 set. -->
             <form action="mailto:{MAIL}?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain"
-                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="ForgeCRA enquiry — manufacturer">
+                  data-goal="form_submit" data-form="mfr" data-endpoint="/api/submit" data-subject="ForgeCRA enquiry — manufacturer">
               <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
@@ -558,8 +599,8 @@ emit(SUPPLIERS,
         <p class="eyebrow eyebrow--violet">ForgeCRA · For suppliers</p>
         <h1 class="h1 h1--page">Publish once. Serve every customer.</h1>
         <div class="act-row" style="margin-top: 32px;">
-          <p class="lede lede--page" style="margin: 0;">Every manufacturer you sell into will soon demand SBOMs — each in their own portal, format, and questionnaire. ForgeCRA is the neutral exchange: attest once, share with every customer, under your control.</p>
-          <a class="act act--ink act--lg" href="#join" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
+          <p class="lede lede--page" style="margin: 0;">A customer of yours is collecting component evidence for the Cyber Resilience Act, and pointed you here. ForgeCRA is the neutral exchange: attest once, share with that customer and every other one, under your control. Free for suppliers, permanently.</p>
+          <a class="act act--ink act--lg" href="#cohort-form" data-goal="cta_click" data-goal-detail="cta_sup_hero">JOIN THE FIRST SUPPLIER COHORT</a>
         </div>
       </div>
     </section>
@@ -579,6 +620,7 @@ emit(SUPPLIERS,
         <div class="cols-3">
 {sup_stage_cols}
         </div>
+        <p class="stage-step" style="margin-top: 32px; max-width: 74ch;">If a customer sent you here, step three is already half done — they are waiting on the share, and you keep control of what they see.</p>
         <p class="note">Illustrative only. The first cohort is run with us directly — there is no self-serve platform yet.</p>
       </div>
     </section>
@@ -593,7 +635,7 @@ emit(SUPPLIERS,
       </div>
     </section>
 
-    <section class="band band--end" id="join">
+    <section class="band band--end" id="cohort-form">
       <div class="wrap">
 {sec_head('The offer', '04')}
         <div class="offer-box">
@@ -603,8 +645,8 @@ emit(SUPPLIERS,
           </div>
           <div>
             <p>Free for suppliers, permanently. You control who sees what, and updates propagate to every customer you've shared with.</p>
-            <a class="act act--lg" href="#cohort-form" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
-            <p style="margin: 16px 0 0;"><a class="quiet" href="{BOOK_20}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">Or book a {CALL_MINS}-minute call →</a></p>
+            <a class="act act--lg" href="#cohort-form" data-goal="cta_click" data-goal-detail="cta_sup_offer">JOIN THE FIRST SUPPLIER COHORT</a>
+            <p style="margin: 16px 0 0;"><a class="quiet" href="{BOOK_20}" data-goal="{BOOK_GOAL}" data-goal-detail="book_sup_offer" target="_blank" rel="noopener">Or book a {CALL_MINS}-minute call →</a></p>
           </div>
         </div>
 
@@ -612,8 +654,8 @@ emit(SUPPLIERS,
           <p class="statement statement--sm">Tell us your formats and your customers.</p>
           <div>
             <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
-            <form id="cohort-form" action="mailto:{MAIL}?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain"
-                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="ForgeCRA supplier cohort">
+            <form action="mailto:{MAIL}?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain"
+                  data-goal="form_submit" data-form="sup" data-endpoint="/api/submit" data-subject="ForgeCRA supplier cohort">
               <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
@@ -634,9 +676,17 @@ emit(SUPPLIERS,
                     <option value="Spreadsheet">Spreadsheet</option><option value="None">None</option>
                   </select>
                 </label>
+                <label class="field field--wide"><span>Which customer sent you?</span>
+                  <input type="text" name="referred_by" placeholder="Optional">
+                </label>
+                <label class="field field--wide"><span>Other manufacturer customers who will ask for this</span>
+                  <input type="text" name="other_customers" placeholder="Optional">
+                  <small class="field-help">Names help us bring them onto the same exchange so you only publish once.</small>
+                </label>
               </div>
               <button type="submit" class="act act--ink act--lg" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
             </form>
+            <p class="form-note">Nobody sent you and you want to get ahead of this? Same form — tell us who is likely to ask.</p>
             <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="{MAKERS}">This is your page →</a></p>
           </div>
         </div>
@@ -669,7 +719,7 @@ emit(URLS["contact"],
             <h1 class="h1 h1--contact">Get in touch.</h1>
             <p class="lede lede--page" style="margin-top: 26px;">We reply the same day. Usually within the hour.</p>
             <a class="email-link" href="mailto:{MAIL}">{MAIL}</a>
-            <p style="margin-top: 28px;"><a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a></p>
+            <p style="margin-top: 28px;"><a class="act act--ink" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_contact" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a></p>
             <p class="act-note">Prefer to talk it through? Grab a slot directly.</p>
           </div>
           <div class="panel">
@@ -677,7 +727,7 @@ emit(URLS["contact"],
                  For a hosted handler set action="https://formspree.io/f/YOUR_ID" method="POST"
                  and delete enctype — the field names already match. -->
             <form action="mailto:{MAIL}?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain"
-                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="Enquiry via polkaspots.com">
+                  data-goal="form_submit" data-form="contact" data-endpoint="/api/submit" data-subject="Enquiry via polkaspots.com">
               <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <label class="field"><span>Name</span><input type="text" name="name" required></label>
               <label class="field" style="margin-top: 24px;"><span>Email</span><input type="email" name="email" required></label>

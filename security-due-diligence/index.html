@@ -27,14 +27,24 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    // Every tracked element fires a rollup goal (data-goal) and, where set, a
+    // specific one (data-goal-detail) naming page and position. Two events, so
+    // the broad number and the breakdown both exist without depending on
+    // Plausible custom properties.
+    function fire(el){
+      var g=el.getAttribute('data-goal'); if(g)plausible(g);
+      var d=el.getAttribute('data-goal-detail'); if(d)plausible(d);
+      if(el.tagName==='A'&&/\/\/cal\.com\//.test(el.href))plausible('outbound_cal');
+    }
     document.addEventListener('click',function(e){
       var el=e.target.closest('[data-goal]');
-      if(el){plausible(el.getAttribute('data-goal'))}
+      if(el)fire(el);
     });
     document.addEventListener('submit',function(e){
       var f=e.target.closest('form[data-goal]');
       if(!f)return;
-      plausible(f.getAttribute('data-goal'));
+      var who=f.getAttribute('data-form')||'form';
+      plausible('form_submit');
       if(!f.dataset.endpoint)return;
       e.preventDefault();
       var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
@@ -45,11 +55,13 @@
         .then(function(r){return r.json()})
         .then(function(j){
           if(!j||!j.ok)throw 0;
+          plausible('form_submit_ok');plausible('form_ok_'+who);
           f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
         })
         .catch(function(){
-          // Endpoint unconfigured or unreachable: fall back to the mail client
-          // rather than losing the submission.
+          // Endpoint unreachable or every destination failed: hand off to the
+          // mail client rather than lose the submission.
+          plausible('form_submit_fail');plausible('form_fail_'+who);
           if(b){b.disabled=false;b.textContent=t}
           f.removeAttribute('data-endpoint');
           f.submit();
@@ -201,8 +213,8 @@
         </div>
         <div class="offers">
           <div class="offer"><div><h2>Full Pentest</h2><div class="price">From £5,000</div></div><p>Proper thorough penetration test. Infrastructure, apps, APIs, cloud, code — everything that matters. Takes one to two weeks. Fixed price, scoped upfront so there are no surprises. You get a clear report with prioritised findings, full technical detail, and a plan to fix everything. You talk to the person doing the work, not a project manager.</p></div>
-          <div class="offer" id=remediation><div><h2>Remediation</h2><div class="price">Scoped per engagement</div></div><p>We don't just find problems. We fix them. We work alongside your engineers to patch vulnerabilities, harden configurations, rotate credentials, sort out cloud permissions — whatever needs doing. This is what makes us different from everyone else in this space. Most security firms stop at the report. We keep going until it's actually sorted.</p></div>
-          <div class="offer" id=monitoring><div><h2>Ongoing Monitoring</h2><div class="price">Monthly retainer</div></div><p>For PE and VC firms with a portfolio. Continuous visibility into the security posture of your investments. We keep watching so you know when something's gone wrong before it becomes a headline. Regular testing, ongoing advice, and a direct line to someone who knows your systems.</p></div>
+          <div class="offer" id="remediation"><div><h2>Remediation</h2><div class="price">Scoped per engagement</div></div><p>We don't just find problems. We fix them. We work alongside your engineers to patch vulnerabilities, harden configurations, rotate credentials, sort out cloud permissions — whatever needs doing. This is what makes us different from everyone else in this space. Most security firms stop at the report. We keep going until it's actually sorted.</p></div>
+          <div class="offer" id="monitoring"><div><h2>Ongoing Monitoring</h2><div class="price">Monthly retainer</div></div><p>For PE and VC firms with a portfolio. Continuous visibility into the security posture of your investments. We keep watching so you know when something's gone wrong before it becomes a headline. Regular testing, ongoing advice, and a direct line to someone who knows your systems.</p></div>
         </div>
       </div>
     </section>
@@ -238,7 +250,7 @@
           <div class="split-stack">
             <p class="body">We work with PE firms, VCs, M&amp;A lawyers, corporate finance advisors and insurance underwriters — anyone in a deal who'd rather find out now than later. We also work directly with companies who want to know where they stand before a launch, an audit, or a customer security review.</p>
             <div>
-              <a class="act act--ink" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">BOOK A 30-MINUTE CALL</a>
+              <a class="act act--ink" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" data-goal-detail="book_pen" target="_blank" rel="noopener">BOOK A 30-MINUTE CALL</a>
               <p class="act-note">Or <a href="mailto:security@polkaspots.com">email us</a> — same-day reply with a clear scope and a fixed price.</p>
             </div>
           </div>

@@ -27,14 +27,24 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    // Every tracked element fires a rollup goal (data-goal) and, where set, a
+    // specific one (data-goal-detail) naming page and position. Two events, so
+    // the broad number and the breakdown both exist without depending on
+    // Plausible custom properties.
+    function fire(el){
+      var g=el.getAttribute('data-goal'); if(g)plausible(g);
+      var d=el.getAttribute('data-goal-detail'); if(d)plausible(d);
+      if(el.tagName==='A'&&/\/\/cal\.com\//.test(el.href))plausible('outbound_cal');
+    }
     document.addEventListener('click',function(e){
       var el=e.target.closest('[data-goal]');
-      if(el){plausible(el.getAttribute('data-goal'))}
+      if(el)fire(el);
     });
     document.addEventListener('submit',function(e){
       var f=e.target.closest('form[data-goal]');
       if(!f)return;
-      plausible(f.getAttribute('data-goal'));
+      var who=f.getAttribute('data-form')||'form';
+      plausible('form_submit');
       if(!f.dataset.endpoint)return;
       e.preventDefault();
       var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
@@ -45,11 +55,13 @@
         .then(function(r){return r.json()})
         .then(function(j){
           if(!j||!j.ok)throw 0;
+          plausible('form_submit_ok');plausible('form_ok_'+who);
           f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
         })
         .catch(function(){
-          // Endpoint unconfigured or unreachable: fall back to the mail client
-          // rather than losing the submission.
+          // Endpoint unreachable or every destination failed: hand off to the
+          // mail client rather than lose the submission.
+          plausible('form_submit_fail');plausible('form_fail_'+who);
           if(b){b.disabled=false;b.textContent=t}
           f.removeAttribute('data-endpoint');
           f.submit();

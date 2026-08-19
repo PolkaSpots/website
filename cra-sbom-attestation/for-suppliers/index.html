@@ -27,14 +27,24 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    // Every tracked element fires a rollup goal (data-goal) and, where set, a
+    // specific one (data-goal-detail) naming page and position. Two events, so
+    // the broad number and the breakdown both exist without depending on
+    // Plausible custom properties.
+    function fire(el){
+      var g=el.getAttribute('data-goal'); if(g)plausible(g);
+      var d=el.getAttribute('data-goal-detail'); if(d)plausible(d);
+      if(el.tagName==='A'&&/\/\/cal\.com\//.test(el.href))plausible('outbound_cal');
+    }
     document.addEventListener('click',function(e){
       var el=e.target.closest('[data-goal]');
-      if(el){plausible(el.getAttribute('data-goal'))}
+      if(el)fire(el);
     });
     document.addEventListener('submit',function(e){
       var f=e.target.closest('form[data-goal]');
       if(!f)return;
-      plausible(f.getAttribute('data-goal'));
+      var who=f.getAttribute('data-form')||'form';
+      plausible('form_submit');
       if(!f.dataset.endpoint)return;
       e.preventDefault();
       var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
@@ -45,11 +55,13 @@
         .then(function(r){return r.json()})
         .then(function(j){
           if(!j||!j.ok)throw 0;
+          plausible('form_submit_ok');plausible('form_ok_'+who);
           f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
         })
         .catch(function(){
-          // Endpoint unconfigured or unreachable: fall back to the mail client
-          // rather than losing the submission.
+          // Endpoint unreachable or every destination failed: hand off to the
+          // mail client rather than lose the submission.
+          plausible('form_submit_fail');plausible('form_fail_'+who);
           if(b){b.disabled=false;b.textContent=t}
           f.removeAttribute('data-endpoint');
           f.submit();
@@ -163,8 +175,8 @@
         <p class="eyebrow eyebrow--violet">ForgeCRA · For suppliers</p>
         <h1 class="h1 h1--page">Publish once. Serve every customer.</h1>
         <div class="act-row" style="margin-top: 32px;">
-          <p class="lede lede--page" style="margin: 0;">Every manufacturer you sell into will soon demand SBOMs — each in their own portal, format, and questionnaire. ForgeCRA is the neutral exchange: attest once, share with every customer, under your control.</p>
-          <a class="act act--ink act--lg" href="#join" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
+          <p class="lede lede--page" style="margin: 0;">A customer of yours is collecting component evidence for the Cyber Resilience Act, and pointed you here. ForgeCRA is the neutral exchange: attest once, share with that customer and every other one, under your control. Free for suppliers, permanently.</p>
+          <a class="act act--ink act--lg" href="#cohort-form" data-goal="cta_click" data-goal-detail="cta_sup_hero">JOIN THE FIRST SUPPLIER COHORT</a>
         </div>
       </div>
     </section>
@@ -209,6 +221,7 @@
             <p class="stage-body">Per customer, your call — updates propagate</p>
           </div>
         </div>
+        <p class="stage-step" style="margin-top: 32px; max-width: 74ch;">If a customer sent you here, step three is already half done — they are waiting on the share, and you keep control of what they see.</p>
         <p class="note">Illustrative only. The first cohort is run with us directly — there is no self-serve platform yet.</p>
       </div>
     </section>
@@ -226,7 +239,7 @@
       </div>
     </section>
 
-    <section class="band band--end" id="join">
+    <section class="band band--end" id="cohort-form">
       <div class="wrap">
       <div class="section-head">
         <span class="section-label">The offer</span>
@@ -239,8 +252,8 @@
           </div>
           <div>
             <p>Free for suppliers, permanently. You control who sees what, and updates propagate to every customer you've shared with.</p>
-            <a class="act act--lg" href="#cohort-form" data-goal="cta_click">JOIN THE FIRST SUPPLIER COHORT</a>
-            <p style="margin: 16px 0 0;"><a class="quiet" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">Or book a 30-minute call →</a></p>
+            <a class="act act--lg" href="#cohort-form" data-goal="cta_click" data-goal-detail="cta_sup_offer">JOIN THE FIRST SUPPLIER COHORT</a>
+            <p style="margin: 16px 0 0;"><a class="quiet" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" data-goal-detail="book_sup_offer" target="_blank" rel="noopener">Or book a 30-minute call →</a></p>
           </div>
         </div>
 
@@ -248,8 +261,8 @@
           <p class="statement statement--sm">Tell us your formats and your customers.</p>
           <div>
             <!-- FORM-SWAP: see the manufacturers page. Field names are the Spec §5.5 set. -->
-            <form id="cohort-form" action="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain"
-                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="ForgeCRA supplier cohort">
+            <form action="mailto:security@polkaspots.com?subject=ForgeCRA%20supplier%20cohort" method="post" enctype="text/plain"
+                  data-goal="form_submit" data-form="sup" data-endpoint="/api/submit" data-subject="ForgeCRA supplier cohort">
               <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>
@@ -270,9 +283,17 @@
                     <option value="Spreadsheet">Spreadsheet</option><option value="None">None</option>
                   </select>
                 </label>
+                <label class="field field--wide"><span>Which customer sent you?</span>
+                  <input type="text" name="referred_by" placeholder="Optional">
+                </label>
+                <label class="field field--wide"><span>Other manufacturer customers who will ask for this</span>
+                  <input type="text" name="other_customers" placeholder="Optional">
+                  <small class="field-help">Names help us bring them onto the same exchange so you only publish once.</small>
+                </label>
               </div>
               <button type="submit" class="act act--ink act--lg" style="margin-top: 32px;">JOIN THE FIRST SUPPLIER COHORT</button>
             </form>
+            <p class="form-note">Nobody sent you and you want to get ahead of this? Same form — tell us who is likely to ask.</p>
             <p class="form-note">You're a manufacturer collecting evidence, not supplying it? <a href="/cra-sbom-attestation/for-manufacturers/">This is your page →</a></p>
           </div>
         </div>

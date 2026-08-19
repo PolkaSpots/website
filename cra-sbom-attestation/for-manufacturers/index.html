@@ -27,14 +27,24 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    // Every tracked element fires a rollup goal (data-goal) and, where set, a
+    // specific one (data-goal-detail) naming page and position. Two events, so
+    // the broad number and the breakdown both exist without depending on
+    // Plausible custom properties.
+    function fire(el){
+      var g=el.getAttribute('data-goal'); if(g)plausible(g);
+      var d=el.getAttribute('data-goal-detail'); if(d)plausible(d);
+      if(el.tagName==='A'&&/\/\/cal\.com\//.test(el.href))plausible('outbound_cal');
+    }
     document.addEventListener('click',function(e){
       var el=e.target.closest('[data-goal]');
-      if(el){plausible(el.getAttribute('data-goal'))}
+      if(el)fire(el);
     });
     document.addEventListener('submit',function(e){
       var f=e.target.closest('form[data-goal]');
       if(!f)return;
-      plausible(f.getAttribute('data-goal'));
+      var who=f.getAttribute('data-form')||'form';
+      plausible('form_submit');
       if(!f.dataset.endpoint)return;
       e.preventDefault();
       var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
@@ -45,11 +55,13 @@
         .then(function(r){return r.json()})
         .then(function(j){
           if(!j||!j.ok)throw 0;
+          plausible('form_submit_ok');plausible('form_ok_'+who);
           f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
         })
         .catch(function(){
-          // Endpoint unconfigured or unreachable: fall back to the mail client
-          // rather than losing the submission.
+          // Endpoint unreachable or every destination failed: hand off to the
+          // mail client rather than lose the submission.
+          plausible('form_submit_fail');plausible('form_fail_'+who);
           if(b){b.disabled=false;b.textContent=t}
           f.removeAttribute('data-endpoint');
           f.submit();
@@ -121,6 +133,14 @@
       "mainEntity": [
         {
           "@type": "Question",
+          "name": "We're building our own supplier portal.",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Then each supplier does the work once for you, and again for every other customer with a portal. Suppliers comply badly with work that does not compound — that is the pattern behind the SBOMs you are getting today. A neutral exchange lets a supplier publish once and share with all of you, which is the only version they have a reason to keep current."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "We already use ONEKEY / Finite State / similar.",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -140,7 +160,7 @@
           "name": "We're waiting for the harmonised standards.",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "None are cited yet. We map Annex I now and re-map automatically when they land. Supplier collection takes months — waiting is the expensive option."
+            "text": "As of 19 August 2026, no CRA harmonised standard has been ratified or cited in the Official Journal, so no product category has a presumption of conformity. We map Annex I now and re-map automatically when they land. Supplier collection takes months — waiting is the expensive option."
           }
         }
       ]
@@ -187,8 +207,9 @@
         <h1 class="h1 h1--page">CRA makes you responsible for evidence you don't control.</h1>
         <div class="act-row" style="margin-top: 32px;">
           <p class="lede lede--page" style="margin: 0;">ForgeCRA collects, quality-scores, and attests SBOMs from your suppliers — so your Cyber Resilience Act evidence chain doesn't live in your inbox.</p>
+          <p class="hero-credibility">Built by Simon Morley — repeat founder, infrastructure and security, one prior acquisition — inside PolkaSpots Ltd, which has been doing network and security work since 2005.</p>
           <!-- CALENDAR-SWAP: replace href with the Cal.com/Calendly booking link. -->
-          <a class="act act--ink act--lg" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
+          <a class="act act--ink act--lg" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" data-goal-detail="book_mfr_hero" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
         </div>
       </div>
     </section>
@@ -204,6 +225,7 @@
           <p class="claim">Full CRA obligations land 11 December 2027: SBOM, vulnerability handling, technical documentation. No size exemption.</p>
           <p class="claim">The tools you may already own analyse what's on your network. They can't make a supplier send you evidence.</p>
         </div>
+        <p class="body" style="margin-top: 36px; max-width: 74ch;">CRA penalties reach €15 million or 2.5% of worldwide annual turnover. That is why this has a budget line. It is not the reason to move now. The reason to move now is that supplier collection takes months, and December 2027 does not move.</p>
       </div>
     </section>
 
@@ -240,18 +262,44 @@
     <section class="band band--pad">
       <div class="wrap">
       <div class="section-head">
-        <span class="section-label">The offer</span>
+        <span class="section-label">Why your suppliers will actually respond</span>
         <span class="section-num">03</span>
+      </div>
+        <div class="split">
+          <p class="statement">ForgeCRA does not sell analysis, is not owned by anyone who does, and never resells supplier data.</p>
+          <p class="body" style="padding-top: 6px;">That matters to you, not only to them. A supplier will not hand component detail to a vendor that also sells competitive analysis to their customers — which is why supplier data collection stalls when it is run by an analysis vendor or by a manufacturer directly. Neutrality is what makes the ask answerable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">This shape has worked before</span>
+        <span class="section-num">04</span>
+      </div>
+        <div class="split">
+          <p class="statement">E-invoicing had the same problem: every buyer wanted a different portal, and suppliers complied badly with all of them. Peppol solved it with one connection to many counterparties instead of bilateral integrations.</p>
+          <p class="body" style="padding-top: 6px;">Peppol had a government mandate behind it. The CRA creates the same pressure on evidence without specifying the plumbing. That gap is what ForgeCRA is built for — and it is also the honest risk: nobody is mandating the network, so it has to earn its density.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--pad">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">The offer</span>
+        <span class="section-num">05</span>
       </div>
         <div class="offer-box">
           <div>
             <div class="kicker">DESIGN PARTNERS — PAID 90-DAY PILOT</div>
-            <h2>We're selecting a small group of design partners for a paid 90-day pilot (£5–15k depending on supplier count).</h2>
+            <h2>We're selecting three design partners for a paid 90-day pilot (£5–15k depending on supplier count).</h2>
           </div>
           <div>
             <p>You get the full attestation workflow run for you; you shape the product; founding pricing locked for year one.</p>
             <!-- CALENDAR-SWAP -->
-            <a class="act act--lg" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
+            <a class="act act--lg" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" data-goal-detail="book_mfr_offer" target="_blank" rel="noopener">BOOK A 30-MINUTE PILOT CALL</a>
           </div>
         </div>
       </div>
@@ -261,12 +309,29 @@
       <div class="wrap">
       <div class="section-head">
         <span class="section-label">Questions we get</span>
-        <span class="section-num">04</span>
+        <span class="section-num">06</span>
       </div>
         <div class="cols-3">
+          <div class="faq"><h3>&ldquo;We're building our own supplier portal.&rdquo;</h3><p>Then each supplier does the work once for you, and again for every other customer with a portal. Suppliers comply badly with work that does not compound — that is the pattern behind the SBOMs you are getting today. A neutral exchange lets a supplier publish once and share with all of you, which is the only version they have a reason to keep current.</p></div>
           <div class="faq"><h3>&ldquo;We already use ONEKEY / Finite State / similar.&rdquo;</h3><p>They analyse what you already hold. We get you what you don't hold. We complement them — several design partners will run both.</p></div>
           <div class="faq"><h3>&ldquo;Email works fine.&rdquo;</h3><p>At 20+ suppliers with a 24-hour reporting clock, email has no quality scoring, no attestation trail, and no update propagation. The pilot measures whether that's true for you.</p></div>
-          <div class="faq"><h3>&ldquo;We're waiting for the harmonised standards.&rdquo;</h3><p>None are cited yet. We map Annex I now and re-map automatically when they land. Supplier collection takes months — waiting is the expensive option.</p></div>
+          <!-- DECAYING CLAIM: verify monthly against
+     https://www.cyberresilienceact.eu/state-of-play.html
+     Last verified 2026-08-19. Update the date in the visible copy each time. -->
+          <div class="faq"><h3>&ldquo;We're waiting for the harmonised standards.&rdquo;</h3><p>As of 19 August 2026, no CRA harmonised standard has been ratified or cited in the Official Journal, so no product category has a presumption of conformity. We map Annex I now and re-map automatically when they land. Supplier collection takes months — waiting is the expensive option.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">How we will know if this failed</span>
+        <span class="section-num">07</span>
+      </div>
+        <div class="split">
+          <p class="statement">At pilot start we record your current supplier response rate. That is the control.</p>
+          <p class="body" style="padding-top: 6px;">If our collection does not beat it, the pilot has not worked, and we will say so in the readout rather than hand you a dashboard. This is a joint experiment with a paid delivery floor, not a licence.</p>
         </div>
       </div>
     </section>
@@ -275,7 +340,7 @@
       <div class="wrap">
       <div class="section-head">
         <span class="section-label">Or send us the details</span>
-        <span class="section-num">05</span>
+        <span class="section-num">08</span>
       </div>
         <div class="split split--form">
           <p class="statement statement--sm">If a call is easier later, tell us where you stand and we'll come back to you.</p>
@@ -285,7 +350,7 @@
                  action="https://formspree.io/f/YOUR_ID" method="POST" and delete enctype.
                  Field names are the Spec §4.5 set. -->
             <form action="mailto:security@polkaspots.com?subject=ForgeCRA%20enquiry%20%E2%80%94%20manufacturer" method="post" enctype="text/plain"
-                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="ForgeCRA enquiry — manufacturer">
+                  data-goal="form_submit" data-form="mfr" data-endpoint="/api/submit" data-subject="ForgeCRA enquiry — manufacturer">
               <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <div class="fields">
                 <label class="field"><span>Name</span><input type="text" name="name" required></label>

@@ -27,14 +27,24 @@
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
+    // Every tracked element fires a rollup goal (data-goal) and, where set, a
+    // specific one (data-goal-detail) naming page and position. Two events, so
+    // the broad number and the breakdown both exist without depending on
+    // Plausible custom properties.
+    function fire(el){
+      var g=el.getAttribute('data-goal'); if(g)plausible(g);
+      var d=el.getAttribute('data-goal-detail'); if(d)plausible(d);
+      if(el.tagName==='A'&&/\/\/cal\.com\//.test(el.href))plausible('outbound_cal');
+    }
     document.addEventListener('click',function(e){
       var el=e.target.closest('[data-goal]');
-      if(el){plausible(el.getAttribute('data-goal'))}
+      if(el)fire(el);
     });
     document.addEventListener('submit',function(e){
       var f=e.target.closest('form[data-goal]');
       if(!f)return;
-      plausible(f.getAttribute('data-goal'));
+      var who=f.getAttribute('data-form')||'form';
+      plausible('form_submit');
       if(!f.dataset.endpoint)return;
       e.preventDefault();
       var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
@@ -45,11 +55,13 @@
         .then(function(r){return r.json()})
         .then(function(j){
           if(!j||!j.ok)throw 0;
+          plausible('form_submit_ok');plausible('form_ok_'+who);
           f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
         })
         .catch(function(){
-          // Endpoint unconfigured or unreachable: fall back to the mail client
-          // rather than losing the submission.
+          // Endpoint unreachable or every destination failed: hand off to the
+          // mail client rather than lose the submission.
+          plausible('form_submit_fail');plausible('form_fail_'+who);
           if(b){b.disabled=false;b.textContent=t}
           f.removeAttribute('data-endpoint');
           f.submit();
@@ -146,7 +158,7 @@
             <h1 class="h1 h1--contact">Get in touch.</h1>
             <p class="lede lede--page" style="margin-top: 26px;">We reply the same day. Usually within the hour.</p>
             <a class="email-link" href="mailto:security@polkaspots.com">security@polkaspots.com</a>
-            <p style="margin-top: 28px;"><a class="act act--ink" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" target="_blank" rel="noopener">BOOK A 30-MINUTE CALL</a></p>
+            <p style="margin-top: 28px;"><a class="act act--ink" href="https://cal.com/simon-morley-np2it0/30min" data-goal="call_booked" data-goal-detail="book_contact" target="_blank" rel="noopener">BOOK A 30-MINUTE CALL</a></p>
             <p class="act-note">Prefer to talk it through? Grab a slot directly.</p>
           </div>
           <div class="panel">
@@ -154,7 +166,7 @@
                  For a hosted handler set action="https://formspree.io/f/YOUR_ID" method="POST"
                  and delete enctype — the field names already match. -->
             <form action="mailto:security@polkaspots.com?subject=Enquiry%20via%20polkaspots.com" method="post" enctype="text/plain"
-                  data-goal="form_submit" data-endpoint="/api/submit" data-subject="Enquiry via polkaspots.com">
+                  data-goal="form_submit" data-form="contact" data-endpoint="/api/submit" data-subject="Enquiry via polkaspots.com">
               <p hidden aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
               <label class="field"><span>Name</span><input type="text" name="name" required></label>
               <label class="field" style="margin-top: 24px;"><span>Email</span><input type="email" name="email" required></label>

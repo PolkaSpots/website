@@ -731,6 +731,20 @@ img { max-width: 100%; }
 
 .field textarea:focus { border-color: var(--violet); }
 
+.field-help {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink-50);
+}
+
+.hero-credibility {
+  margin: 20px 0 0;
+  max-width: 68ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-50);
+}
+
 .form-note {
   margin: 18px 0 0;
   font-family: var(--mono);
