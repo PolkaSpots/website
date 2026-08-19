@@ -290,8 +290,15 @@ img { max-width: 100%; }
   margin-top: 40px;
 }
 
-.stack .statement { margin-bottom: 22px; }
-.stack .body + .body { margin-top: 18px; }
+/* One argument, one type treatment. Mixing 26px Archivo with 16px Geist inside
+   a single passage reads as the text having been broken in two, even in one
+   column. Slightly larger than default body because these run the full width. */
+.stack p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.stack p + p { margin-top: 18px; }
 .stack > div { margin-top: 26px; }
 
 /* Rule 04 — two unequal columns, for heading + distinct element */
