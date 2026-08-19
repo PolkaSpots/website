@@ -238,7 +238,6 @@ img { max-width: 100%; }
 
 .lede {
   margin: 36px 0 0;
-  max-width: 620px;
   font-size: 20px;
   line-height: 1.55;
   color: var(--ink-34);
@@ -247,7 +246,6 @@ img { max-width: 100%; }
 
 .lede--page {
   margin: 32px 0 0;
-  max-width: none;
   font-size: 19px;
   line-height: 1.6;
 }
