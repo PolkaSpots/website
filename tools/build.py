@@ -951,7 +951,7 @@ emit("/cra-sbom-attestation/pilot/",
         <h1 class="h1 h1--page">We run the supplier evidence workflow for you, by hand, for 90 days.</h1>
         <p class="lede lede--page">There is no self-serve platform yet. You get the process executed properly, and you help shape what gets built.</p>
         <p class="private-note">This page is for companies we are already speaking with about a paid pilot. It is not a public product page and is not linked from the site.</p>
-        <a class="act act--ink act--lg" href="{{BOOK_30}}" data-goal="{{BOOK_GOAL}}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {{CALL_MINS}}-MINUTE CALL</a>
+        <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
       </div>
     </section>
 
@@ -960,7 +960,7 @@ emit("/cra-sbom-attestation/pilot/",
 {sec_head('Who it is for', '01')}
         <div class="stack">
           <p class="body">Manufacturers who place products with digital elements on the EU market and who currently rely on email, spreadsheets or one-off questionnaires to get SBOMs from upstream suppliers.</p>
-          <p class="body">If your main pain is answering other people's questionnaires — you are primarily a component or module supplier — this pilot is not the right fit. The <a href="{{SUPPLIERS}}">free supplier cohort</a> is.</p>
+          <p class="body">If your main pain is answering other people's questionnaires — you are primarily a component or module supplier — this pilot is not the right fit. The <a href="{SUPPLIERS}">free supplier cohort</a> is.</p>
         </div>
       </div>
     </section>
@@ -1068,8 +1068,8 @@ emit("/cra-sbom-attestation/pilot/",
           <p class="body">We will tell you quickly whether a pilot is realistic and what the price band would be.</p>
         </div>
         <div style="margin-top: 32px;">
-          <a class="act act--ink act--lg" href="{{BOOK_30}}" data-goal="{{BOOK_GOAL}}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {{CALL_MINS}}-MINUTE CALL</a>
-          <p class="act-note">Or <a href="mailto:{{MAIL}}?subject=ForgeCRA%20design%20partner%20pilot">email us</a> with the three points above.</p>
+          <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
+          <p class="act-note">Or <a href="mailto:{MAIL}?subject=ForgeCRA%20design%20partner%20pilot">email us</a> with the three points above.</p>
         </div>
       </div>
     </section>
