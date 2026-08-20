@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ForgeCRA Design Partner Pilot</title>
+  <meta name="description" content="A 90-day hands-on pilot: we run supplier SBOM collection, quality-scoring and attestation for you. £5,000–£15,000. For manufacturers already in conversation with us.">
+  <link rel="canonical" href="https://polkaspots.com/cra-sbom-attestation/pilot/">
+  <meta name="robots" content="noindex, follow">
+
+  <meta property="og:site_name" content="PolkaSpots">
+  <meta property="og:title" content="ForgeCRA Design Partner Pilot">
+  <meta property="og:description" content="A 90-day hands-on pilot: we run supplier SBOM collection, quality-scoring and attestation for you. £5,000–£15,000. For manufacturers already in conversation with us.">
+  <meta property="og:url" content="https://polkaspots.com/cra-sbom-attestation/pilot/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ForgeCRA Design Partner Pilot">
+  <meta name="twitter:description" content="A 90-day hands-on pilot: we run supplier SBOM collection, quality-scoring and attestation for you. £5,000–£15,000. For manufacturers already in conversation with us.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-DQ-Xa2vnEhrSCIogD_ro3.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+    // Every tracked element fires a rollup goal (data-goal) and, where set, a
+    // specific one (data-goal-detail) naming page and position. Two events, so
+    // the broad number and the breakdown both exist without depending on
+    // Plausible custom properties.
+    function fire(el){
+      var g=el.getAttribute('data-goal'); if(g)plausible(g);
+      var d=el.getAttribute('data-goal-detail'); if(d)plausible(d);
+      if(el.tagName==='A'&&/\/\/cal\.com\//.test(el.href))plausible('outbound_cal');
+    }
+    document.addEventListener('click',function(e){
+      var el=e.target.closest('[data-goal]');
+      if(el)fire(el);
+    });
+    document.addEventListener('submit',function(e){
+      var f=e.target.closest('form[data-goal]');
+      if(!f)return;
+      var who=f.getAttribute('data-form')||'form';
+      plausible('form_submit');
+      if(!f.dataset.endpoint)return;
+      e.preventDefault();
+      var b=f.querySelector('button[type=submit]'),t=b?b.textContent:'';
+      if(b){b.disabled=true;b.textContent='SENDING…'}
+      var d=Object.fromEntries(new FormData(f));
+      d._subject=f.dataset.subject||document.title;
+      fetch(f.dataset.endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+        .then(function(r){return r.json()})
+        .then(function(j){
+          if(!j||!j.ok)throw 0;
+          plausible('form_submit_ok');plausible('form_ok_'+who);
+          f.innerHTML='<p class="form-sent">Thank you — that reached us. We reply the same day.</p>';
+        })
+        .catch(function(){
+          // Endpoint unreachable or every destination failed: hand off to the
+          // mail client rather than lose the submission.
+          plausible('form_submit_fail');plausible('form_fail_'+who);
+          if(b){b.disabled=false;b.textContent=t}
+          f.removeAttribute('data-endpoint');
+          f.submit();
+        });
+    },true);
+  </script>
+
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="wordmark" href="/">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i class="v"></i><i></i></span>
+        <span class="wordmark-text">POLKASPOTS</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/flash-security-review/">Flash Review</a>
+        <a href="/security-due-diligence/">Pentesting</a>
+        <a href="/cra-sbom-attestation/" aria-current="page">ForgeCRA</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="band band--hero">
+      <div class="wrap">
+        <p class="eyebrow eyebrow--violet">ForgeCRA · Design partner pilot</p>
+        <h1 class="h1 h1--page">We run the supplier evidence workflow for you, by hand, for 90 days.</h1>
+        <p class="lede lede--page">There is no self-serve platform yet. You get the process executed properly, and you help shape what gets built.</p>
+        <p class="private-note">This page is for companies we are already speaking with about a paid pilot. It is not a public product page and is not linked from the site.</p>
+        <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">Who it is for</span>
+        <span class="section-num">01</span>
+      </div>
+        <div class="stack">
+          <p class="body">Manufacturers who place products with digital elements on the EU market and who currently rely on email, spreadsheets or one-off questionnaires to get SBOMs from upstream suppliers.</p>
+          <p class="body">If your main pain is answering other people's questionnaires — you are primarily a component or module supplier — this pilot is not the right fit. The <a href="{SUPPLIERS}">free supplier cohort</a> is.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">What you get in the 90 days</span>
+        <span class="section-num">02</span>
+      </div>
+        <ol class="steps" style="margin-top: 28px;">
+          <li><strong>Supplier map.</strong> We work from your actual upstream list (components, modules, firmware, BSPs, critical OSS where relevant).</li>
+          <li><strong>Structured requests.</strong> We request machine-readable SBOMs (CycloneDX or SPDX) in a consistent form, instead of open-ended email chains.</li>
+          <li><strong>Quality scoring.</strong> Every submission is checked against a practical minimum bar (identity, versions, key fields, basic completeness). You see what is usable and what is not.</li>
+          <li><strong>Supplier attestation.</strong> Where we get a usable SBOM, we obtain a clear attestation from the supplier that it relates to the relevant product/version at a stated date. We quality-score, timestamp and record it. The supplier attests; you remain the manufacturer under the CRA.</li>
+          <li><strong>Evidence pack.</strong> A clean set of attested SBOMs and status for the suppliers in scope — something you can show internally, to auditors, or to customers without living in an inbox.</li>
+          <li><strong>Working process.</strong> A repeatable way to request, chase, score and file the next round of updates.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">What we do, and do not do</span>
+        <span class="section-num">03</span>
+      </div>
+        <div class="cols-2" style="margin-top: 32px;">
+          <div>
+            <p class="block-title">We do</p>
+            <ul class="list">
+              <li>Run the collection and follow-up with your suppliers</li>
+              <li>Score what comes back</li>
+              <li>Obtain and record attestations</li>
+              <li>Keep you informed on response rates and quality</li>
+              <li>Document gaps that remain</li>
+            </ul>
+          </div>
+          <div>
+            <p class="block-title">We do not</p>
+            <ul class="list">
+              <li>Generate SBOMs by reverse-engineering binaries (that is a different class of tool)</li>
+              <li>Replace your existing binary-analysis or vulnerability-management tools</li>
+              <li>Claim CRA certification or conformity</li>
+              <li>Guarantee every supplier will respond</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">The number that matters</span>
+        <span class="section-num">04</span>
+      </div>
+        <div class="stack">
+          <p class="body">We measure <strong>response rate</strong> and <strong>usable attested SBOM rate</strong> from your supplier list against your current baseline — whatever your email and questionnaire results look like today.</p>
+          <p class="body">If we cannot show a clear improvement inside the 90 days, the pilot has not worked, and we will say so in the debrief.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--pad">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">Pricing</span>
+        <span class="section-num">05</span>
+      </div>
+        <div class="offer-box">
+          <div>
+            <div class="kicker">90-DAY PILOT</div>
+            <h2>£5,000 – £15,000</h2>
+            <p style="margin-top: 16px;">Price depends mainly on the number of suppliers in scope and the complexity of the product set.</p>
+          </div>
+          <div>
+            <ul class="list" style="margin-top: 0;">
+              <li>Founding pricing locked for year one if you continue after the pilot.</li>
+              <li>Invoiced up front, or in two stages at kick-off and mid-point.</li>
+              <li>No long-term contract required to start.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">After the 90 days</span>
+        <span class="section-num">06</span>
+      </div>
+        <div class="stack">
+          <p class="body">You receive the evidence pack, the status of every supplier in scope, and a short written summary of what improved and what remained blocked.</p>
+          <p class="body">There is no automatic renewal. If you want to continue, we discuss scope and price for a further period, or for early access to the software when it exists. If you do not, the engagement ends. You keep everything produced during the pilot.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">How it runs</span>
+        <span class="section-num">07</span>
+      </div>
+        <ol class="steps" style="margin-top: 28px;">
+          <li>Short scoping call (suppliers in scope, products, current process, success criteria).</li>
+          <li>Agreement and kick-off.</li>
+          <li>Weekly or fortnightly status (what was requested, what came back, scores, blockers).</li>
+          <li>Final evidence pack and debrief at day 90.</li>
+        </ol>
+        <p class="body" style="margin-top: 28px;">You remain the point of authority with your suppliers. We do the operational work and the quality gate, under your introduction where needed.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">Practical constraints</span>
+        <span class="section-num">08</span>
+      </div>
+        <ul class="list">
+          <li>We take a small number of design partners at a time (currently up to five).</li>
+          <li>The workflow is run by us, by hand. That is intentional while we prove the process.</li>
+          <li>Suppliers are not charged. You are.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band band--end">
+      <div class="wrap">
+      <div class="section-head">
+        <span class="section-label">Next step</span>
+        <span class="section-num">09</span>
+      </div>
+        <div class="stack">
+          <p class="body">If the above matches the problem you actually have, book a call or reply with:</p>
+          <ul class="list">
+            <li>Rough number of upstream suppliers you care about for one product line</li>
+            <li>How you collect SBOMs today</li>
+            <li>Who owns the problem internally</li>
+          </ul>
+          <p class="body">We will tell you quickly whether a pilot is realistic and what the price band would be.</p>
+        </div>
+        <div style="margin-top: 32px;">
+          <a class="act act--ink act--lg" href="{BOOK_30}" data-goal="{BOOK_GOAL}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {CALL_MINS}-MINUTE CALL</a>
+          <p class="act-note">Or <a href="mailto:{MAIL}?subject=ForgeCRA%20design%20partner%20pilot">email us</a> with the three points above.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h2>Security testing</h2>
+        <div class="footer-links">
+          <a href="/flash-security-review/">Flash Review — £500</a>
+          <a href="/security-due-diligence/">Penetration testing</a>
+          <a href="/security-due-diligence/#remediation">Remediation</a>
+          <a href="/security-due-diligence/#monitoring">Ongoing monitoring</a>
+          <a href="/security-due-diligence/blog/">Security writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>ForgeCRA</h2>
+        <div class="footer-links">
+          <a href="/cra-sbom-attestation/">Overview</a>
+          <a href="/cra-sbom-attestation/for-manufacturers/">For manufacturers</a>
+          <a href="/cra-sbom-attestation/for-suppliers/">For suppliers</a>
+          <a href="/cra-sbom-attestation/blog/">CRA writing</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Company</h2>
+        <div class="footer-links">
+          <a href="/contact/">Contact</a>
+          <a href="https://simonmorley.co.uk">Simon Morley</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h2>Also building</h2>
+        <div class="footer-links">
+          <a href="https://nullrabbit.ai">NullRabbit</a>
+          <a href="https://slashr.dev">Slashr</a>
+          <a href="https://nrdax.com">NRDAX</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <p>&copy; 2005&ndash;2026 PolkaSpots Limited. Registered in England &amp; Wales, company number 05508105. London.</p>
+      <p>ForgeCRA is a product of PolkaSpots Ltd, est. 2005 — London. Company number 05508105. <a href="mailto:security@polkaspots.com">Email us</a>.</p>
+      <p>No certification claims. We don't sell September-2026 panic — we build the evidence layer that outlasts it.</p>
+    </div>
+  </footer>
+</body>
+</html>

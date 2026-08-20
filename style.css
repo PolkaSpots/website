@@ -907,6 +907,38 @@ img { max-width: 100%; }
 
 .panel .form-sent { color: var(--on-ink); background: oklch(0.60 0.13 150 / 0.14); }
 
+.list {
+  margin: 14px 0 0;
+  padding-left: 20px;
+}
+
+.list li {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-28);
+  margin-top: 9px;
+}
+
+.list li::marker { color: var(--violet); }
+
+.block-title {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--violet);
+}
+
+.private-note {
+  margin: 28px 0 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--ink-50);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-50);
+}
+
 /* ===== Blog ===================================================== */
 .post-mini { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .post-mini li { display: flex; align-items: baseline; gap: 14px; justify-content: space-between; }

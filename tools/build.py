@@ -903,3 +903,176 @@ write_llms(sec_posts, cra_posts)
 
 print(f"  {n} pages  ·  {len(sec_posts)} security posts  ·  {len(cra_posts)} ForgeCRA posts")
 print("  sitemap.xml, robots.txt, llms.txt, llms-full.txt, 2 RSS feeds")
+
+
+# ==================================================================== PILOT (unlisted)
+# Deep-funnel page for manufacturers already in conversation. Deliberately not
+# public: noindex, absent from the sitemap and llms.txt, and nothing links to it.
+# Reachable only by someone being sent the URL.
+get_90 = [
+    ("Supplier map",
+     "We work from your actual upstream list (components, modules, firmware, BSPs, critical OSS where relevant)."),
+    ("Structured requests",
+     "We request machine-readable SBOMs (CycloneDX or SPDX) in a consistent form, instead of open-ended email chains."),
+    ("Quality scoring",
+     "Every submission is checked against a practical minimum bar (identity, versions, key fields, basic completeness). You see what is usable and what is not."),
+    ("Supplier attestation",
+     "Where we get a usable SBOM, we obtain a clear attestation from the supplier that it relates to the relevant product/version at a stated date. We quality-score, timestamp and record it. The supplier attests; you remain the manufacturer under the CRA."),
+    ("Evidence pack",
+     "A clean set of attested SBOMs and status for the suppliers in scope — something you can show internally, to auditors, or to customers without living in an inbox."),
+    ("Working process",
+     "A repeatable way to request, chase, score and file the next round of updates."),
+]
+get_rows = "\n".join(
+    f'          <li><strong>{t}.</strong> {d}</li>' for t, d in get_90)
+
+we_do = ["Run the collection and follow-up with your suppliers",
+         "Score what comes back",
+         "Obtain and record attestations",
+         "Keep you informed on response rates and quality",
+         "Document gaps that remain"]
+we_dont = ["Generate SBOMs by reverse-engineering binaries (that is a different class of tool)",
+           "Replace your existing binary-analysis or vulnerability-management tools",
+           "Claim CRA certification or conformity",
+           "Guarantee every supplier will respond"]
+run_steps = ["Short scoping call (suppliers in scope, products, current process, success criteria).",
+             "Agreement and kick-off.",
+             "Weekly or fortnightly status (what was requested, what came back, scores, blockers).",
+             "Final evidence pack and debrief at day 90."]
+
+emit("/cra-sbom-attestation/pilot/",
+     "ForgeCRA Design Partner Pilot",
+     "A 90-day hands-on pilot: we run supplier SBOM collection, quality-scoring and attestation for you. £5,000–£15,000. For manufacturers already in conversation with us.",
+     f"""
+  <main>
+    <section class="band band--hero">
+      <div class="wrap">
+        <p class="eyebrow eyebrow--violet">ForgeCRA · Design partner pilot</p>
+        <h1 class="h1 h1--page">We run the supplier evidence workflow for you, by hand, for 90 days.</h1>
+        <p class="lede lede--page">There is no self-serve platform yet. You get the process executed properly, and you help shape what gets built.</p>
+        <p class="private-note">This page is for companies we are already speaking with about a paid pilot. It is not a public product page and is not linked from the site.</p>
+        <a class="act act--ink act--lg" href="{{BOOK_30}}" data-goal="{{BOOK_GOAL}}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {{CALL_MINS}}-MINUTE CALL</a>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('Who it is for', '01')}
+        <div class="stack">
+          <p class="body">Manufacturers who place products with digital elements on the EU market and who currently rely on email, spreadsheets or one-off questionnaires to get SBOMs from upstream suppliers.</p>
+          <p class="body">If your main pain is answering other people's questionnaires — you are primarily a component or module supplier — this pilot is not the right fit. The <a href="{{SUPPLIERS}}">free supplier cohort</a> is.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('What you get in the 90 days', '02')}
+        <ol class="steps" style="margin-top: 28px;">
+{get_rows}
+        </ol>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('What we do, and do not do', '03')}
+        <div class="cols-2" style="margin-top: 32px;">
+          <div>
+            <p class="block-title">We do</p>
+            <ul class="list">
+{chr(10).join(f'              <li>{x}</li>' for x in we_do)}
+            </ul>
+          </div>
+          <div>
+            <p class="block-title">We do not</p>
+            <ul class="list">
+{chr(10).join(f'              <li>{x}</li>' for x in we_dont)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('The number that matters', '04')}
+        <div class="stack">
+          <p class="body">We measure <strong>response rate</strong> and <strong>usable attested SBOM rate</strong> from your supplier list against your current baseline — whatever your email and questionnaire results look like today.</p>
+          <p class="body">If we cannot show a clear improvement inside the 90 days, the pilot has not worked, and we will say so in the debrief.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--pad">
+      <div class="wrap">
+{sec_head('Pricing', '05')}
+        <div class="offer-box">
+          <div>
+            <div class="kicker">90-DAY PILOT</div>
+            <h2>£5,000 – £15,000</h2>
+            <p style="margin-top: 16px;">Price depends mainly on the number of suppliers in scope and the complexity of the product set.</p>
+          </div>
+          <div>
+            <ul class="list" style="margin-top: 0;">
+              <li>Founding pricing locked for year one if you continue after the pilot.</li>
+              <li>Invoiced up front, or in two stages at kick-off and mid-point.</li>
+              <li>No long-term contract required to start.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('After the 90 days', '06')}
+        <div class="stack">
+          <p class="body">You receive the evidence pack, the status of every supplier in scope, and a short written summary of what improved and what remained blocked.</p>
+          <p class="body">There is no automatic renewal. If you want to continue, we discuss scope and price for a further period, or for early access to the software when it exists. If you do not, the engagement ends. You keep everything produced during the pilot.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('How it runs', '07')}
+        <ol class="steps" style="margin-top: 28px;">
+{chr(10).join(f'          <li>{x}</li>' for x in run_steps)}
+        </ol>
+        <p class="body" style="margin-top: 28px;">You remain the point of authority with your suppliers. We do the operational work and the quality gate, under your introduction where needed.</p>
+      </div>
+    </section>
+
+    <section class="band">
+      <div class="wrap">
+{sec_head('Practical constraints', '08')}
+        <ul class="list">
+          <li>We take a small number of design partners at a time (currently up to five).</li>
+          <li>The workflow is run by us, by hand. That is intentional while we prove the process.</li>
+          <li>Suppliers are not charged. You are.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="band band--end">
+      <div class="wrap">
+{sec_head('Next step', '09')}
+        <div class="stack">
+          <p class="body">If the above matches the problem you actually have, book a call or reply with:</p>
+          <ul class="list">
+            <li>Rough number of upstream suppliers you care about for one product line</li>
+            <li>How you collect SBOMs today</li>
+            <li>Who owns the problem internally</li>
+          </ul>
+          <p class="body">We will tell you quickly whether a pilot is realistic and what the price band would be.</p>
+        </div>
+        <div style="margin-top: 32px;">
+          <a class="act act--ink act--lg" href="{{BOOK_30}}" data-goal="{{BOOK_GOAL}}" data-goal-detail="book_pilot" target="_blank" rel="noopener">BOOK A {{CALL_MINS}}-MINUTE CALL</a>
+          <p class="act-note">Or <a href="mailto:{{MAIL}}?subject=ForgeCRA%20design%20partner%20pilot">email us</a> with the three points above.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+""",
+     "forgecra", forgecra=True, noindex=True)
