@@ -380,15 +380,18 @@ img { max-width: 100%; }
   border: 0;
 }
 
-/* The meta label wraps to a second line on the longest card, which pushed that
-   card's heading out of line with its neighbours. A floor equal to the wrapped
-   height keeps all three headings on the same baseline whatever the label says. */
+/* Pill on its own line, label beneath. Uniform by construction: no card can
+   wrap differently from its neighbours, so the headings stay on one baseline
+   whatever any label says. The min-height floor this replaced only aligned the
+   headings; it still left one card with a two-line label and two with one. */
 .card-tags {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  min-height: 46px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  /* Between 761 and 900px the longest label still wraps to two lines. The floor
+     is sized for that case, so the headings hold their baseline there too. */
+  min-height: 56px;
 }
 
 .tag {
